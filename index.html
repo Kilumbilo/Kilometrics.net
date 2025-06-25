@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hilo Monkey</title>
+  <style>
+     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1f1f1f;
+      color: #ffffff;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 80px;
+      background-color: #292929;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .menu-item {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 0.9rem;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+    }
+
+    .menu-item:hover {
+      opacity: 1;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .card-stack {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 2rem;
+      scroll-behavior: smooth;
+      transition: all 0.3s ease;
+    }
+
+    .card {
+      flex: 1 1 100%;
+      height: calc(100vh - 80px);
+      background-color: #292929;
+      color: white;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .card-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      width: 80px;
+      flex-shrink: 0;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card-icon {
+      font-weight: bold;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .card-body {
+      flex-grow: 1;
+      padding: 1rem;
+      font-size: 0.85rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .intro-heading {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #f5f5f5;
+    }
+
+    .intro-text {
+      font-size: 1rem;
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 0.5rem 0.5rem;
+      align-items: center;
+      margin: 2rem 0;
+    }
+
+    .calculator-grid label {
+      margin-bottom: 0.2rem;
+    }
+
+    .calculator-grid input, .calculator-grid select {
+      width: 100%;
+      padding: 0.3rem;
+    }
+
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      color: #ccc;
+      background-color: transparent;
+      border: none;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">H</div>
+    <div class="menu">
+      <div class="menu-item">Tools</div>
+      <div class="menu-item">About</div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="card-stack" id="cardStack"></div>
+  </div>
+
+  <script>
+    const sections = [
+      "Calculator", "I-Section Parallel Flange", "H-Section Parallel Flange",
+      "I-Section Taper Flange", "H-Section Piles", "Channels", "Angles Equal",
+      "Angles Unequal", "Flats", "Hot rolled sheets, plates, slabs, squares, rounds",
+      "Lipped channels", "Lipped zeds", "Lipped angles", "Cold formed channels",
+      "Top hats", "Cold formed angles equal", "Cold formed angles unequal",
+      "Hollow section square", "Hollow section round", "Hollow section rectangle",
+      "Bolts and nuts"
+    ];
+
+    const cardStack = document.getElementById("cardStack");
+
+    sections.forEach((section) => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      let cardContent = "<div class='card-body'><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue.</p></div>";
+
+      if (section === "Calculator") {
+        cardContent = `
+          <div class="card-body">
+            <div class="intro">
+              <h1 class="intro-heading">Welcome to Hilo Monkey</h1>
+              <p class="intro-text">
+                A simple tool to calculate the mass of steel and other raw materials based on dimensions and type. Select a shape and get instant results — accurate, fast, and mobile-friendly.
+              </p>
+            </div>
+            <div class="calculator-grid">
+              <label for="material">Material</label>
+              <div>
+                <select id="material">
+                  <option>Acetal</option>
+                  <option>Aluminium</option>
+                  <option>Cast Iron</option>
+                  <option>Mild Steel</option>
+                </select>
+                <small>Typical/average density values are used.</small>
+              </div>
+              <label for="form">Form</label>
+              <select id="form">
+                <option>Round Bar</option>
+                <option>Square Bar</option>
+                <option>Rectangular Bar</option>
+                <option>Flat/Sheet</option>
+                <option>Hex Bar</option>
+              </select>
+              <label for="width">Width</label>
+              <div><input type="number" id="width" /> <select><option>mm</option><option>cm</option><option>m</option><option>in</option><option>ft</option></select></div>
+              <label for="depth">Depth</label>
+              <div><input type="number" id="depth" /> <select><option>mm</option><option>cm</option><option>m</option><option>in</option><option>ft</option></select></div>
+              <label for="length">Length</label>
+              <div><input type="number" id="length" /> <select><option>mm</option><option>cm</option><option>m</option><option>in</option><option>ft</option></select></div>
+              <div></div>
+              <button onclick="calculateMass()">Calculate</button>
+              <label>Weight (kg)</label>
+              <div id="resultKg"></div>
+              <label>Weight (t)</label>
+              <div id="resultT"></div>
+              <label>Weight (lb)</label>
+              <div id="resultLb"></div>
+            </div>
+            <footer>
+              © 2025 Hilo Monkey
+            </footer>
+          </div>`;
+      }
+
+      card.innerHTML = `
+        ${cardContent}
+        <div class="card-header">
+          <div class="card-icon">O</div>
+          <div class="card-title">${section}</div>
+        </div>
+      `;
+
+      cardStack.appendChild(card);
+    });
+
+    function calculateMass() {
+      const resultKg = document.getElementById("resultKg");
+      const resultT = document.getElementById("resultT");
+      const resultLb = document.getElementById("resultLb");
+
+      // Placeholder calculation
+      resultKg.textContent = "123.45 kg";
+      resultT.textContent = "0.123 t";
+      resultLb.textContent = "272.13 lb";
+    }
+  </script>
+</body>
+</html>
