@@ -79,6 +79,31 @@
       border-radius: 0;
       box-shadow: none;
       position: relative;
+      /* Add for sliding effect */
+      will-change: margin, width;
+    }
+
+    .card.hide-body .card-body {
+      max-width: 0;
+      opacity: 0;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      transition: max-width 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, padding 0.3s, margin 0.3s;
+    }
+
+    .card-body {
+      flex-grow: 1;
+      padding: 1rem;
+      font-size: 0.85rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: max-width 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, padding 0.3s, margin 0.3s;
+      max-width: 1000px;
+      opacity: 1;
+      will-change: max-width, opacity, padding, margin;
     }
 
     .card-header {
@@ -104,10 +129,14 @@
       .card-title {
         font-size: 0.9rem;
         font-weight: 600;
-        text-align: Center; /* Changed from center to left */
+        text-align: left; /* Changed from center to left */
         word-break: break-word;
         transform: rotate(-90deg);
         white-space: nowrap;
+        max-width: 70px;      /* Prevent overflow beyond card */
+        overflow: hidden;     /* Hide overflowed text */
+        text-overflow: ellipsis;
+        display: block;
       }
       /* ...existing code... */
       min-height: 40px;
@@ -131,26 +160,35 @@
 
     .card-header-bottom {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 1rem;
-      gap: 0.5rem; /* Ensures 0.5rem space between title and icon */
+      flex-direction: row;
+      align-items: flex-start; /* Align left */
+      /* margin-bottom: 1rem; */
+      position: relative;
+      min-height: 120px; /* Adjust as needed for spacing */
     }
 
     .card-icon {
       font-weight: bold;
       font-size: 1.2rem;
-      margin-bottom: 0.2rem;
+      position: absolute;
+      text-align: center; 
+      top: 50%;
+      transform: translateY(-50%);
+      margin-left: 0.5rem; /* Space between title and icon */
     }
 
     .card-title {
       font-size: 0.9rem;
       font-weight: 600;
-      text-align: center;
+      text-align: left;
       word-break: break-word;
       transform: rotate(-90deg);
-      /* Optional: To keep it centered in the column */
       white-space: nowrap;
+      max-width: 70px;
+      /* overflow: hidden;
+      text-overflow: ellipsis; */
+      display: block;
+      margin-bottom: 0; /* Remove gap from flex */
     }
 
     .card-body {
@@ -161,6 +199,10 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: max-width 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, padding 0.3s, margin 0.3s;
+      max-width: 1000px;
+      opacity: 1;
+      will-change: max-width, opacity, padding, margin;
     }
 
     .intro {
@@ -368,9 +410,9 @@
 
       // Card left section (sidebar-style)
       const cardHeader = `
-        <div class="card-header">
+        <div class="card-header" onclick="toggleCardBody(this)">
           <div class="card-header-top">
-            <button class="card-close" onclick="this.closest('.card').style.display='none'">×</button>
+            <button class="card-close" onclick="event.stopPropagation();this.closest('.card').style.display='none'">×</button>
           </div>
           <div class="card-header-bottom">
             <div class="card-title">${section}</div>
@@ -396,6 +438,11 @@
       resultKg.textContent = "123.45 kg";
       resultT.textContent = "0.123 t";
       resultLb.textContent = "272.13 lb";
+    }
+
+    function toggleCardBody(headerElem) {
+      const card = headerElem.closest('.card');
+      card.classList.toggle('hide-body');
     }
   </script>
 </body>
