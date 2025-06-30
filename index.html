@@ -1,449 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hilo Monkey</title>
-  <style>
-     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #1f1f1f;
-      color: #ffffff;
-      display: flex;
-    }
-
-    .sidebar {
-      width: 80px;
-      background-color: #292929;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-    }
-
-    .logo {
-      font-size: 2rem;
-      font-weight: bold;
-    }
-
-    .menu {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .menu-item {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-size: 0.9rem;
-      cursor: pointer;
-      opacity: 0.6;
-      transition: opacity 0.2s ease;
-    }
-
-    .menu-item:hover {
-      opacity: 1;
-    }
-
-    .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .card-stack {
-      display: flex;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      transition: all 0.3s ease;
-    }
-
-    .card {
-      display: flex;
-      flex-direction: row;
-      min-width: 600px;
-      height: 100vh;
-      background-color: #292929;
-      color: white;
-      transition: transform 0.3s ease;
-      border-radius: 0;
-      box-shadow: none;
-      position: relative;
-      /* Add for sliding effect */
-      will-change: margin, width;
-    }
-
-    .card.hide-body .card-body {
-      max-width: 0;
-      opacity: 0;
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
-      transition: max-width 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, padding 0.3s, margin 0.3s;
-    }
-
-    .card-body {
-      flex-grow: 1;
-      padding: 1rem;
-      font-size: 0.85rem;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: max-width 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, padding 0.3s, margin 0.3s;
-      max-width: 1000px;
-      opacity: 1;
-      will-change: max-width, opacity, padding, margin;
-    }
-
-    .card-header {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      width: 80px;
-      min-width: 80px;
-      background: rgba(0,0,0,0.08);
-      border-right: 1px solid rgba(255,255,255,0.08);
-      padding: 0;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .card-header-top {
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      padding: 1rem 1rem 0 1rem;      /* ...existing code... */
-      .card-title {
-        font-size: 0.9rem;
-        font-weight: 600;
-        text-align: left; /* Changed from center to left */
-        word-break: break-word;
-        transform: rotate(-90deg);
-        white-space: nowrap;
-        max-width: 70px;      /* Prevent overflow beyond card */
-        overflow: hidden;     /* Hide overflowed text */
-        text-overflow: ellipsis;
-        display: block;
-      }
-      /* ...existing code... */
-      min-height: 40px;
-    }
-
-    .card-close {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-      margin-left: 0;
-      margin-top: 0;
-      padding: 0;
-    }
-    .card-close:hover {
-      opacity: 1;
-    }
-
-    .card-header-bottom {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start; /* Align left */
-      /* margin-bottom: 1rem; */
-      position: relative;
-      min-height: 120px; /* Adjust as needed for spacing */
-    }
-
-    .card-icon {
-      font-weight: bold;
-      font-size: 1.2rem;
-      position: absolute;
-      text-align: center; 
-      top: 50%;
-      transform: translateY(-50%);
-      margin-left: 0.5rem; /* Space between title and icon */
-    }
-
-    .card-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      text-align: left;
-      word-break: break-word;
-      transform: rotate(-90deg);
-      white-space: nowrap;
-      max-width: 70px;
-      /* overflow: hidden;
-      text-overflow: ellipsis; */
-      display: block;
-      margin-bottom: 0; /* Remove gap from flex */
-    }
-
-    .card-body {
-      flex-grow: 1;
-      padding: 1rem;
-      font-size: 0.85rem;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: max-width 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, padding 0.3s, margin 0.3s;
-      max-width: 1000px;
-      opacity: 1;
-      will-change: max-width, opacity, padding, margin;
-    }
-
-    .intro {
-      text-align: left;
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .intro-heading {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      color: #f5f5f5;
-    }
-
-    .intro-text {
-      font-size: 1rem;
-      color: #ccc;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.6;
-      text-align: left;
-    }
-
-    .calculator-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 2fr 0.7fr;
-      width: 80%;
-      /* gap: 1rem 0.2rem; */
-      align-items: center;
-      /* margin: 2rem 0; */
-      border-radius: 0.rem;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
-      
-      -webkit-backdrop-filter: blur(8px) saturate(160%);
-      border: .5rem transparent solid;
-    }
-
-    .calculator-grid label {
-      margin-bottom: 0.2rem;
-    }
-
-    .calculator-grid input, .calculator-grid select {
-      width: 100%;
-      padding: 0.2rem;
-    }
-
-    footer {
-      width: 100%;
-      text-align: center;
-      padding: 0.5rem 0;
-      font-size: 0.9rem;
-      color: #ccc;
-      background-color: transparent;
-      border: none;
-      margin: 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Kilo Mass</title>
 </head>
 <body>
-  <div class="sidebar">
-    <div class="logo">H</div>
-    <div class="menu">
-      <div class="menu-item">Tools</div>
-      <div class="menu-item">About</div>
-    </div>
-  </div>
-  <div class="main">
-    <div class="card-stack" id="cardStack"></div>
-  </div>
-
-  <script>
-    const sections = [
-      "Calculator", "I-Section Parallel Flange", "H-Section Parallel Flange",
-      "I-Section Taper Flange", "H-Section Piles", "Channels", "Angles Equal",
-      "Angles Unequal", "Flats", "Hot rolled sheets, plates, slabs, squares, rounds",
-      "Lipped channels", "Lipped zeds", "Lipped angles", "Cold formed channels",
-      "Top hats", "Cold formed angles equal", "Cold formed angles unequal",
-      "Hollow section square", "Hollow section round", "Hollow section rectangle",
-      "Bolts and nuts"
-    ];
-
-    const cardStack = document.getElementById("cardStack");
-
-    sections.forEach((section, idx) => {
-      const card = document.createElement("div");
-      card.classList.add("card");
-
-      // Steel heat stage inspired colors
-      const heatColors = [
-        "#ff3c00", "#ff7f00", "#ffd700", "#7ec0ee", "#b0b0b0", "#606060", "#222222",
-        "#c0c0c0", "#e5e5e5", "#a7b8c6", "#dbe9f4", "#f5f5f5", "#b8b8b8", "#8a8a8a",
-        "#e0e0e0", "#bfcad6", "#f0f0f0", "#d6d6d6", "#b3b3b3", "#9e9e9e", "#ececec"
-      ];
-      card.style.backgroundColor = heatColors[idx % heatColors.length];
-
-      // Unique lorem text for each card except Calculator
-      const loremTexts = [
-        null, // Calculator handled separately
-        "I-Section Parallel Flange: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex.",
-        "H-Section Parallel Flange: Mauris dapibus risus quis suscipit vulputate. Egestas purus viverra accumsan in nisl nisi.",
-        "I-Section Taper Flange: Proin sagittis, nibh id hendrerit feugiat, elit arcu ullamcorper enim, quis viverra orci.",
-        "H-Section Piles: Etiam nec odio vestibulum est mattis effic itur. Fusce eget ex fermentum, ultricies nisi ac.",
-        "Channels: Sed cursus, augue nec pulvinar dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem.",
-        "Angles Equal: Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.",
-        "Angles Unequal: Integer ac erat sed turpis sollicitudin bibendum. Suspendisse potenti.",
-        "Flats: Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-        "Hot rolled sheets, plates, slabs, squares, rounds: Vivamus luctus urna sed urna ultricies ac tempor dui sagittis.",
-        "Lipped channels: In condimentum facilisis porta. Sed nec diam eu diam mattis viverra.",
-        "Lipped zeds: Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris.",
-        "Lipped angles: Quisque convallis, enim sit amet laoreet dictum, velit urna dictum urna.",
-        "Cold formed channels: Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in.",
-        "Top hats: Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue.",
-        "Cold formed angles equal: Donec nec justo eget felis facilisis fermentum.",
-        "Cold formed angles unequal: Aliquam porttitor mauris sit amet orci.",
-        "Hollow section square: Aenean dignissim pellentesque felis.",
-        "Hollow section round: Morbi in sem quis dui placerat ornare.",
-        "Hollow section rectangle: Praesent dapibus, neque id cursus faucibus.",
-        "Bolts and nuts: Fusce lobortis lorem at ipsum semper sagittis."
-      ];
-
-      let cardContent;
-      if (section === "Calculator") {
-        cardContent = `
-          <div class="card-body">
-            <div class="intro">
-              <h1 class="intro-heading">Welcome to Hilo Monkey</h1>
-              <p class="intro-text">
-                A simple tool to calculate the mass of steel and other raw materials based on dimensions and type. Select a shape and get instant results — accurate, fast, and mobile-friendly.
-              </p>
-            </div>
-            <div class="calculator-grid">
-              <label for="material">Material</label>
-              <div>
+    <nav>
+        <a href="#" class="logo">H</a>
+        <ul>
+            <li><a href="#index">Index</a></li>
+            <li><a href="#about">About</a></li>
+            <li><svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg></li>
+        </ul>
+    </nav>
+    <section id="intro">
+        <h1>KILO MASS</h1>
+        <h2>Steel & Material Weight Calculator</h2>
+        <p>your online steel weight calculator and material mass reference. Instantly calculate weights for beams, bars, plates, and profiles, or browse standard tables with typical density values for steel, aluminum, cast iron, and more.</p> 
+        <div class="calculator-grid">
+            <label for="material">Material</label>
+            <div>
                 <select id="material">
-                  <option>Acetal</option>
-                  <option>Aluminium</option>
-                  <option>Cast Iron</option>
-                  <option>Mild Steel</option>
+                    <option>Mild Steel</option>
+                    <option>Aluminium</option>
+                    <option>Cast Iron</option>
+                    <option>Acetal</option>
                 </select>
-                <small>Typical/average density values are used.</small>
-              </div>
-              <div></div>
+            <small>Typical/average density values are used.</small>
+            </div>
+            <div></div>
 
-              <label for="form">Form</label>
-              <select id="form">
+            <label for="form">Form</label>
+            <select id="form">
+                <option>Flat/Sheet</option>
                 <option>Round Bar</option>
                 <option>Square Bar</option>
                 <option>Rectangular Bar</option>
-                <option>Flat/Sheet</option>
                 <option>Hex Bar</option>
-              </select>
-              <div></div>
+            </select>
+            <div></div>
 
-              <label for="width">Width</label>
-              <input type="number" id="width" />
-              <select>
+            <label for="width">Width</label>
+            <input type="number" id="width" />
+            <select>
                 <option>mm</option>
                 <option>cm</option>
                 <option>m</option>
                 <option>in</option>
                 <option>ft</option>
-              </select>
+            </select>
 
-              <label for="depth">Depth</label>
-              <input type="number" id="depth" />
-              <select>
+            <label for="depth">Depth</label>
+            <input type="number" id="depth" />
+            <select>
                 <option>mm</option>
                 <option>cm</option>
                 <option>m</option>
                 <option>in</option>
                 <option>ft</option>
-              </select>
+            </select>
 
-              <label for="length">Length</label>
-              <input type="number" id="length" />
-              <select>
+            <label for="length">Length</label>
+            <input type="number" id="length" />
+            <select>
                 <option>mm</option>
                 <option>cm</option>
                 <option>m</option>
                 <option>in</option>
                 <option>ft</option>
-              </select>
+            </select>
 
-              <div></div>
-              <button onclick="calculateMass()">Calculate</button>
-              <div></div>
+            <div></div>
+            <button onclick="calculateMass()">Calculate</button>
+            <div></div>
 
-              <label>Weight (kg)</label>
-              <div id="resultKg"></div>
-              <div></div>
-              <label>Weight (t)</label>
-              <div id="resultT"></div>
-              <div></div>
-              <label>Weight (lb)</label>
-              <div id="resultLb"></div>
-              <div></div>
-            </div>
-            <footer>
-              © 2025 Hilo Monkey
-            </footer>
-          </div>`;
-      } else {
-        cardContent = `<div class='card-body'><p>${loremTexts[idx] || "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}</p></div>`;
-      }
-
-      // Card left section (sidebar-style)
-      const cardHeader = `
-        <div class="card-header" onclick="toggleCardBody(this)">
-          <div class="card-header-top">
-            <button class="card-close" onclick="event.stopPropagation();this.closest('.card').style.display='none'">×</button>
-          </div>
-          <div class="card-header-bottom">
-            <div class="card-title">${section}</div>
-            <div class="card-icon">O</div>
-          </div>
+            <label>Weight (kg)</label>
+            <div id="resultKg"></div>
+            <div></div>
+            <label>Weight (t)</label>
+            <div id="resultT"></div>
+            <div></div>
+            <label>Weight (lb)</label>
+            <div id="resultLb"></div>
+            <div></div>
         </div>
-      `;
+        <footer>
+            <!-- <P>© 2025 Hilo Monkey</P> -->
+            <div class="discover">
+                <p>Scroll/drag/click to discover</p>
+                <button><svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg></button>
+            </div>
+        </footer> 
+    </section>  
+    <div class="cards">
+        <section style="background-color: #ff4500; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>I-Section Parallel Flange</span>
+            </button>
+            <div class="card_body">
+                <h3>Hot rolled sections</h3>
+                <h4>I-Section Parallel Flange</h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consectetur dignissimos beatae minima, voluptatibus enim. Cum quia magnam vero aliquid harum expedita at minus velit voluptatibus numquam, non ratione tenetur laudantium repudiandae modi sit animi quis earum vitae nobis et!</div>  
+        </section>
 
-      card.innerHTML = `
-        ${cardHeader}
-        ${cardContent}
-      `;
+        <section style="background-color: #ff6347; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>H-Section Parallel Flange</span>
+            </button>
+            <div class="card_body">
+                <h3>Hot rolled sections</h3>
+                <h4>H-Section Parallel Flange</h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consectetur dignissimos beatae minima, voluptatibus enim. Cum quia magnam vero aliquid harum expedita at minus velit voluptatibus numquam, non ratione tenetur laudantium repudiandae modi sit animi quis earum vitae nobis et!</div>  
+        </section>
 
-      cardStack.appendChild(card);
-    });
+        <section style="background-color: #ff7f00; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>I-Section Taper Flange</span>
+            </button>
+            <div class="card_body">
+                <h3>Hot rolled sections</h3>
+                <h4>H-Section taper flange</h4>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consectetur dignissimos beatae minima, voluptatibus enim. Cum quia magnam vero aliquid harum expedita at minus velit voluptatibus numquam, non ratione tenetur laudantium repudiandae modi sit animi quis earum vitae nobis et!</div>
+        </section>
+        
+        <section style="background-color: #ff8c00; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>H-Section Piles</span>
+            </button>
+            <div class="card_body">
+                <h3>Hot rolled sections</h3>
+                <h4>H-Section Piles</h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consectetur dignissimos beatae minima, voluptatibus enim. Cum quia magnam vero aliquid harum expedita at minus velit voluptatibus numquam, non ratione tenetur laudantium repudiandae modi sit animi quis earum vitae nobis et!</div>
+        </section>
+        
+        <section style="background-color: #ffa500; color: #222;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Channels</span>
+            </button>    
+            <div class="card_body">
+                <h3>Hot rolled sections</h3>
+                <h4>Channels</h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consectetur dignissimos beatae minima, voluptatibus enim. Cum quia magnam vero aliquid harum expedita at minus velit voluptatibus numquam, non ratione tenetur laudantium repudiandae modi sit animi quis earum vitae nobis et!</div>
+        </section>
+        
+        <section style="background-color: #ffd700; color: #222;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Angles Equal</span>
+            </button>  
+            <div class="card_body">
+                <h3>Hot rolled sections</h3>
+                <h4>Angles Equal</h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consectetur dignissimos beatae minima, voluptatibus enim. Cum quia magnam vero aliquid harum expedita at minus velit voluptatibus numquam, non ratione tenetur laudantium repudiandae modi sit animi quis earum vitae nobis et!</div>
+        </section>
+        
+        <section style="background-color: #d4af37; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Angles Unequal</span>
+            </button>    
+            <div class="card_body">
+                <h3>Hot rolled sections</h3>
+                <h4>Angles Unequal</h4>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consectetur dignissimos beatae minima, voluptatibus enim. Cum quia magnam vero aliquid harum expedita at minus velit voluptatibus numquam, non ratione tenetur laudantium repudiandae modi sit animi quis earum vitae nobis et!</div>
+        </section>
+        
+        <section style="background-color: #32cd32; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Flats</span>
+            </button>
+            <div class="card_body">
+                <h3>Flat products</h3>
+                <h4>Flats</h4>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consectetur dignissimos beatae minima, voluptatibus enim. Cum quia magnam vero aliquid harum expedita at minus velit voluptatibus numquam, non ratione tenetur laudantium repudiandae modi sit animi quis earum vitae nobis et!</div>
+        </section>
+        
+        <section style="background-color: #6b8e23; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Hot rolled sheet</span>
+            </button>
+            <div class="card_body">
+                <h3>Flat products</h3>
+                <h4>Hot rolled sheet</h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consectetur dignissimos beatae minima, voluptatibus enim. Cum quia magnam vero aliquid harum expedita at minus velit voluptatibus numquam, non ratione tenetur laudantium repudiandae modi sit animi quis earum vitae nobis et!</div>
+        </section>
+        
+        <section style="background-color: #228b22; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Plates</span>
+            </button>
+            <div class="card_body">
+                <h3>Flat products</h3>
+                <h4>Plates</h4>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consectetur dignissimos beatae minima, voluptatibus enim. Cum quia magnam vero aliquid harum expedita at minus velit voluptatibus numquam, non ratione tenetur laudantium repudiandae modi sit animi quis earum vitae nobis et!</div>
+        </section>
+        
+        <section style="background-color: #4682b4; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Slabs</span>
+            </button>
+            <div class="card_body">
+                <h3>Flat products</h3>
+                <h4>Slabs</h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis consectetur dignissimos beatae minima, voluptatibus enim. Cum quia magnam vero aliquid harum expedita at minus velit voluptatibus numquam, non ratione tenetur laudantium repudiandae modi sit animi quis earum vitae nobis et!</div>
+        </section>
+        
+        <section style="background-color: #87ceeb; color: #222;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Square bars</span>
+            </button>
+            <div class="card_body">
+                <h3>Bars</h3>
+                <h4>Square bars</h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, repudiandae doloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
 
-    function calculateMass() {
-      const resultKg = document.getElementById("resultKg");
-      const resultT = document.getElementById("resultT");
-      const resultLb = document.getElementById("resultLb");
+        <section style="background-color: #00009f; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Round bars</span>
+            </button>
+            <div class="card_body">
+                <h3>Bars</h3>
+                <h4>Round bar</h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, repudiandae doloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
 
-      // Placeholder calculation
-      resultKg.textContent = "123.45 kg";
-      resultT.textContent = "0.123 t";
-      resultLb.textContent = "272.13 lb";
+        <section style="background-color: #191970; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Lipped Channels</span>
+            </button>
+            <div class="card_body">
+                <h3>Cold formed sections</h3>
+                <h4>Lipped Channels</h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, repudiandae doloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
+
+        <section style="background-color: #6a5acd; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Lipped Zeds</span>
+            </button>
+            <div class="card_body">
+                <h3>Cold formed sections</h3>
+                <h4>Lipped Zeds</h4>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, repudiandae doloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
+
+        <section style="background-color: #9370db; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Lipped angles</span>
+            </button>
+            <div class="card_body">
+                <h3>Cold formed sections</h3>
+                <h4>Lipped angles</h4>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, repudiandae doloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
+
+        <section style="background-color: #8b008b; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Cold formed channels</span>
+            </button>
+            <div class="card_body">
+                <h3>Cold formed sections</h3>
+                <h4>Cold formed channels</h4>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, repudiandae doloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
+
+        <section style="background-color: #8b4513; color: #222;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Top hats</span>
+            </button>
+            <div class="card_body">
+                <h3>Cold formed sections</h3>
+                <h4>Top hats</h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, repudiandae doloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
+
+        <section style="background-color: #a0522d; color: #222;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Cold formed angles equal</span>
+            </button>
+            <div class="card_body">
+                <h3>Cold formed sections</h3>
+                <h4>Cold formed angles equal</h4>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, repudiandae doloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
+
+        <section style="background-color: #d2b48c; color: #222;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Cold formed angles unequal</span>
+            </button>
+            <div class="card_body">
+                <h3>Cold formed sections</h3>
+                <h4>Cold formed angles unequal</h4>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, repudiandae doloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
+
+        <section style="background-color: #d3d3d3; color: #222;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Hollow secion square</span>
+            </button>
+            <div class="card_body">
+                <h3>Hollow sections</h3>
+                <h4>Hollow secion square</h4>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, repudiandae doloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
+
+        <section style="background-color: #a9a9a9; color: #222;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Hollow secion round</span>
+            </button>
+            <div class="card_body">
+                <h3>Hollow sections</h3>
+                <h4>Hollow secion round</h4>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, repudiandae doloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
+
+        <section style="background-color: #696969; color: #222;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Hollow secion rectangular</span>
+            </button>
+            <div class="card_body">
+                <h3>Hollow sections</h3>
+                <h4>Hollow secion rectangular</h4>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit, repudiandae doloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
+
+        <section style="background-color: #000; color: #fff;">
+            <button class="card-header">
+                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                <span>Bolts and nuts</span>
+            </button>
+            <div class="card_body">
+                <h3>Bolts and Rivets</h3>
+                <h4>Bolts and nuts</h4>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. ImBolts and nutsoloribus? Dolorem eaque, numquam dicta at perferendis saepe enim rem quas ipsum asperiores odio vitae ducimus explicabo? Natus sed soluta saepe assumenda magnam dolorum ex similique quo. Atque, minus?
+            </div>
+        </section>
+    </div>
+</section>
+            
+    </div>
+
+    <script>
+        const densities = {
+            "Acetal": 1410,        // kg/m³
+            "Aluminium": 2700,
+            "Cast Iron": 7200,
+            "Mild Steel": 7850
+        };
+
+        function getUnitFactor(unit) {
+            switch (unit) {
+                case "mm": return 0.001;
+                case "cm": return 0.01;
+                case "m":  return 1;
+                case "in": return 0.0254;
+                case "ft": return 0.3048;
+                default:   return 1;
+            }
+        }
+
+        function calculateMass() {
+    // Get material and density
+    const material = document.getElementById("material").value;
+    const density = densities[material];
+
+    // Get form
+    const form = document.getElementById("form").value;
+
+    // Get all inputs and units
+    const width = parseFloat(document.getElementById("width").value) || 0;
+    const widthUnit = document.getElementById("width").nextElementSibling.value;
+    const widthM = width * getUnitFactor(widthUnit);
+
+    const depth = parseFloat(document.getElementById("depth").value) || 0;
+    const depthUnit = document.getElementById("depth").nextElementSibling.value;
+    const depthM = depth * getUnitFactor(depthUnit);
+
+    const length = parseFloat(document.getElementById("length").value) || 0;
+    const lengthUnit = document.getElementById("length").nextElementSibling.value;
+    const lengthM = length * getUnitFactor(lengthUnit);
+
+    let volume = 0;
+
+    // Calculate volume based on form
+    switch (form) {
+        case "Round Bar":
+            // width = diameter
+            volume = Math.PI * Math.pow(widthM / 2, 2) * lengthM;
+            break;
+        case "Square Bar":
+            volume = Math.pow(widthM, 2) * lengthM;
+            break;
+        case "Rectangular Bar":
+        case "Flat/Sheet":
+            volume = widthM * depthM * lengthM;
+            break;
+        case "Hex Bar":
+            // width = flat-to-flat distance
+            volume = ((3 * Math.sqrt(3)) / 2) * Math.pow(widthM / 2, 2) * lengthM;
+            break;
+        default:
+            volume = widthM * depthM * lengthM;
     }
 
-    function toggleCardBody(headerElem) {
-      const card = headerElem.closest('.card');
-      card.classList.toggle('hide-body');
-    }
-  </script>
+    // Calculate mass
+    const massKg = volume * density;
+    const massT = massKg / 1000;
+    const massLb = massKg * 2.20462;
+
+    // Output
+    document.getElementById("resultKg").textContent = massKg.toFixed(3);
+    document.getElementById("resultT").textContent = massT.toFixed(3);
+    document.getElementById("resultLb").textContent = massLb.toFixed(3);
+}
+
+        //accordion automation
+        var acc = document.getElementsByClassName("card-header");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var card_body = this.nextElementSibling;
+                if (card_body.style.maxWidth) {
+                card_body.style.maxWidth = null;
+                } else {
+                card_body.style.maxWidth = card_body.scrollWidth + "px";
+                }
+            });
+        }
+    </script>
 </body>
 </html>
