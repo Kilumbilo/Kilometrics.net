@@ -101,7 +101,7 @@ nav ul li svg {
 
 #intro h1 {
   text-align: left;
-  font-size: 4rem;
+  font-size: 3rem;
   margin-bottom: 0.1rem;
   font-weight: 400;
   font-family: "Rampart One", sans-serif;
@@ -124,7 +124,7 @@ nav ul li svg {
 
 .calculator-grid {
   display: grid;
-  grid-template-columns: 0.4fr 0.5fr 0.1fr;
+  grid-template-columns: 0.8fr 0.5fr 0.1fr;
   width: auto;
   height: auto;
   border: 2px solid #292929;
@@ -197,14 +197,6 @@ footer .discover button svg {
   flex-direction: row;
 }
 
-.cards div {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .card-header {
   width: 60px;
   height: 100%;
@@ -239,7 +231,10 @@ footer .discover button svg {
   max-width: 0px;
   overflow: hidden;
   transition: max-width 0.3s ease;
-}
-.card_body.active {
-  max-width: 500px;
+
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
