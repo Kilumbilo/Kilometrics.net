@@ -101,9 +101,11 @@ nav ul li svg {
 
 #intro h1 {
   text-align: left;
-  font-size: 2rem;
+  font-size: 4rem;
   margin-bottom: 0.1rem;
-  font-weight: 600;
+  font-weight: 400;
+  font-family: "Rampart One", sans-serif;
+  font-style: normal;
 }
 
 #intro h2 {
