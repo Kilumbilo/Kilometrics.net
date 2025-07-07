@@ -181,6 +181,11 @@ footer .discover button svg {
   width: 24px;
   height: 24px;
   fill: #fff;
+  transition: 0.3s ease-in-out;
+} 
+
+footer .discover button svg:hover{
+  transform: rotate(180deg);
 }
 
 .cards {
@@ -237,4 +242,8 @@ footer .discover button svg {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.card_body h3 {
+  text-transform: uppercase;
 }
