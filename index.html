@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kilo-Mass is your online steel and material mass calculator. Instantly estimate weights for beams, bars, plates, and profiles using standard density values.">
+    <meta name="keywords" content="steel weight calculator, material mass reference, beam weight calculator, bar weight calculator, plate weight calculator, profile weight calculator, density values for steel, aluminum, cast iron">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Rampart+One&display=swap" rel="stylesheet">
-    <title>Kilo-Mass | Steel mass calculator </title>
+<link rel="canonical" href="https://kilomass.netlify.app/">
+<!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+<title>Kilo-Mass | Steel Weight Calculator- Online Steel & Metal Mass Tables</title>
 </head>
 
 <body>
@@ -19,8 +23,8 @@
             <li><svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg></li>
         </ul>
     </nav>
-    <section id="intro">
-        <h1>KILO MASS</h1>
+    <section id="intro" role="region" aria-labelledby="intro-heading">
+        <h1>KILO-MASS</h1>
         <h2>Steel & Material Weight Calculator</h2>
         <p>Your online steel weight calculator and material mass reference. Instantly calculate weights for beams, bars, plates, and profiles, or browse standard tables with typical density values for steel, aluminum, cast iron, and more.</p> 
         <div class="calculator-grid">
@@ -100,8 +104,8 @@
     </section>  
     
     <div class="cards">
-        <section style="background-color: #ff4500; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #ff4500; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: I-Section Parallel Flange">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>I-Section Parallel Flange</span>
             </button>
@@ -165,7 +169,6 @@
                         <tr><td>533×210×122 UB</td><td>122.0</td></tr>
                         </tbody>
                     </table>
-
                 </div>
             
                 <p>
@@ -174,8 +177,8 @@
             </div>
         </section>
 
-        <section style="background-color: #ff6347; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #ff6347; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: H-Section Parallel Flange">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>H-Section Parallel Flange</span>
             </button>
@@ -223,8 +226,8 @@
             </div>
         </section>
 
-        <section style="background-color: #ff7f00; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #ff7f00; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: I-Section Taper Flange">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>I-Section Taper Flange</span>
             </button>
@@ -265,8 +268,8 @@
             </div>
         </section>
         
-        <section style="background-color: #ff8c00; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #ff8c00; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: H-Section Piles">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>H-Section Piles</span>
             </button>
@@ -301,8 +304,8 @@
             </div>
         </section>
         
-        <section style="background-color: #ffa500; color: #222;">
-            <button class="card-header">
+        <section class="card" style="background-color: #ffa500; color: #222;">
+            <button class="card-header" aria-label="Expand or collapse card: Channels">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Channels</span>
             </button>    
@@ -341,8 +344,8 @@
             </div>
         </section>
         
-        <section style="background-color: #ffd700; color: #222;">
-            <button class="card-header">
+        <section class="card" style="background-color: #ffd700; color: #222;">
+            <button class="card-header" aria-label="Expand or collapse card: Angles Equal">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Angles Equal</span>
             </button>  
@@ -383,8 +386,8 @@
             </div>
         </section>
         
-        <section style="background-color: #d4af37; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #d4af37; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: Angles Unequal">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Angles Unequal</span>
             </button>    
@@ -423,8 +426,8 @@
             </div>
         </section>
         
-        <section style="background-color: #32cd32; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #32cd32; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: Flat Bars">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Flats</span>
             </button>
@@ -464,8 +467,8 @@
             </div>
         </section>
         
-        <section style="background-color: #6b8e23; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #6b8e23; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: Hot rolled sheet">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Hot rolled sheet</span>
             </button>
@@ -504,8 +507,8 @@
             </div>
         </section>
         
-        <section style="background-color: #228b22; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #228b22; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: Steel plates">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Plates</span>
             </button>
@@ -545,8 +548,8 @@
             </div>
         </section>
         
-        <section style="background-color: #4682b4; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #4682b4; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: Steel slabs">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Slabs</span>
             </button>
@@ -582,8 +585,8 @@
             </div>
         </section>
         
-        <section style="background-color: #87ceeb; color: #222;">
-            <button class="card-header">
+        <section class="card" style="background-color: #87ceeb; color: #222;">
+            <button class="card-header" aria-label="Expand or collapse card: Square bars">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Square bars</span>
             </button>
@@ -621,8 +624,8 @@
             </div>
         </section>
 
-        <section style="background-color: #00009f; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #00009f; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: Round bars">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Round bars</span>
             </button>
@@ -662,8 +665,8 @@
             </div>
         </section>
 
-        <section style="background-color: #191970; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #191970; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: Lipped channels">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Lipped Channels</span>
             </button>
@@ -700,8 +703,8 @@
             </div>
         </section>
 
-        <section style="background-color: #6a5acd; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #6a5acd; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: Lipped zeds">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Lipped Zeds</span>
             </button>
@@ -737,8 +740,8 @@
             </div>
         </section>
 
-        <section style="background-color: #9370db; color: #fff;">
-            <button class="card-header">
+        <section class="card" class="card" style="background-color: #9370db; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: Lipped angles">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Lipped angles</span>
             </button>
@@ -775,8 +778,8 @@
             </div>
         </section>
 
-        <section style="background-color: #8b008b; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #8b008b; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: Cold formed channels">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Cold formed channels</span>
             </button>
@@ -815,8 +818,8 @@
             </div>
         </section>
 
-        <section style="background-color: #8b4513; color: #222;">
-            <button class="card-header">
+        <section class="card" style="background-color: #8b4513; color: #222;">
+            <button class="card-header" aria-label="Expand or collapse card: Tops hats">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Top hats</span>
             </button>
@@ -854,8 +857,8 @@
             </div>
         </section>
 
-        <section style="background-color: #a0522d; color: #222;">
-            <button class="card-header">
+        <section class="card" style="background-color: #a0522d; color: #222;">
+            <button class="card-header" aria-label="Expand or collapse card: Cold formed angles equal">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Cold-Formed Angles Equal</span>
             </button>
@@ -892,8 +895,8 @@
             </div>
         </section>
 
-        <section style="background-color: #d2b48c; color: #222;">
-            <button class="card-header">
+        <section class="card" style="background-color: #d2b48c; color: #222;">
+            <button class="card-header" aria-label="Expand or collapse card: Cold formed angles unequal">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Cold-Formed Angles Unequal</span>
             </button>
@@ -929,8 +932,8 @@
             </div>
         </section>
 
-        <section style="background-color: #d3d3d3; color: #222;">
-            <button class="card-header">
+        <section class="card" style="background-color: #d3d3d3; color: #222;">
+            <button class="card-header" aria-label="Expand or collapse card: Hollow section square">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Hollow section square</span>
             </button>
@@ -967,8 +970,8 @@
             </div>
         </section>
 
-        <section style="background-color: #a9a9a9; color: #222;">
-            <button class="card-header">
+        <section class="card" style="background-color: #a9a9a9; color: #222;">
+            <button class="card-header" aria-label="Expand or collapse card: Hollow section round">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Hollow Section Round</span>
             </button>
@@ -1006,8 +1009,8 @@
             </div>
         </section>
 
-        <section style="background-color: #696969; color: #222;">
-            <button class="card-header">
+        <section class="card" style="background-color: #696969; color: #222;">
+            <button class="card-header" aria-label="Expand or collapse card: Hollow section rectangular">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Hollow Section Rectangular</span>
             </button>
@@ -1043,8 +1046,8 @@
             </div>
         </section>
 
-        <section style="background-color: #000; color: #fff;">
-            <button class="card-header">
+        <section class="card" style="background-color: #000; color: #fff;">
+            <button class="card-header" aria-label="Expand or collapse card: Bolts and nuts">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Bolts and nuts</span>
             </button>
@@ -1188,6 +1191,18 @@
                 }
             });
         }
+
+//vertical scrolling
+
+    window.addEventListener('scroll', () => {
+      const cards = document.querySelector('.cards');
+      const scrollY = window.scrollY;
+      const bodyHeight = document.body.scrollHeight - window.innerHeight;
+      const maxTranslate = cards.scrollWidth - window.innerWidth;
+      const translateX = (scrollY / bodyHeight) * maxTranslate;
+      cards.style.transform = `translateX(-${translateX}px)`;
+    });
+
     </script>
 </body>
 </html>
