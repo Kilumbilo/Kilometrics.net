@@ -24,84 +24,121 @@
         </ul>
     </nav>
     <section id="intro" role="region" aria-labelledby="intro-heading">
-        <h1>KILO-MASS</h1>
-        <h2>Steel & Material Weight Calculator</h2>
-        <p>Your online steel weight calculator and material mass reference. Instantly calculate weights for beams, bars, plates, and profiles, or browse standard tables with typical density values for steel, aluminum, cast iron, and more.</p> 
-        <div class="calculator-grid">
-            <label for="material">Material</label>
-            <div>
-                <select id="material">
-                    <option>Mild Steel</option>
-                    <option>Aluminium</option>
-                    <option>Cast Iron</option>
-                    <option>Acetal</option>
+        <div id="intro-content" role="main" aria-label="Kilo-Mass Steel & Material Weight Calculator" aria-describedby="intro-description">
+            <h1>KILO-MASS</h1>
+            <h2>Steel & Material Weight Calculator</h2>
+            <p>Your online steel weight calculator and material mass reference. Instantly calculate weights for beams, bars, plates, and profiles, or browse standard tables with typical density values for steel, aluminum, cast iron, and more.</p> 
+            <div class="calculator-grid">
+                <label for="material">Material</label>
+                <div>
+                    <select id="material">
+                        <option>Mild Steel</option>
+                        <option>Aluminium</option>
+                        <option>Cast Iron</option>
+                        <option>Acetal</option>
+                    </select>
+                <small>Typical/average density values are used.</small>
+                </div>
+                <div></div>
+
+                <label for="form">Form</label>
+                <select id="form">
+                    <option>Flat/Sheet</option>
+                    <option>Round Bar</option>
+                    <option>Square Bar</option>
+                    <option>Rectangular Bar</option>
+                    <option>Hex Bar</option>
                 </select>
-            <small>Typical/average density values are used.</small>
+                <div></div>
+
+                <label for="width">Width</label>
+                <input type="number" id="width" />
+                <select>
+                    <option>mm</option>
+                    <option>cm</option>
+                    <option>m</option>
+                    <option>in</option>
+                    <option>ft</option>
+                </select>
+
+                <label for="depth">Depth</label>
+                <input type="number" id="depth" />
+                <select>
+                    <option>mm</option>
+                    <option>cm</option>
+                    <option>m</option>
+                    <option>in</option>
+                    <option>ft</option>
+                </select>
+
+                <label for="length">Length</label>
+                <input type="number" id="length" />
+                <select>
+                    <option>mm</option>
+                    <option>cm</option>
+                    <option>m</option>
+                    <option>in</option>
+                    <option>ft</option>
+                </select>
+
+                <div></div>
+                <button onclick="calculateMass()">Calculate</button>
+                <div></div>
+
+                <label>Weight (kg)</label>
+                <div id="resultKg"></div>
+                <div></div>
+                <label>Weight (t)</label>
+                <div id="resultT"></div>
+                <div></div>
+                <label>Weight (lb)</label>
+                <div id="resultLb"></div>
+                <div></div>
             </div>
-            <div></div>
-
-            <label for="form">Form</label>
-            <select id="form">
-                <option>Flat/Sheet</option>
-                <option>Round Bar</option>
-                <option>Square Bar</option>
-                <option>Rectangular Bar</option>
-                <option>Hex Bar</option>
-            </select>
-            <div></div>
-
-            <label for="width">Width</label>
-            <input type="number" id="width" />
-            <select>
-                <option>mm</option>
-                <option>cm</option>
-                <option>m</option>
-                <option>in</option>
-                <option>ft</option>
-            </select>
-
-            <label for="depth">Depth</label>
-            <input type="number" id="depth" />
-            <select>
-                <option>mm</option>
-                <option>cm</option>
-                <option>m</option>
-                <option>in</option>
-                <option>ft</option>
-            </select>
-
-            <label for="length">Length</label>
-            <input type="number" id="length" />
-            <select>
-                <option>mm</option>
-                <option>cm</option>
-                <option>m</option>
-                <option>in</option>
-                <option>ft</option>
-            </select>
-
-            <div></div>
-            <button onclick="calculateMass()">Calculate</button>
-            <div></div>
-
-            <label>Weight (kg)</label>
-            <div id="resultKg"></div>
-            <div></div>
-            <label>Weight (t)</label>
-            <div id="resultT"></div>
-            <div></div>
-            <label>Weight (lb)</label>
-            <div id="resultLb"></div>
-            <div></div>
+            <footer>
+                <!-- <P>© 2025 Hilo Monkey</P> -->
+                <div class="discover">
+                    <p>Scroll/drag/click to discover</p>
+                    <button><svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg></button>
+                </div>
+            </footer> 
         </div>
-        <footer>
-            <!-- <P>© 2025 Hilo Monkey</P> -->
-            <div class="discover">
-                <p>Scroll/drag/click to discover</p>
-                <button><svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg></button>
+        <div class="RH-side">
+            <div class="main-ref_index">
+                <h2 id="index">Index</h2>
+                <p>Click on a section to expand.</p>
+                <ul>
+                    <li><a href="#i-section-parallel-flange">I-Section Parallel Flange</a></li>
+                    <li><a href="#h-section-parallel-flange">H-Section Parallel Flange</a></li>
+                    <li><a href="#i-section-taper-flange">I-Section Taper Flange</a></li>
+                    <li><a href="#h-section-piles">H-Section Piles</a></li>
+                    <li><a href="#channels">Channels</a></li>
+                    <li><a href="#angles-equal">Angles Equal</a></li>
+                    <li><a href="#angles-unequal">Angles Unequal</a></li>
+                    <li><a href="#flat-bars">Flat Bars</a></li>
+                    <li><a href="#hot-rolled-sheet">Hot Rolled Sheet</a></li>
+                    <li><a href="#steel-plates">Steel Plates</a></li>
+                    <li><a href="#round-bars">Round Bars</a></li>
+                    <li><a href="#square-bars">Square Bars</a></li>
+                    <li><a href="#lipped-channels">Lipped Channels</a></li>
+                    <li><a href="#lipped-zeds">Lipped Zeds</a></li>
+                    <li><a href="#lipped-angles">Lipped Angles</a></li>
+                    <li><a href="#top-hats">Top Hats</a></li>
+                    <li><a href="#cold-formed-channels">Cold-Formed Channels</a></li>
+                    <li><a href="#cold-formed-angles-equal">Cold-Formed Angles Equal</a></li>
+                    <li><a href="#cold-formed-angles-unequal">Cold-Formed Angles Unequal</a></li>
+                    <li><a href="#hollow-section-square">Hollow Section Square</a></li>
+                    <li><a href="#hollow-section-round">Hollow Section Round</a></li>
+                    <li><a href="#hollow-section-rectangular">Hollow Section Rectangular</a></li>
+                    <li><a href="#bolts-and-nuts">Bolts and Nuts</a></li>
+                </ul>
             </div>
-        </footer> 
-    </section>  
+            <div class="ad-placeholder">
+                <!-- Replace this with your actual Google AdSense code later -->
+                <span>Ad Space</span>
+            </div>
+        </div>
+    </section>
     
     <div class="cards">
         <section class="card" style="background-color: #ff4500; color: #fff;">
@@ -109,7 +146,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>I-Section Parallel Flange</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="i-section-parallel-flange">
                 <h3>I-Section Parallel Flange</h3>
                 <p>
                     I-sections with parallel flanges are widely used in structural beams for buildings and bridges, providing excellent bending resistance and ease of connection.
@@ -182,7 +219,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>H-Section Parallel Flange</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="h-section-parallel-flange">
                 <h3>H-section parallel flange</h3>
                 <p>
                 H-sections with parallel flanges offer high load capacity for columns and beams. They have a wider flange than I-sections for improved stability.
@@ -231,7 +268,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>I-Section Taper Flange</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="i-section-taper-flange">
                 <h3>I-Section Taper Flange</h3>
                 <p>
                 Taper flange I-beams have angled inner flange faces for classic structural shapes, common in older or lighter duty frames.
@@ -273,7 +310,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>H-Section Piles</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="h-section-piles">
                 <h3>H-Section Piles</h3>
                 <p>
                 H-piles are driven into the ground for deep foundations, providing strong vertical load-bearing and resistance to lateral forcesore
@@ -309,7 +346,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Channels</span>
             </button>    
-            <div class="card_body">
+            <div class="card_body" id="channels">
                 <h3>Channel Sections</h3>
                 <p>
                 Channels are U-shaped sections used for frames, bracing, and lighter structural members.
@@ -349,7 +386,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Angles Equal</span>
             </button>  
-            <div class="card_body">
+            <div class="card_body" id="angles-equal">
                 <h3>Equal Angle Sections</h3>
                 <p>
                 Equal angles have identical leg lengths, ideal for bracing and framing where uniform strength is needed.
@@ -391,7 +428,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Angles Unequal</span>
             </button>    
-            <div class="card_body">
+            <div class="card_body" id="angles-unequal">
                 <h3>Unequal Angle Sections</h3>
                 <p>
                 Equal angles have identical leg lengths, ideal for bracing and framing where uniform strength is needed.
@@ -431,7 +468,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Flats</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="flat-bars">
                 <h3>Flat Bar</h3>
                 <p>
                 Flat bars are versatile sections used in fabrication, bracing, base plates, and general structural support
@@ -472,7 +509,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Hot rolled sheet</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="hot-rolled-sheet">
                 <h3>Flat products</h3>
                 <p>
                 Hot rolled steel sheets and plates are used in fabrication, structural bases, and welded sections, with uniform thickness and good workability
@@ -512,7 +549,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Plates</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="steel-plates">
                 <h3>Steel Plates</h3>
                 <p>
                 Plates are really just thicker hot-rolled sheets, typically used in fabrication, structural bases, and welded sections. They have a uniform thickness and good workability.
@@ -553,7 +590,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Slabs</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="steel-slabs">
                 <h3>Steel Slabs</h3>
                 <p>
                     For rolled/continuous-cast slabs, the weight is usually given per square metre based on thickness. Slabs are typically thicker than plates. These are common reference values for mills or bulk steel users.
@@ -590,7 +627,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Square bars</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="square-bars">
                 <h3>Square Bars</h3>
                 <p>
                     Solid square and round bars are basic forms used in machining, construction, and reinforcement.
@@ -629,7 +666,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Round bars</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="round-bars">
                 <h3>Round Bars</h3>
                 <p>
                     Solid square and round bars are basic forms used in machining, construction, and reinforcement.
@@ -670,7 +707,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Lipped Channels</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="lipped-channels">
                 <h3>Lipped Channels (CFC)</h3>
                 <p>
                     Cold-formed channels with lipped edges for improved rigidity and connection strength in light gauge construction.
@@ -708,7 +745,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Lipped Zeds</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="lipped-zeds">
                 <h3>Lipped Zeds (Cold-Formed Sections)</h3>
                 <p>
                     Z-shaped cold-formed sections with lips for additional strength in roofing and cladding support systems.
@@ -740,12 +777,12 @@
             </div>
         </section>
 
-        <section class="card" class="card" style="background-color: #9370db; color: #fff;">
+        <section class="card" style="background-color: #9370db; color: #fff;">
             <button class="card-header" aria-label="Expand or collapse card: Lipped angles">
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Lipped angles</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="lipped-angles">
                 <h3>Lipped Angles</h3>
                 <p>
                     Angles with lips on the flanges for extra stiffness, used in lightweight framing systems.
@@ -783,7 +820,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Cold formed channels</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="cold-formed-channels">
                 <h3>Cold formed channels</h3>
                 <p>
                     Lightweight, precise channels formed at room temperature for wall framing and purlins.
@@ -823,7 +860,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Top hats</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="top-hats">
                 <h3>Top hats</h3>
                 <p>
                     Top hat sections provide rigid profiles for ceiling, wall systems, or light support frames.
@@ -862,7 +899,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Cold-Formed Angles Equal</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="cold-formed-angles-equal">
                 <h3>Cold-Formed Angles (Equal Legs)</h3>
                 <p>
                     Equal-sided cold-formed angles used for bracing and lightweight frames.
@@ -900,7 +937,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Cold-Formed Angles Unequal</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="cold-formed-angles-unequal">
                 <h3>Cold-Formed Angles (Unequal Legs)</h3>
                 <p>
                     Angles with unequal legs for specialized bracing and construction detailing.
@@ -937,7 +974,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Hollow section square</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="hollow-section-square">
                 <h3>Hollow Sections Square</h3>
                 <p>
                     Square hollow sections offer high torsional rigidity and clean lines for columns, frames, and modern architecture.
@@ -975,7 +1012,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Hollow Section Round</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="hollow-section-round">
                 <h3>Hollow Section Round</h3>
                 <p>
                     Circular hollow sections provide uniform strength in all directions for poles, columns, and frames.
@@ -1014,7 +1051,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Hollow Section Rectangular</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="hollow-section-rectangular">
                 <h3>Hollow sections Rectangular</h3>
                 <p>
                     Rectangular hollow sections combine strength with ease of connection for structural frames and supports.
@@ -1051,7 +1088,7 @@
                 <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
                 <span>Bolts and nuts</span>
             </button>
-            <div class="card_body">
+            <div class="card_body" id="bolts-and-nuts">
                 <h3>Bolts and Rivets</h3>
                 <p>
                     Standardized fasteners used to join structural sections securely, ensuring safe connections in construction.
@@ -1175,8 +1212,8 @@
     document.getElementById("resultKg").textContent = massKg.toFixed(3);
     document.getElementById("resultT").textContent = massT.toFixed(3);
     document.getElementById("resultLb").textContent = massLb.toFixed(3);
-}
-//accordion automation
+    }
+    //accordion automation
         var acc = document.getElementsByClassName("card-header");
         var i;
 

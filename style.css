@@ -89,15 +89,29 @@ nav ul li svg {
 }
 
 #intro {
-  width: var(--card-body-size);
+  /* width: var(--card-body-size); */
   height: 100%;
-  display: block;
-  flex-direction: column;
-  align-items: left;
-  justify-content: center;
+  /* display: block; */
+  /* flex-direction: column; */
+  /* align-items: left; */
+  /* justify-content: center; */
   padding: 2rem;
   left: var(--card-header-size);
   position: relative;
+}
+
+/* Ensure the intro section is a flex container */
+#intro {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  /* justify-content: flex-start; */
+}
+
+/* Style the main intro content */
+#intro-content {
+  flex: 1 1 auto;
+  /* min-width: 0; */
 }
 
 #intro h1 {
@@ -126,7 +140,7 @@ nav ul li svg {
 .calculator-grid {
   display: grid;
   grid-template-columns: 0.8fr 0.5fr 0.1fr;
-  width: auto;
+  width: 400px;
   height: auto;
   border: 2px solid #292929;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
@@ -183,16 +197,67 @@ footer .discover button svg {
   height: 24px;
   fill: #fff;
   transition: 0.3s ease-in-out;
-} 
+}
 
-footer .discover button svg:hover{
+footer .discover button svg:hover {
   transform: rotate(180deg);
+}
+
+.RH-side {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 320px;
+  min-width: 220px;
+  margin-left: 2rem;
+}
+
+.main-ref_index {
+  width: 100%;
+}
+
+/* Style for the .main-ref_index ul and li inside .RH-side */
+.RH-side .main-ref_index ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  color: #999;
+  /* background: rgba(255, 255, 255, 0.06); */
+}
+
+.RH-side .main-ref_index li:hover,
+.RH-side .main-ref_index li:focus-within {
+  /* background: #ff4500; */
+  color: #fff;
+}
+
+.RH-side .main-ref_index li a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  transition: color 0.2s;
+}
+
+.ad-placeholder {
+  width: auto;
+  height: 160px;
+  background: #999;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ccc;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 .cards {
   display: flex;
   flex-direction: row;
-  height: 100%;
+  height: 100vh;
   position: relative;
   left: var(--card-header-size);
 }
@@ -259,7 +324,7 @@ footer .discover button svg:hover{
   margin: 1rem 0;
 }
 
-.card_body caption{
+.card_body caption {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
