@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Rampart+One&display=swap" rel="stylesheet">
 <link rel="canonical" href="https://kilomass.netlify.app/">
 <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
-<title>Kilo-Mass | Steel Weight Calculator- Online Steel & Metal Mass Tables</title>
+<title>Kilometrics | Steel Weight Calculator- Online Steel & Metal Mass Tables</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
     </nav>
     <section id="intro" role="region" aria-labelledby="intro-heading">
         <div id="intro-content" role="main" aria-label="Kilo-Mass Steel & Material Weight Calculator" aria-describedby="intro-description">
-            <h1>KILO-MASS</h1>
+            <h1>Kilometrics</h1>
             <h2>Steel & Material Weight Calculator</h2>
             <p>Your online steel weight calculator and material mass reference. Instantly calculate weights for beams, bars, plates, and profiles, or browse standard tables with typical density values for steel, aluminum, cast iron, and more.</p> 
             <div class="calculator-grid">
@@ -95,12 +95,19 @@
                 <div id="resultLb"></div>
                 <div></div>
             </div>
+            <div class="ad-placeholder" style="margin-top: 2rem; padding: 1rem; border: 1px dashed #999; background: #f9f9f9; text-align: center;">
+            <p style="color: #555; font-size: 0.9rem;">
+                Advertisement space<br>
+                (300×250 recommended)
+            </p>
+            </div>
             <footer>
-                <!-- <P>© 2025 Hilo Monkey</P> -->
-                <div class="discover">
-                    <p>Scroll/drag/click to discover</p>
-                    <button><svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg></button>
-                </div>
+                <p>&copy; <span id="year"></span> <strong>Kilometrics</strong>. All rights reserved.
+                <br>
+                    <a href="/about.html" style="color: #ccc; text-decoration: underline;">About</a> |
+                    <a href="/terms.html" style="color: #ccc; text-decoration: underline;">Terms</a> |
+                    <a href="/privacy.html" style="color: #ccc; text-decoration: underline;">Privacy</a>
+                </p>
             </footer> 
         </div>
         <div class="RH-side">
@@ -1228,16 +1235,21 @@
             });
         }
 
-//vertical scrolling
+// //vertical scrolling
 
-    window.addEventListener('scroll', () => {
-      const cards = document.querySelector('.cards');
-      const scrollY = window.scrollY;
-      const bodyHeight = document.body.scrollHeight - window.innerHeight;
-      const maxTranslate = cards.scrollWidth - window.innerWidth;
-      const translateX = (scrollY / bodyHeight) * maxTranslate;
-      cards.style.transform = `translateX(-${translateX}px)`;
-    });
+//     window.addEventListener('scroll', () => {
+//       const cards = document.querySelector('.cards');
+//       const scrollY = window.scrollY;
+//       const bodyHeight = document.body.scrollHeight - window.innerHeight;
+//       const maxTranslate = cards.scrollWidth - window.innerWidth;
+//       const translateX = (scrollY / bodyHeight) * maxTranslate;
+//       cards.style.transform = `translateX(-${translateX}px)`;
+//     });
+
+// Automatically update year in footer
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+
 
     </script>
 </body>
