@@ -169,6 +169,22 @@ nav ul li svg {
   border: 2px solid #beb8b8;
 }
 
+#intro::-webkit-scrollbar {
+  width: 10px;
+  background: transparent;
+}
+
+#intro::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.9s ease-in-out;
+}
+
+#intro::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
 footer {
   /* position: fixed; */
   left: var(--card-header-size + 60px);
