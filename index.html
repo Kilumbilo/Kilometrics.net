@@ -20,99 +20,153 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9074920281143166"
      crossorigin="anonymous"></script>
 
+     <!-- Google fonts -->
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Rampart+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Rampart+One&display=swap" rel="stylesheet">
     
     <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
     <title>Kilometrics | Steel Weight Calculator- Online Steel & Metal Mass Tables</title>
 </head>
 
 <body>
-    <nav>
-        <a href="#" class="logo">H</a>
-        <ul>
-            <li><a href="site-map.html">Index</a></li>
-            <li><a href="#about">About</a></li>
-            <li><svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg></li>
-        </ul>
-    </nav>
-    <section id="intro" role="region" aria-labelledby="intro-heading">
-        <div id="intro-content" role="main" aria-label="Kilometrics Steel & Material Weight Calculator" aria-describedby="intro-description">
-            <h1>Kilometrics</h1>
-            <h2>Steel & Material Weight Calculator</h2>
-            <p>Your online steel weight calculator and material mass reference. Instantly calculate weights for beams, bars, plates, and profiles, or browse standard tables with typical density values for steel, aluminum, cast iron, and more.</p> 
-            <div class="calculator-grid">
-                <label for="material">Material</label>
-                <div>
-                    <select id="material">
-                        <option>Mild Steel</option>
-                        <option>Aluminium</option>
-                        <option>Cast Iron</option>
-                        <option>Acetal</option>
+    <div class="container">
+        <nav>
+            <a href="#" class="logo">H</a>
+            <ul>
+                <li><a href="site-map.html">Index</a></li>
+                <li><a href="#about">About</a></li>
+                <li><svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg></li>
+            </ul>
+        </nav>
+
+        <section id="intro" role="region" aria-labelledby="intro-heading">
+            <div id="intro-content" role="main" aria-label="Kilometrics Steel & Material Weight Calculator" aria-describedby="intro-description">
+                <h1>Kilometrics</h1>
+                <h2>Steel & Material Weight Calculator</h2>
+                <p>Your online steel weight calculator and material mass reference. Instantly calculate weights for beams, bars, plates, and profiles, or browse standard tables with typical density values for steel, aluminum, cast iron, and more.</p> 
+                <div class="calculator-grid">
+                    <label for="material">Material</label>
+                    <div>
+                        <select id="material">
+                            <option>Mild Steel</option>
+                            <option>Aluminium</option>
+                            <option>Cast Iron</option>
+                            <option>Acetal</option>
+                        </select>
+                    <small>Typical/average density values are used.</small>
+                    </div>
+                    <div></div>
+
+                    <label for="form">Form</label>
+                    <select id="form">
+                        <option>Flat/Sheet</option>
+                        <option>Round Bar</option>
+                        <option>Square Bar</option>
+                        <option>Rectangular Bar</option>
+                        <option>Hex Bar</option>
                     </select>
-                <small>Typical/average density values are used.</small>
+                    <div></div>
+
+                    <label for="width">Width</label>
+                    <input type="number" id="width" />
+                    <select>
+                        <option>mm</option>
+                        <option>cm</option>
+                        <option>m</option>
+                        <option>in</option>
+                        <option>ft</option>
+                    </select>
+
+                    <label for="depth">Depth</label>
+                    <input type="number" id="depth" />
+                    <select>
+                        <option>mm</option>
+                        <option>cm</option>
+                        <option>m</option>
+                        <option>in</option>
+                        <option>ft</option>
+                    </select>
+
+                    <label for="length">Length</label>
+                    <input type="number" id="length" />
+                    <select>
+                        <option>mm</option>
+                        <option>cm</option>
+                        <option>m</option>
+                        <option>in</option>
+                        <option>ft</option>
+                    </select>
+
+                    <div></div>
+                    <button onclick="calculateMass()">Calculate</button>
+                    <div></div>
+
+                    <label>Weight (kg)</label>
+                    <div id="resultKg"></div>
+                    <div></div>
+                    <label>Weight (t)</label>
+                    <div id="resultT"></div>
+                    <div></div>
+                    <label>Weight (lb)</label>
+                    <div id="resultLb"></div>
+                    <div></div>
                 </div>
-                <div></div>
-
-                <label for="form">Form</label>
-                <select id="form">
-                    <option>Flat/Sheet</option>
-                    <option>Round Bar</option>
-                    <option>Square Bar</option>
-                    <option>Rectangular Bar</option>
-                    <option>Hex Bar</option>
-                </select>
-                <div></div>
-
-                <label for="width">Width</label>
-                <input type="number" id="width" />
-                <select>
-                    <option>mm</option>
-                    <option>cm</option>
-                    <option>m</option>
-                    <option>in</option>
-                    <option>ft</option>
-                </select>
-
-                <label for="depth">Depth</label>
-                <input type="number" id="depth" />
-                <select>
-                    <option>mm</option>
-                    <option>cm</option>
-                    <option>m</option>
-                    <option>in</option>
-                    <option>ft</option>
-                </select>
-
-                <label for="length">Length</label>
-                <input type="number" id="length" />
-                <select>
-                    <option>mm</option>
-                    <option>cm</option>
-                    <option>m</option>
-                    <option>in</option>
-                    <option>ft</option>
-                </select>
-
-                <div></div>
-                <button onclick="calculateMass()">Calculate</button>
-                <div></div>
-
-                <label>Weight (kg)</label>
-                <div id="resultKg"></div>
-                <div></div>
-                <label>Weight (t)</label>
-                <div id="resultT"></div>
-                <div></div>
-                <label>Weight (lb)</label>
-                <div id="resultLb"></div>
-                <div></div>
+                <div class="ad-placeholder" style="margin-top: 2rem; padding: 1rem; border: 1px dashed #999; background: #f9f9f9; text-align: center;">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9074920281143166"
+                        crossorigin="anonymous"></script>
+                        <!-- kilometrics.net_home -->
+                        <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-9074920281143166"
+                            data-ad-slot="1604112666"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <footer>
+                    <p>&copy; <span id="year"></span> <strong>Kilometrics</strong>. All rights reserved.
+                    <br>
+                        <a href="/about.html" style="color: #ccc; text-decoration: underline;">About</a> |
+                        <a href="/terms.html" style="color: #ccc; text-decoration: underline;">Terms</a> |
+                        <a href="/privacy.html" style="color: #ccc; text-decoration: underline;">Privacy</a>
+                    </p>
+                </footer> 
             </div>
-            <div class="ad-placeholder" style="margin-top: 2rem; padding: 1rem; border: 1px dashed #999; background: #f9f9f9; text-align: center;">
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9074920281143166"
-                    crossorigin="anonymous"></script>
+            <div class="RH-side">
+                <div class="main-ref_index">
+                    <h2 id="index">Index</h2>
+                    <ul>
+                        <li><a href="#i-section-parallel-flange">I-Section Parallel Flange</a></li>
+                        <li><a href="#h-section-parallel-flange">H-Section Parallel Flange</a></li>
+                        <li><a href="#i-section-taper-flange">I-Section Taper Flange</a></li>
+                        <li><a href="#h-section-piles">H-Section Piles</a></li>
+                        <li><a href="#channels">Channels</a></li>
+                        <li><a href="#angles-equal">Angles Equal</a></li>
+                        <li><a href="#angles-unequal">Angles Unequal</a></li>
+                        <li><a href="#flat-bars">Flat Bars</a></li>
+                        <li><a href="#hot-rolled-sheet">Hot Rolled Sheet</a></li>
+                        <li><a href="#steel-plates">Steel Plates</a></li>
+                        <li><a href="#round-bars">Round Bars</a></li>
+                        <li><a href="#square-bars">Square Bars</a></li>
+                        <li><a href="#lipped-channels">Lipped Channels</a></li>
+                        <li><a href="#lipped-zeds">Lipped Zeds</a></li>
+                        <li><a href="#lipped-angles">Lipped Angles</a></li>
+                        <li><a href="#top-hats">Top Hats</a></li>
+                        <li><a href="#cold-formed-channels">Cold-Formed Channels</a></li>
+                        <li><a href="#cold-formed-angles-equal">Cold-Formed Angles Equal</a></li>
+                        <li><a href="#cold-formed-angles-unequal">Cold-Formed Angles Unequal</a></li>
+                        <li><a href="#hollow-section-square">Hollow Section Square</a></li>
+                        <li><a href="#hollow-section-round">Hollow Section Round</a></li>
+                        <li><a href="#hollow-section-rectangular">Hollow Section Rectangular</a></li>
+                        <li><a href="#bolts-and-nuts">Bolts and Nuts</a></li>
+                    </ul>
+                </div>
+                <div class="ad-placeholder">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9074920281143166"
+                        crossorigin="anonymous"></script>
                     <!-- kilometrics.net_home -->
                     <ins class="adsbygoogle"
                         style="display:block"
@@ -120,155 +174,150 @@
                         data-ad-slot="1604112666"
                         data-ad-format="auto"
                         data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-            <footer>
-                <p>&copy; <span id="year"></span> <strong>Kilometrics</strong>. All rights reserved.
-                <br>
-                    <a href="/about.html" style="color: #ccc; text-decoration: underline;">About</a> |
-                    <a href="/terms.html" style="color: #ccc; text-decoration: underline;">Terms</a> |
-                    <a href="/privacy.html" style="color: #ccc; text-decoration: underline;">Privacy</a>
-                </p>
-            </footer> 
-        </div>
-        <div class="RH-side">
-            <div class="main-ref_index">
-                <h2 id="index">Index</h2>
-                <ul>
-                    <li><a href="#i-section-parallel-flange">I-Section Parallel Flange</a></li>
-                    <li><a href="#h-section-parallel-flange">H-Section Parallel Flange</a></li>
-                    <li><a href="#i-section-taper-flange">I-Section Taper Flange</a></li>
-                    <li><a href="#h-section-piles">H-Section Piles</a></li>
-                    <li><a href="#channels">Channels</a></li>
-                    <li><a href="#angles-equal">Angles Equal</a></li>
-                    <li><a href="#angles-unequal">Angles Unequal</a></li>
-                    <li><a href="#flat-bars">Flat Bars</a></li>
-                    <li><a href="#hot-rolled-sheet">Hot Rolled Sheet</a></li>
-                    <li><a href="#steel-plates">Steel Plates</a></li>
-                    <li><a href="#round-bars">Round Bars</a></li>
-                    <li><a href="#square-bars">Square Bars</a></li>
-                    <li><a href="#lipped-channels">Lipped Channels</a></li>
-                    <li><a href="#lipped-zeds">Lipped Zeds</a></li>
-                    <li><a href="#lipped-angles">Lipped Angles</a></li>
-                    <li><a href="#top-hats">Top Hats</a></li>
-                    <li><a href="#cold-formed-channels">Cold-Formed Channels</a></li>
-                    <li><a href="#cold-formed-angles-equal">Cold-Formed Angles Equal</a></li>
-                    <li><a href="#cold-formed-angles-unequal">Cold-Formed Angles Unequal</a></li>
-                    <li><a href="#hollow-section-square">Hollow Section Square</a></li>
-                    <li><a href="#hollow-section-round">Hollow Section Round</a></li>
-                    <li><a href="#hollow-section-rectangular">Hollow Section Rectangular</a></li>
-                    <li><a href="#bolts-and-nuts">Bolts and Nuts</a></li>
-                </ul>
-            </div>
-            <div class="ad-placeholder">
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9074920281143166"
-                    crossorigin="anonymous"></script>
-                <!-- kilometrics.net_home -->
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-9074920281143166"
-                    data-ad-slot="1604112666"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-        </div>
-    </section>
-    
-    <div class="cards">
-        <section class="card" style="background-color: #ff4500; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: I-Section Parallel Flange">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>I-Section Parallel Flange</span>
-            </button>
-            <div class="card_body" id="i-section-parallel-flange">
-                <h3>I-Section Parallel Flange</h3>
-                <p>
-                    I-sections with parallel flanges are widely used in structural beams for buildings and bridges, providing excellent bending resistance and ease of connection.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <div style="display: flex; gap: 2rem; overflow-x: auto;">
-                    <!-- IPE Table -->
-                    <table>
-                        <caption>IPE Sections</caption>
-                        <thead>
-                        <tr>
-                            <th>Designation</th>
-                            <th>Mass (kg/m)</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr><td>IPE 100</td><td>8.1</td></tr>
-                        <tr><td>IPE 120</td><td>10.4</td></tr>
-                        <tr><td>IPE 140</td><td>12.9</td></tr>
-                        <tr><td>IPE 160</td><td>15.8</td></tr>
-                        <tr><td>IPE 180</td><td>18.8</td></tr>
-                        <tr><td>IPE 200</td><td>22.4</td></tr>
-                        <tr><td>IPE 220</td><td>26.2</td></tr>
-                        <tr><td>IPE 240</td><td>30.7</td></tr>
-                        <tr><td>IPE 270</td><td>36.1</td></tr>
-                        <tr><td>IPE 300</td><td>42.2</td></tr>
-                        <tr><td>IPE 330</td><td>49.1</td></tr>
-                        <tr><td>IPE 360</td><td>57.1</td></tr>
-                        <tr><td>IPE 400</td><td>66.3</td></tr>
-                        <tr><td>IPE 450</td><td>77.6</td></tr>
-                        <tr><td>IPE 500</td><td>89.8</td></tr>
-                        <tr><td>IPE 550</td><td>103.0</td></tr>
-                        </tbody>
-                    </table>
-
-                    <!-- UB Table -->
-                    <table>
-                        <caption>UB Sections</caption>
-                        <thead>
-                        <tr>
-                            <th>Designation</th>
-                            <th>Mass (kg/m)</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr><td>203×133×25 UB</td><td>25.1</td></tr>
-                        <tr><td>254×146×31 UB</td><td>31.4</td></tr>
-                        <tr><td>305×165×40 UB</td><td>40.3</td></tr>
-                        <tr><td>356×171×51 UB</td><td>51.0</td></tr>
-                        <tr><td>406×178×60 UB</td><td>60.1</td></tr>
-                        <tr><td>457×191×74 UB</td><td>74.3</td></tr>
-                        <tr><td>533×210×82 UB</td><td>82.1</td></tr>
-                        <tr><td>533×210×92 UB</td><td>92.2</td></tr>
-                        <tr><td>533×210×101 UB</td><td>101.0</td></tr>
-                        <tr><td>533×210×109 UB</td><td>109.0</td></tr>
-                        <tr><td>533×210×122 UB</td><td>122.0</td></tr>
-                        </tbody>
-                    </table>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
                 </div>
-            
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
-                </p>
             </div>
         </section>
+        
+        <div class="cards">
+            <section class="card" style="background-color: #ff4500; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: I-Section Parallel Flange">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>I-Section Parallel Flange</span>
+                </button>
+                <div class="card_body" id="i-section-parallel-flange">
+                    <h3>I-Section Parallel Flange</h3>
+                    <p>
+                        I-sections with parallel flanges are widely used in structural beams for buildings and bridges, providing excellent bending resistance and ease of connection.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <div style="display: flex; gap: 2rem; overflow-x: auto;">
+                        <!-- IPE Table -->
+                        <table>
+                            <caption>IPE Sections</caption>
+                            <thead>
+                            <tr>
+                                <th>Designation</th>
+                                <th>Mass (kg/m)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr><td>IPE 100</td><td>8.1</td></tr>
+                            <tr><td>IPE 120</td><td>10.4</td></tr>
+                            <tr><td>IPE 140</td><td>12.9</td></tr>
+                            <tr><td>IPE 160</td><td>15.8</td></tr>
+                            <tr><td>IPE 180</td><td>18.8</td></tr>
+                            <tr><td>IPE 200</td><td>22.4</td></tr>
+                            <tr><td>IPE 220</td><td>26.2</td></tr>
+                            <tr><td>IPE 240</td><td>30.7</td></tr>
+                            <tr><td>IPE 270</td><td>36.1</td></tr>
+                            <tr><td>IPE 300</td><td>42.2</td></tr>
+                            <tr><td>IPE 330</td><td>49.1</td></tr>
+                            <tr><td>IPE 360</td><td>57.1</td></tr>
+                            <tr><td>IPE 400</td><td>66.3</td></tr>
+                            <tr><td>IPE 450</td><td>77.6</td></tr>
+                            <tr><td>IPE 500</td><td>89.8</td></tr>
+                            <tr><td>IPE 550</td><td>103.0</td></tr>
+                            </tbody>
+                        </table>
 
-        <section class="card" style="background-color: #ff6347; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: H-Section Parallel Flange">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>H-Section Parallel Flange</span>
-            </button>
-            <div class="card_body" id="h-section-parallel-flange">
-                <h3>H-section parallel flange</h3>
-                <p>
-                H-sections with parallel flanges offer high load capacity for columns and beams. They have a wider flange than I-sections for improved stability.
-                </p>
+                        <!-- UB Table -->
+                        <table>
+                            <caption>UB Sections</caption>
+                            <thead>
+                            <tr>
+                                <th>Designation</th>
+                                <th>Mass (kg/m)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr><td>203×133×25 UB</td><td>25.1</td></tr>
+                            <tr><td>254×146×31 UB</td><td>31.4</td></tr>
+                            <tr><td>305×165×40 UB</td><td>40.3</td></tr>
+                            <tr><td>356×171×51 UB</td><td>51.0</td></tr>
+                            <tr><td>406×178×60 UB</td><td>60.1</td></tr>
+                            <tr><td>457×191×74 UB</td><td>74.3</td></tr>
+                            <tr><td>533×210×82 UB</td><td>82.1</td></tr>
+                            <tr><td>533×210×92 UB</td><td>92.2</td></tr>
+                            <tr><td>533×210×101 UB</td><td>101.0</td></tr>
+                            <tr><td>533×210×109 UB</td><td>109.0</td></tr>
+                            <tr><td>533×210×122 UB</td><td>122.0</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 
-                <h4>Typical Mass per Metre</h4>
-                <div style="display: flex; gap: 2rem; overflow-x: auto;">
-                    <!-- IPE Table -->
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
+                    </p>
+                </div>
+            </section>
+
+            <section class="card" style="background-color: #ff6347; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: H-Section Parallel Flange">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>H-Section Parallel Flange</span>
+                </button>
+                <div class="card_body" id="h-section-parallel-flange">
+                    <h3>H-section parallel flange</h3>
+                    <p>
+                    H-sections with parallel flanges offer high load capacity for columns and beams. They have a wider flange than I-sections for improved stability.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <div style="display: flex; gap: 2rem; overflow-x: auto;">
+                        <!-- IPE Table -->
+                        <table>
+                            <caption>H-Section / UC Sections</caption>
+                            <thead>
+                                <tr>
+                                <th>Designation</th>
+                                <th>Mass (kg/m)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>152×152×23 UC</td><td>23.0</td></tr>
+                                <tr><td>152×152×30 UC</td><td>30.0</td></tr>
+                                <tr><td>203×203×46 UC</td><td>46.1</td></tr>
+                                <tr><td>203×203×52 UC</td><td>52.2</td></tr>
+                                <tr><td>203×203×60 UC</td><td>60.1</td></tr>
+                                <tr><td>254×254×73 UC</td><td>73.0</td></tr>
+                                <tr><td>254×254×89 UC</td><td>89.0</td></tr>
+                                <tr><td>305×305×97 UC</td><td>97.0</td></tr>
+                                <tr><td>305×305×118 UC</td><td>118.0</td></tr>
+                                <tr><td>305×305×137 UC</td><td>137.0</td></tr>
+                                <tr><td>356×368×153 UC</td><td>153.0</td></tr>
+                                <tr><td>356×406×235 UC</td><td>235.0</td></tr>
+                                <tr><td>406×406×140 UC</td><td>140.0</td></tr>
+                                <tr><td>406×406×198 UC</td><td>198.0</td></tr>
+                                <tr><td>457×457×191 UC</td><td>191.0</td></tr>
+                                <tr><td>457×457×289 UC</td><td>289.0</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
+                    </p>
+                </div>
+            </section>
+
+            <section class="card" style="background-color: #ff7f00; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: I-Section Taper Flange">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>I-Section Taper Flange</span>
+                </button>
+                <div class="card_body" id="i-section-taper-flange">
+                    <h3>I-Section Taper Flange</h3>
+                    <p>
+                    Taper flange I-beams have angled inner flange faces for classic structural shapes, common in older or lighter duty frames.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
                     <table>
-                        <caption>H-Section / UC Sections</caption>
+                        <caption>I-Section Taper Flange</caption>
                         <thead>
                             <tr>
                             <th>Designation</th>
@@ -276,909 +325,862 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>152×152×23 UC</td><td>23.0</td></tr>
-                            <tr><td>152×152×30 UC</td><td>30.0</td></tr>
-                            <tr><td>203×203×46 UC</td><td>46.1</td></tr>
-                            <tr><td>203×203×52 UC</td><td>52.2</td></tr>
-                            <tr><td>203×203×60 UC</td><td>60.1</td></tr>
-                            <tr><td>254×254×73 UC</td><td>73.0</td></tr>
-                            <tr><td>254×254×89 UC</td><td>89.0</td></tr>
-                            <tr><td>305×305×97 UC</td><td>97.0</td></tr>
-                            <tr><td>305×305×118 UC</td><td>118.0</td></tr>
-                            <tr><td>305×305×137 UC</td><td>137.0</td></tr>
-                            <tr><td>356×368×153 UC</td><td>153.0</td></tr>
-                            <tr><td>356×406×235 UC</td><td>235.0</td></tr>
-                            <tr><td>406×406×140 UC</td><td>140.0</td></tr>
-                            <tr><td>406×406×198 UC</td><td>198.0</td></tr>
-                            <tr><td>457×457×191 UC</td><td>191.0</td></tr>
-                            <tr><td>457×457×289 UC</td><td>289.0</td></tr>
+                            <tr><td>127×76×13</td><td>13.0</td></tr>
+                            <tr><td>152×89×16</td><td>16.1</td></tr>
+                            <tr><td>178×102×19</td><td>19.0</td></tr>
+                            <tr><td>203×102×23</td><td>23.0</td></tr>
+                            <tr><td>203×133×25</td><td>25.1</td></tr>
+                            <tr><td>254×102×22</td><td>22.1</td></tr>
+                            <tr><td>254×146×31</td><td>31.4</td></tr>
+                            <tr><td>305×102×25</td><td>25.4</td></tr>
+                            <tr><td>305×127×37</td><td>37.0</td></tr>
+                            <tr><td>305×165×40</td><td>40.3</td></tr>
+                            <tr><td>305×165×54</td><td>54.0</td></tr>
+                            <tr><td>305×152×66</td><td>66.0</td></tr>
                         </tbody>
                     </table>
+        
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
+                    </p>
                 </div>
+            </section>
             
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
-                </p>
-            </div>
-        </section>
-
-        <section class="card" style="background-color: #ff7f00; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: I-Section Taper Flange">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>I-Section Taper Flange</span>
-            </button>
-            <div class="card_body" id="i-section-taper-flange">
-                <h3>I-Section Taper Flange</h3>
-                <p>
-                Taper flange I-beams have angled inner flange faces for classic structural shapes, common in older or lighter duty frames.
-                </p>
+            <section class="card" style="background-color: #ff8c00; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: H-Section Piles">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>H-Section Piles</span>
+                </button>
+                <div class="card_body" id="h-section-piles">
+                    <h3>H-Section Piles</h3>
+                    <p>
+                    H-piles are driven into the ground for deep foundations, providing strong vertical load-bearing and resistance to lateral forcesore
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>H-Section Piles</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>203×203×54</td><td>54.0</td></tr>
+                            <tr><td>203×203×60</td><td>60.1</td></tr>
+                            <tr><td>254×254×73</td><td>73.0</td></tr>
+                            <tr><td>254×254×89</td><td>89.0</td></tr>
+                            <tr><td>305×305×97</td><td>97.0</td></tr>
+                            <tr><td>305×305×110</td><td>110.0</td></tr>
+                        </tbody>
+                    </table>
                 
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>I-Section Taper Flange</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>127×76×13</td><td>13.0</td></tr>
-                        <tr><td>152×89×16</td><td>16.1</td></tr>
-                        <tr><td>178×102×19</td><td>19.0</td></tr>
-                        <tr><td>203×102×23</td><td>23.0</td></tr>
-                        <tr><td>203×133×25</td><td>25.1</td></tr>
-                        <tr><td>254×102×22</td><td>22.1</td></tr>
-                        <tr><td>254×146×31</td><td>31.4</td></tr>
-                        <tr><td>305×102×25</td><td>25.4</td></tr>
-                        <tr><td>305×127×37</td><td>37.0</td></tr>
-                        <tr><td>305×165×40</td><td>40.3</td></tr>
-                        <tr><td>305×165×54</td><td>54.0</td></tr>
-                        <tr><td>305×152×66</td><td>66.0</td></tr>
-                    </tbody>
-                </table>
-    
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
-                </p>
-            </div>
-        </section>
-        
-        <section class="card" style="background-color: #ff8c00; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: H-Section Piles">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>H-Section Piles</span>
-            </button>
-            <div class="card_body" id="h-section-piles">
-                <h3>H-Section Piles</h3>
-                <p>
-                H-piles are driven into the ground for deep foundations, providing strong vertical load-bearing and resistance to lateral forcesore
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>H-Section Piles</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>203×203×54</td><td>54.0</td></tr>
-                        <tr><td>203×203×60</td><td>60.1</td></tr>
-                        <tr><td>254×254×73</td><td>73.0</td></tr>
-                        <tr><td>254×254×89</td><td>89.0</td></tr>
-                        <tr><td>305×305×97</td><td>97.0</td></tr>
-                        <tr><td>305×305×110</td><td>110.0</td></tr>
-                    </tbody>
-                </table>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
+                    </p>
+                </div>
+            </section>
             
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
-                </p>
-            </div>
-        </section>
-        
-        <section class="card" style="background-color: #ffa500; color: #222;">
-            <button class="card-header" aria-label="Expand or collapse card: Channels">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Channels</span>
-            </button>    
-            <div class="card_body" id="channels">
-                <h3>Channel Sections</h3>
-                <p>
-                Channels are U-shaped sections used for frames, bracing, and lighter structural members.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Channel Sections</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>100×50×11</td><td>11.0</td></tr>
-                        <tr><td>125×65×14</td><td>14.2</td></tr>
-                        <tr><td>150×75×17</td><td>17.1</td></tr>
-                        <tr><td>180×75×20</td><td>20.3</td></tr>
-                        <tr><td>200×75×23</td><td>22.9</td></tr>
-                        <tr><td>230×75×26</td><td>25.8</td></tr>
-                        <tr><td>250×90×30</td><td>30.0</td></tr>
-                        <tr><td>300×90×36</td><td>36.1</td></tr>
-                        <tr><td>380×100×50</td><td>50.0</td></tr>
-                        <tr><td>381×102×55</td><td>55.0</td></tr>
-                    </tbody>
-                </table>
+            <section class="card" style="background-color: #ffa500; color: #222;">
+                <button class="card-header" aria-label="Expand or collapse card: Channels">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Channels</span>
+                </button>    
+                <div class="card_body" id="channels">
+                    <h3>Channel Sections</h3>
+                    <p>
+                    Channels are U-shaped sections used for frames, bracing, and lighter structural members.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Channel Sections</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>100×50×11</td><td>11.0</td></tr>
+                            <tr><td>125×65×14</td><td>14.2</td></tr>
+                            <tr><td>150×75×17</td><td>17.1</td></tr>
+                            <tr><td>180×75×20</td><td>20.3</td></tr>
+                            <tr><td>200×75×23</td><td>22.9</td></tr>
+                            <tr><td>230×75×26</td><td>25.8</td></tr>
+                            <tr><td>250×90×30</td><td>30.0</td></tr>
+                            <tr><td>300×90×36</td><td>36.1</td></tr>
+                            <tr><td>380×100×50</td><td>50.0</td></tr>
+                            <tr><td>381×102×55</td><td>55.0</td></tr>
+                        </tbody>
+                    </table>
 
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
-                </p>
-            </div>
-        </section>
-        
-        <section class="card" style="background-color: #ffd700; color: #222;">
-            <button class="card-header" aria-label="Expand or collapse card: Angles Equal">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Angles Equal</span>
-            </button>  
-            <div class="card_body" id="angles-equal">
-                <h3>Equal Angle Sections</h3>
-                <p>
-                Equal angles have identical leg lengths, ideal for bracing and framing where uniform strength is needed.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Equal Angle Sections</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>25×25×3</td><td>1.1</td></tr>
-                        <tr><td>30×30×3</td><td>1.3</td></tr>
-                        <tr><td>40×40×4</td><td>2.4</td></tr>
-                        <tr><td>50×50×5</td><td>3.7</td></tr>
-                        <tr><td>60×60×6</td><td>5.4</td></tr>
-                        <tr><td>65×65×6</td><td>5.9</td></tr>
-                        <tr><td>75×75×6</td><td>6.8</td></tr>
-                        <tr><td>80×80×8</td><td>9.5</td></tr>
-                        <tr><td>90×90×8</td><td>10.8</td></tr>
-                        <tr><td>100×100×10</td><td>15.0</td></tr>
-                        <tr><td>120×120×12</td><td>21.6</td></tr>
-                        <tr><td>150×150×12</td><td>27.2</td></tr>
-                    </tbody>
-                </table>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
+                    </p>
+                </div>
+            </section>
+            
+            <section class="card" style="background-color: #ffd700; color: #222;">
+                <button class="card-header" aria-label="Expand or collapse card: Angles Equal">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Angles Equal</span>
+                </button>  
+                <div class="card_body" id="angles-equal">
+                    <h3>Equal Angle Sections</h3>
+                    <p>
+                    Equal angles have identical leg lengths, ideal for bracing and framing where uniform strength is needed.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Equal Angle Sections</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>25×25×3</td><td>1.1</td></tr>
+                            <tr><td>30×30×3</td><td>1.3</td></tr>
+                            <tr><td>40×40×4</td><td>2.4</td></tr>
+                            <tr><td>50×50×5</td><td>3.7</td></tr>
+                            <tr><td>60×60×6</td><td>5.4</td></tr>
+                            <tr><td>65×65×6</td><td>5.9</td></tr>
+                            <tr><td>75×75×6</td><td>6.8</td></tr>
+                            <tr><td>80×80×8</td><td>9.5</td></tr>
+                            <tr><td>90×90×8</td><td>10.8</td></tr>
+                            <tr><td>100×100×10</td><td>15.0</td></tr>
+                            <tr><td>120×120×12</td><td>21.6</td></tr>
+                            <tr><td>150×150×12</td><td>27.2</td></tr>
+                        </tbody>
+                    </table>
 
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
-                </p>
-            </div>
-        </section>
-        
-        <section class="card" style="background-color: #d4af37; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: Angles Unequal">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Angles Unequal</span>
-            </button>    
-            <div class="card_body" id="angles-unequal">
-                <h3>Unequal Angle Sections</h3>
-                <p>
-                Equal angles have identical leg lengths, ideal for bracing and framing where uniform strength is needed.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Unequal Angle Sections</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>50×30×5</td><td>3.1</td></tr>
-                        <tr><td>65×50×5</td><td>4.3</td></tr>
-                        <tr><td>75×50×6</td><td>5.5</td></tr>
-                        <tr><td>90×60×6</td><td>6.9</td></tr>
-                        <tr><td>100×65×6</td><td>7.7</td></tr>
-                        <tr><td>100×75×8</td><td>10.2</td></tr>
-                        <tr><td>125×75×8</td><td>12.4</td></tr>
-                        <tr><td>150×90×10</td><td>17.3</td></tr>
-                        <tr><td>150×100×12</td><td>21.5</td></tr>
-                        <tr><td>200×100×12</td><td>25.6</td></tr>
-                    </tbody>
-                </table>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
+                    </p>
+                </div>
+            </section>
+            
+            <section class="card" style="background-color: #d4af37; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: Angles Unequal">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Angles Unequal</span>
+                </button>    
+                <div class="card_body" id="angles-unequal">
+                    <h3>Unequal Angle Sections</h3>
+                    <p>
+                    Equal angles have identical leg lengths, ideal for bracing and framing where uniform strength is needed.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Unequal Angle Sections</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>50×30×5</td><td>3.1</td></tr>
+                            <tr><td>65×50×5</td><td>4.3</td></tr>
+                            <tr><td>75×50×6</td><td>5.5</td></tr>
+                            <tr><td>90×60×6</td><td>6.9</td></tr>
+                            <tr><td>100×65×6</td><td>7.7</td></tr>
+                            <tr><td>100×75×8</td><td>10.2</td></tr>
+                            <tr><td>125×75×8</td><td>12.4</td></tr>
+                            <tr><td>150×90×10</td><td>17.3</td></tr>
+                            <tr><td>150×100×12</td><td>21.5</td></tr>
+                            <tr><td>200×100×12</td><td>25.6</td></tr>
+                        </tbody>
+                    </table>
 
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
-                </p>
-            </div>
-        </section>
-        
-        <section class="card" style="background-color: #32cd32; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: Flat Bars">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Flats</span>
-            </button>
-            <div class="card_body" id="flat-bars">
-                <h3>Flat Bar</h3>
-                <p>
-                Flat bars are versatile sections used in fabrication, bracing, base plates, and general structural support
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Flat Bar Sections</caption>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
+                    </p>
+                </div>
+            </section>
+            
+            <section class="card" style="background-color: #32cd32; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: Flat Bars">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Flats</span>
+                </button>
+                <div class="card_body" id="flat-bars">
+                    <h3>Flat Bar</h3>
+                    <p>
+                    Flat bars are versatile sections used in fabrication, bracing, base plates, and general structural support
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Flat Bar Sections</caption>
+                        <thead>
+                            <tr>
+                            <th>Width (mm)</th>
+                            <th>Thickness (mm)</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>20</td><td>5</td><td>0.8</td></tr>
+                            <tr><td>25</td><td>5</td><td>1.0</td></tr>
+                            <tr><td>30</td><td>6</td><td>1.4</td></tr>
+                            <tr><td>40</td><td>6</td><td>1.9</td></tr>
+                            <tr><td>50</td><td>6</td><td>2.4</td></tr>
+                            <tr><td>50</td><td>8</td><td>3.2</td></tr>
+                            <tr><td>65</td><td>8</td><td>4.2</td></tr>
+                            <tr><td>75</td><td>10</td><td>5.9</td></tr>
+                            <tr><td>100</td><td>10</td><td>7.9</td></tr>
+                            <tr><td>150</td><td>12</td><td>14.1</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
+                    </p>
+                </div>
+            </section>
+            
+            <section class="card" style="background-color: #6b8e23; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: Hot rolled sheet">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Hot rolled sheet</span>
+                </button>
+                <div class="card_body" id="hot-rolled-sheet">
+                    <h3>Flat products</h3>
+                    <p>
+                    Hot rolled steel sheets and plates are used in fabrication, structural bases, and welded sections, with uniform thickness and good workability
+                    </p>
+                    
+                    <h4>Typical Mass per Square Metre</h4>
+                    <table>
+                        <caption>Hot Rolled Sheets / Plates</caption>
+                        <thead>
+                            <tr>
+                            <th>Thickness (mm)</th>
+                            <th>Mass (kg/m²)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>3</td><td>23.6</td></tr>
+                            <tr><td>4</td><td>31.4</td></tr>
+                            <tr><td>5</td><td>39.3</td></tr>
+                            <tr><td>6</td><td>47.1</td></tr>
+                            <tr><td>8</td><td>62.8</td></tr>
+                            <tr><td>10</td><td>78.5</td></tr>
+                            <tr><td>12</td><td>94.2</td></tr>
+                            <tr><td>16</td><td>125.6</td></tr>
+                            <tr><td>20</td><td>157.0</td></tr>
+                            <tr><td>25</td><td>196.2</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
+                    </p>
+                </div>
+            </section>
+            
+            <section class="card" style="background-color: #228b22; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: Steel plates">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Plates</span>
+                </button>
+                <div class="card_body" id="steel-plates">
+                    <h3>Steel Plates</h3>
+                    <p>
+                    Plates are really just thicker hot-rolled sheets, typically used in fabrication, structural bases, and welded sections. They have a uniform thickness and good workability.
+                    </p>
+                    
+                    <h4>Typical Mass per Square Metre</h4>
+                    <table>
+                        <caption>Steel Plates</caption>
+                        <thead>
+                            <tr>
+                            <th>Thickness (mm)</th>
+                            <th>Mass (kg/m²)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>10</td><td>78.5</td></tr>
+                            <tr><td>12</td><td>94.2</td></tr>
+                            <tr><td>16</td><td>125.6</td></tr>
+                            <tr><td>20</td><td>157.0</td></tr>
+                            <tr><td>25</td><td>196.2</td></tr>
+                            <tr><td>30</td><td>235.5</td></tr>
+                            <tr><td>40</td><td>314.0</td></tr>
+                            <tr><td>50</td><td>392.5</td></tr>
+                            <tr><td>60</td><td>471.0</td></tr>
+                            <tr><td>80</td><td>628.0</td></tr>
+                            <tr><td>100</td><td>785.0</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
+                    </p>
+                </div>
+            </section>
+            
+            <section class="card" style="background-color: #4682b4; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: Steel slabs">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Slabs</span>
+                </button>
+                <div class="card_body" id="steel-slabs">
+                    <h3>Steel Slabs</h3>
+                    <p>
+                        For rolled/continuous-cast slabs, the weight is usually given per square metre based on thickness. Slabs are typically thicker than plates. These are common reference values for mills or bulk steel users.
+                    </p>
+                    
+                    <h4>Typical Mass per Square Metre</h4>
+                    <table>
+                        <caption>Steel Slabs</caption>
+                        <thead>
+                            <tr>
+                            <th>Thickness (mm)</th>
+                            <th>Mass (kg/m²)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>150</td><td>1177.5</td></tr>
+                            <tr><td>180</td><td>1413.0</td></tr>
+                            <tr><td>200</td><td>1570.0</td></tr>
+                            <tr><td>250</td><td>1962.5</td></tr>
+                            <tr><td>300</td><td>2355.0</td></tr>
+                            <tr><td>350</td><td>2747.5</td></tr>
+                            <tr><td>400</td><td>3140.0</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
+                    </p>
+                </div>
+            </section>
+            
+            <section class="card" style="background-color: #87ceeb; color: #222;">
+                <button class="card-header" aria-label="Expand or collapse card: Square bars">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Square bars</span>
+                </button>
+                <div class="card_body" id="square-bars">
+                    <h3>Square Bars</h3>
+                    <p>
+                        Solid square and round bars are basic forms used in machining, construction, and reinforcement.
+                    </p>
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Square Bars</caption>
+                        <thead>
+                            <tr>
+                            <th>Size (mm)</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>10</td><td>0.62</td></tr>
+                            <tr><td>12</td><td>0.90</td></tr>
+                            <tr><td>16</td><td>1.60</td></tr>
+                            <tr><td>20</td><td>2.50</td></tr>
+                            <tr><td>25</td><td>3.90</td></tr>
+                            <tr><td>30</td><td>5.60</td></tr>
+                            <tr><td>40</td><td>10.0</td></tr>
+                            <tr><td>50</td><td>15.6</td></tr>
+                            <tr><td>60</td><td>22.5</td></tr>
+                            <tr><td>75</td><td>35.2</td></tr>
+                            <tr><td>100</td><td>62.0</td></tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
+                    </p>
+                </div>
+            </section>
+
+            <section class="card" style="background-color: #00009f; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: Round bars">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Round bars</span>
+                </button>
+                <div class="card_body" id="round-bars">
+                    <h3>Round Bars</h3>
+                    <p>
+                        Solid square and round bars are basic forms used in machining, construction, and reinforcement.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                    <caption>Round Bars</caption>
                     <thead>
                         <tr>
-                        <th>Width (mm)</th>
-                        <th>Thickness (mm)</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>20</td><td>5</td><td>0.8</td></tr>
-                        <tr><td>25</td><td>5</td><td>1.0</td></tr>
-                        <tr><td>30</td><td>6</td><td>1.4</td></tr>
-                        <tr><td>40</td><td>6</td><td>1.9</td></tr>
-                        <tr><td>50</td><td>6</td><td>2.4</td></tr>
-                        <tr><td>50</td><td>8</td><td>3.2</td></tr>
-                        <tr><td>65</td><td>8</td><td>4.2</td></tr>
-                        <tr><td>75</td><td>10</td><td>5.9</td></tr>
-                        <tr><td>100</td><td>10</td><td>7.9</td></tr>
-                        <tr><td>150</td><td>12</td><td>14.1</td></tr>
-                    </tbody>
-                </table>
-                
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
-                </p>
-            </div>
-        </section>
-        
-        <section class="card" style="background-color: #6b8e23; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: Hot rolled sheet">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Hot rolled sheet</span>
-            </button>
-            <div class="card_body" id="hot-rolled-sheet">
-                <h3>Flat products</h3>
-                <p>
-                Hot rolled steel sheets and plates are used in fabrication, structural bases, and welded sections, with uniform thickness and good workability
-                </p>
-                
-                <h4>Typical Mass per Square Metre</h4>
-                <table>
-                    <caption>Hot Rolled Sheets / Plates</caption>
-                    <thead>
-                        <tr>
-                        <th>Thickness (mm)</th>
-                        <th>Mass (kg/m²)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>3</td><td>23.6</td></tr>
-                        <tr><td>4</td><td>31.4</td></tr>
-                        <tr><td>5</td><td>39.3</td></tr>
-                        <tr><td>6</td><td>47.1</td></tr>
-                        <tr><td>8</td><td>62.8</td></tr>
-                        <tr><td>10</td><td>78.5</td></tr>
-                        <tr><td>12</td><td>94.2</td></tr>
-                        <tr><td>16</td><td>125.6</td></tr>
-                        <tr><td>20</td><td>157.0</td></tr>
-                        <tr><td>25</td><td>196.2</td></tr>
-                    </tbody>
-                </table>
-                
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
-                </p>
-            </div>
-        </section>
-        
-        <section class="card" style="background-color: #228b22; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: Steel plates">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Plates</span>
-            </button>
-            <div class="card_body" id="steel-plates">
-                <h3>Steel Plates</h3>
-                <p>
-                Plates are really just thicker hot-rolled sheets, typically used in fabrication, structural bases, and welded sections. They have a uniform thickness and good workability.
-                </p>
-                
-                <h4>Typical Mass per Square Metre</h4>
-                <table>
-                    <caption>Steel Plates</caption>
-                    <thead>
-                        <tr>
-                        <th>Thickness (mm)</th>
-                        <th>Mass (kg/m²)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>10</td><td>78.5</td></tr>
-                        <tr><td>12</td><td>94.2</td></tr>
-                        <tr><td>16</td><td>125.6</td></tr>
-                        <tr><td>20</td><td>157.0</td></tr>
-                        <tr><td>25</td><td>196.2</td></tr>
-                        <tr><td>30</td><td>235.5</td></tr>
-                        <tr><td>40</td><td>314.0</td></tr>
-                        <tr><td>50</td><td>392.5</td></tr>
-                        <tr><td>60</td><td>471.0</td></tr>
-                        <tr><td>80</td><td>628.0</td></tr>
-                        <tr><td>100</td><td>785.0</td></tr>
-                    </tbody>
-                </table>
-                
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
-                </p>
-            </div>
-        </section>
-        
-        <section class="card" style="background-color: #4682b4; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: Steel slabs">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Slabs</span>
-            </button>
-            <div class="card_body" id="steel-slabs">
-                <h3>Steel Slabs</h3>
-                <p>
-                    For rolled/continuous-cast slabs, the weight is usually given per square metre based on thickness. Slabs are typically thicker than plates. These are common reference values for mills or bulk steel users.
-                </p>
-                
-                <h4>Typical Mass per Square Metre</h4>
-                <table>
-                    <caption>Steel Slabs</caption>
-                    <thead>
-                        <tr>
-                        <th>Thickness (mm)</th>
-                        <th>Mass (kg/m²)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>150</td><td>1177.5</td></tr>
-                        <tr><td>180</td><td>1413.0</td></tr>
-                        <tr><td>200</td><td>1570.0</td></tr>
-                        <tr><td>250</td><td>1962.5</td></tr>
-                        <tr><td>300</td><td>2355.0</td></tr>
-                        <tr><td>350</td><td>2747.5</td></tr>
-                        <tr><td>400</td><td>3140.0</td></tr>
-                    </tbody>
-                </table>
-                
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
-                </p>
-            </div>
-        </section>
-        
-        <section class="card" style="background-color: #87ceeb; color: #222;">
-            <button class="card-header" aria-label="Expand or collapse card: Square bars">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Square bars</span>
-            </button>
-            <div class="card_body" id="square-bars">
-                <h3>Square Bars</h3>
-                <p>
-                    Solid square and round bars are basic forms used in machining, construction, and reinforcement.
-                </p>
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Square Bars</caption>
-                    <thead>
-                        <tr>
-                        <th>Size (mm)</th>
+                        <th>Diameter (mm)</th>
                         <th>Mass (kg/m)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr><td>10</td><td>0.62</td></tr>
-                        <tr><td>12</td><td>0.90</td></tr>
-                        <tr><td>16</td><td>1.60</td></tr>
-                        <tr><td>20</td><td>2.50</td></tr>
-                        <tr><td>25</td><td>3.90</td></tr>
-                        <tr><td>30</td><td>5.60</td></tr>
-                        <tr><td>40</td><td>10.0</td></tr>
-                        <tr><td>50</td><td>15.6</td></tr>
-                        <tr><td>60</td><td>22.5</td></tr>
-                        <tr><td>75</td><td>35.2</td></tr>
-                        <tr><td>100</td><td>62.0</td></tr>
+                        <tr><td>12</td><td>0.89</td></tr>
+                        <tr><td>16</td><td>1.58</td></tr>
+                        <tr><td>20</td><td>2.47</td></tr>
+                        <tr><td>25</td><td>3.85</td></tr>
+                        <tr><td>30</td><td>5.55</td></tr>
+                        <tr><td>40</td><td>9.86</td></tr>
+                        <tr><td>50</td><td>15.4</td></tr>
+                        <tr><td>60</td><td>22.2</td></tr>
+                        <tr><td>75</td><td>34.7</td></tr>
+                        <tr><td>100</td><td>61.6</td></tr>
                     </tbody>
-                </table>
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
-                </p>
-            </div>
-        </section>
-
-        <section class="card" style="background-color: #00009f; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: Round bars">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Round bars</span>
-            </button>
-            <div class="card_body" id="round-bars">
-                <h3>Round Bars</h3>
-                <p>
-                    Solid square and round bars are basic forms used in machining, construction, and reinforcement.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                <caption>Round Bars</caption>
-                <thead>
-                    <tr>
-                    <th>Diameter (mm)</th>
-                    <th>Mass (kg/m)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>10</td><td>0.62</td></tr>
-                    <tr><td>12</td><td>0.89</td></tr>
-                    <tr><td>16</td><td>1.58</td></tr>
-                    <tr><td>20</td><td>2.47</td></tr>
-                    <tr><td>25</td><td>3.85</td></tr>
-                    <tr><td>30</td><td>5.55</td></tr>
-                    <tr><td>40</td><td>9.86</td></tr>
-                    <tr><td>50</td><td>15.4</td></tr>
-                    <tr><td>60</td><td>22.2</td></tr>
-                    <tr><td>75</td><td>34.7</td></tr>
-                    <tr><td>100</td><td>61.6</td></tr>
-                </tbody>
-                </table>
-                
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
-                </p>
-            </div>
-        </section>
-
-        <section class="card" style="background-color: #191970; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: Lipped channels">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Lipped Channels</span>
-            </button>
-            <div class="card_body" id="lipped-channels">
-                <h3>Lipped Channels (CFC)</h3>
-                <p>
-                    Cold-formed channels with lipped edges for improved rigidity and connection strength in light gauge construction.
-                </p>
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Lipped Channels (CFC)</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation (Depth×Width×Lip×Thickness mm)</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>75×35×15×1.6</td><td>2.1</td></tr>
-                        <tr><td>100×50×15×1.6</td><td>2.9</td></tr>
-                        <tr><td>125×50×20×1.6</td><td>3.6</td></tr>
-                        <tr><td>150×50×20×1.6</td><td>4.2</td></tr>
-                        <tr><td>150×64×20×2.0</td><td>5.6</td></tr>
-                        <tr><td>200×75×20×2.5</td><td>8.9</td></tr>
-                        <tr><td>200×75×20×3.0</td><td>10.6</td></tr>
-                        <tr><td>250×75×20×2.5</td><td>10.5</td></tr>
-                        <tr><td>250×75×20×3.0</td><td>12.6</td></tr>
-                        <tr><td>300×100×25×3.0</td><td>16.5</td></tr>
-                    </tbody>
-                </table>
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
-                </p>
-            </div>
-        </section>
-
-        <section class="card" style="background-color: #6a5acd; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: Lipped zeds">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Lipped Zeds</span>
-            </button>
-            <div class="card_body" id="lipped-zeds">
-                <h3>Lipped Zeds (Cold-Formed Sections)</h3>
-                <p>
-                    Z-shaped cold-formed sections with lips for additional strength in roofing and cladding support systems.
-                </p>
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Lipped Zeds (Cold-Formed Sections)</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation (Depth×Width×Lip×Thickness mm)</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>100×50×15×1.6</td><td>2.8</td></tr>
-                        <tr><td>125×50×20×1.6</td><td>3.4</td></tr>
-                        <tr><td>150×50×20×1.6</td><td>4.0</td></tr>
-                        <tr><td>150×64×20×2.0</td><td>5.4</td></tr>
-                        <tr><td>200×75×20×2.5</td><td>8.5</td></tr>
-                        <tr><td>200×75×20×3.0</td><td>10.2</td></tr>
-                        <tr><td>250×75×20×2.5</td><td>10.1</td></tr>
-                        <tr><td>250×75×20×3.0</td><td>12.1</td></tr>
-                        <tr><td>300×100×25×3.0</td><td>16.0</td></tr>
-                    </tbody>
-                </table>
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
-                </p>
-            </div>
-        </section>
-
-        <section class="card" style="background-color: #9370db; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: Lipped angles">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Lipped angles</span>
-            </button>
-            <div class="card_body" id="lipped-angles">
-                <h3>Lipped Angles</h3>
-                <p>
-                    Angles with lips on the flanges for extra stiffness, used in lightweight framing systems.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Lipped Angles (Cold-Formed Sections)</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation (Leg×Leg×Lip×Thickness mm)</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>50×50×15×1.6</td><td>2.4</td></tr>
-                        <tr><td>65×65×20×1.6</td><td>3.2</td></tr>
-                        <tr><td>75×75×20×1.6</td><td>3.8</td></tr>
-                        <tr><td>75×75×20×2.0</td><td>4.7</td></tr>
-                        <tr><td>100×100×20×2.0</td><td>6.4</td></tr>
-                        <tr><td>100×100×20×2.5</td><td>7.9</td></tr>
-                        <tr><td>125×125×20×2.5</td><td>10.0</td></tr>
-                        <tr><td>150×150×20×3.0</td><td>14.3</td></tr>
-                    </tbody>
-                </table>
-
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
-                </p>
-            </div>
-        </section>
-
-        <section class="card" style="background-color: #8b008b; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: Cold formed channels">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Cold formed channels</span>
-            </button>
-            <div class="card_body" id="cold-formed-channels">
-                <h3>Cold formed channels</h3>
-                <p>
-                    Lightweight, precise channels formed at room temperature for wall framing and purlins.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Cold-Formed Channels</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation (Depth×Width×Thickness mm)</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>75×35×1.6</td><td>1.9</td></tr>
-                        <tr><td>100×50×1.6</td><td>2.7</td></tr>
-                        <tr><td>125×50×1.6</td><td>3.3</td></tr>
-                        <tr><td>150×50×1.6</td><td>3.9</td></tr>
-                        <tr><td>150×64×2.0</td><td>5.2</td></tr>
-                        <tr><td>200×75×2.5</td><td>8.4</td></tr>
-                        <tr><td>200×75×3.0</td><td>9.9</td></tr>
-                        <tr><td>250×75×2.5</td><td>9.8</td></tr>
-                        <tr><td>250×75×3.0</td><td>11.8</td></tr>
-                        <tr><td>300×100×3.0</td><td>15.7</td></tr>
-                    </tbody>
-                </table>
-
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
-                </p>
-            </div>
-        </section>
-
-        <section class="card" style="background-color: #8b4513; color: #222;">
-            <button class="card-header" aria-label="Expand or collapse card: Tops hats">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Top hats</span>
-            </button>
-            <div class="card_body" id="top-hats">
-                <h3>Top hats</h3>
-                <p>
-                    Top hat sections provide rigid profiles for ceiling, wall systems, or light support frames.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Top Hats (Cold-Formed Sections)</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation (Depth×Width×Flange×Thickness mm)</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>50×35×15×1.2</td><td>1.5</td></tr>
-                        <tr><td>75×35×15×1.2</td><td>1.9</td></tr>
-                        <tr><td>100×35×15×1.2</td><td>2.3</td></tr>
-                        <tr><td>100×50×20×1.6</td><td>3.2</td></tr>
-                        <tr><td>125×50×20×1.6</td><td>3.8</td></tr>
-                        <tr><td>150×50×20×1.6</td><td>4.4</td></tr>
-                        <tr><td>150×64×20×2.0</td><td>5.6</td></tr>
-                        <tr><td>200×75×20×2.5</td><td>8.7</td></tr>
-                    </tbody>
-                </table>
-
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
-                </p>
+                    </table>
                     
-            </div>
-        </section>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
+                    </p>
+                </div>
+            </section>
 
-        <section class="card" style="background-color: #a0522d; color: #222;">
-            <button class="card-header" aria-label="Expand or collapse card: Cold formed angles equal">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Cold-Formed Angles Equal</span>
-            </button>
-            <div class="card_body" id="cold-formed-angles-equal">
-                <h3>Cold-Formed Angles (Equal Legs)</h3>
-                <p>
-                    Equal-sided cold-formed angles used for bracing and lightweight frames.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Cold-Formed Angles (Equal Legs)</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation (Leg×Leg×Thickness mm)</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>30×30×1.6</td><td>1.3</td></tr>
-                        <tr><td>40×40×1.6</td><td>1.8</td></tr>
-                        <tr><td>50×50×1.6</td><td>2.3</td></tr>
-                        <tr><td>50×50×2.0</td><td>2.8</td></tr>
-                        <tr><td>65×65×2.0</td><td>3.7</td></tr>
-                        <tr><td>75×75×2.5</td><td>5.2</td></tr>
-                        <tr><td>100×100×2.5</td><td>7.0</td></tr>
-                        <tr><td>100×100×3.0</td><td>8.3</td></tr>
-                    </tbody>
-                </table>
+            <section class="card" style="background-color: #191970; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: Lipped channels">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Lipped Channels</span>
+                </button>
+                <div class="card_body" id="lipped-channels">
+                    <h3>Lipped Channels (CFC)</h3>
+                    <p>
+                        Cold-formed channels with lipped edges for improved rigidity and connection strength in light gauge construction.
+                    </p>
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Lipped Channels (CFC)</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation (Depth×Width×Lip×Thickness mm)</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>75×35×15×1.6</td><td>2.1</td></tr>
+                            <tr><td>100×50×15×1.6</td><td>2.9</td></tr>
+                            <tr><td>125×50×20×1.6</td><td>3.6</td></tr>
+                            <tr><td>150×50×20×1.6</td><td>4.2</td></tr>
+                            <tr><td>150×64×20×2.0</td><td>5.6</td></tr>
+                            <tr><td>200×75×20×2.5</td><td>8.9</td></tr>
+                            <tr><td>200×75×20×3.0</td><td>10.6</td></tr>
+                            <tr><td>250×75×20×2.5</td><td>10.5</td></tr>
+                            <tr><td>250×75×20×3.0</td><td>12.6</td></tr>
+                            <tr><td>300×100×25×3.0</td><td>16.5</td></tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
+                    </p>
+                </div>
+            </section>
 
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
-                </p>
-            </div>
-        </section>
+            <section class="card" style="background-color: #6a5acd; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: Lipped zeds">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Lipped Zeds</span>
+                </button>
+                <div class="card_body" id="lipped-zeds">
+                    <h3>Lipped Zeds (Cold-Formed Sections)</h3>
+                    <p>
+                        Z-shaped cold-formed sections with lips for additional strength in roofing and cladding support systems.
+                    </p>
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Lipped Zeds (Cold-Formed Sections)</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation (Depth×Width×Lip×Thickness mm)</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>100×50×15×1.6</td><td>2.8</td></tr>
+                            <tr><td>125×50×20×1.6</td><td>3.4</td></tr>
+                            <tr><td>150×50×20×1.6</td><td>4.0</td></tr>
+                            <tr><td>150×64×20×2.0</td><td>5.4</td></tr>
+                            <tr><td>200×75×20×2.5</td><td>8.5</td></tr>
+                            <tr><td>200×75×20×3.0</td><td>10.2</td></tr>
+                            <tr><td>250×75×20×2.5</td><td>10.1</td></tr>
+                            <tr><td>250×75×20×3.0</td><td>12.1</td></tr>
+                            <tr><td>300×100×25×3.0</td><td>16.0</td></tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
+                    </p>
+                </div>
+            </section>
 
-        <section class="card" style="background-color: #d2b48c; color: #222;">
-            <button class="card-header" aria-label="Expand or collapse card: Cold formed angles unequal">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Cold-Formed Angles Unequal</span>
-            </button>
-            <div class="card_body" id="cold-formed-angles-unequal">
-                <h3>Cold-Formed Angles (Unequal Legs)</h3>
-                <p>
-                    Angles with unequal legs for specialized bracing and construction detailing.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Cold-Formed Angles (Unequal Legs)</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation (Leg1×Leg2×Thickness mm)</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>50×30×1.6</td><td>1.8</td></tr>
-                        <tr><td>65×50×1.6</td><td>2.4</td></tr>
-                        <tr><td>75×50×2.0</td><td>3.2</td></tr>
-                        <tr><td>100×50×2.0</td><td>4.0</td></tr>
-                        <tr><td>100×65×2.5</td><td>5.2</td></tr>
-                        <tr><td>125×75×2.5</td><td>6.6</td></tr>
-                        <tr><td>150×100×3.0</td><td>9.8</td></tr>
-                    </tbody>
-                </table>
+            <section class="card" style="background-color: #9370db; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: Lipped angles">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Lipped angles</span>
+                </button>
+                <div class="card_body" id="lipped-angles">
+                    <h3>Lipped Angles</h3>
+                    <p>
+                        Angles with lips on the flanges for extra stiffness, used in lightweight framing systems.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Lipped Angles (Cold-Formed Sections)</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation (Leg×Leg×Lip×Thickness mm)</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>50×50×15×1.6</td><td>2.4</td></tr>
+                            <tr><td>65×65×20×1.6</td><td>3.2</td></tr>
+                            <tr><td>75×75×20×1.6</td><td>3.8</td></tr>
+                            <tr><td>75×75×20×2.0</td><td>4.7</td></tr>
+                            <tr><td>100×100×20×2.0</td><td>6.4</td></tr>
+                            <tr><td>100×100×20×2.5</td><td>7.9</td></tr>
+                            <tr><td>125×125×20×2.5</td><td>10.0</td></tr>
+                            <tr><td>150×150×20×3.0</td><td>14.3</td></tr>
+                        </tbody>
+                    </table>
 
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
-                </p>
-            </div>
-        </section>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
+                    </p>
+                </div>
+            </section>
 
-        <section class="card" style="background-color: #d3d3d3; color: #222;">
-            <button class="card-header" aria-label="Expand or collapse card: Hollow section square">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Hollow section square</span>
-            </button>
-            <div class="card_body" id="hollow-section-square">
-                <h3>Hollow Sections Square</h3>
-                <p>
-                    Square hollow sections offer high torsional rigidity and clean lines for columns, frames, and modern architecture.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Hollow Sections – Square (SHS)</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation (Size×Thickness mm)</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>25×25×2.0</td><td>2.0</td></tr>
-                        <tr><td>40×40×2.5</td><td>3.8</td></tr>
-                        <tr><td>50×50×2.5</td><td>4.8</td></tr>
-                        <tr><td>65×65×3.0</td><td>7.1</td></tr>
-                        <tr><td>75×75×3.0</td><td>8.3</td></tr>
-                        <tr><td>100×100×4.0</td><td>13.2</td></tr>
-                        <tr><td>125×125×4.0</td><td>16.8</td></tr>
-                        <tr><td>150×150×5.0</td><td>24.5</td></tr>
-                    </tbody>
-                </table>
+            <section class="card" style="background-color: #8b008b; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: Cold formed channels">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Cold formed channels</span>
+                </button>
+                <div class="card_body" id="cold-formed-channels">
+                    <h3>Cold formed channels</h3>
+                    <p>
+                        Lightweight, precise channels formed at room temperature for wall framing and purlins.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Cold-Formed Channels</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation (Depth×Width×Thickness mm)</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>75×35×1.6</td><td>1.9</td></tr>
+                            <tr><td>100×50×1.6</td><td>2.7</td></tr>
+                            <tr><td>125×50×1.6</td><td>3.3</td></tr>
+                            <tr><td>150×50×1.6</td><td>3.9</td></tr>
+                            <tr><td>150×64×2.0</td><td>5.2</td></tr>
+                            <tr><td>200×75×2.5</td><td>8.4</td></tr>
+                            <tr><td>200×75×3.0</td><td>9.9</td></tr>
+                            <tr><td>250×75×2.5</td><td>9.8</td></tr>
+                            <tr><td>250×75×3.0</td><td>11.8</td></tr>
+                            <tr><td>300×100×3.0</td><td>15.7</td></tr>
+                        </tbody>
+                    </table>
 
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
-                </p>
-            </div>
-        </section>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
+                    </p>
+                </div>
+            </section>
 
-        <section class="card" style="background-color: #a9a9a9; color: #222;">
-            <button class="card-header" aria-label="Expand or collapse card: Hollow section round">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Hollow Section Round</span>
-            </button>
-            <div class="card_body" id="hollow-section-round">
-                <h3>Hollow Section Round</h3>
-                <p>
-                    Circular hollow sections provide uniform strength in all directions for poles, columns, and frames.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Hollow Sections – Round (CHS)</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation (Diameter×Thickness mm)</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>25×2.0</td><td>1.5</td></tr>
-                        <tr><td>32×2.0</td><td>2.0</td></tr>
-                        <tr><td>40×2.5</td><td>3.0</td></tr>
-                        <tr><td>50×2.5</td><td>3.8</td></tr>
-                        <tr><td>65×3.0</td><td>5.9</td></tr>
-                        <tr><td>80×3.0</td><td>7.3</td></tr>
-                        <tr><td>100×4.0</td><td>11.2</td></tr>
-                        <tr><td>125×4.0</td><td>14.1</td></tr>
-                        <tr><td>150×5.0</td><td>21.5</td></tr>
-                    </tbody>
-                </table>
+            <section class="card" style="background-color: #8b4513; color: #222;">
+                <button class="card-header" aria-label="Expand or collapse card: Tops hats">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Top hats</span>
+                </button>
+                <div class="card_body" id="top-hats">
+                    <h3>Top hats</h3>
+                    <p>
+                        Top hat sections provide rigid profiles for ceiling, wall systems, or light support frames.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Top Hats (Cold-Formed Sections)</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation (Depth×Width×Flange×Thickness mm)</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>50×35×15×1.2</td><td>1.5</td></tr>
+                            <tr><td>75×35×15×1.2</td><td>1.9</td></tr>
+                            <tr><td>100×35×15×1.2</td><td>2.3</td></tr>
+                            <tr><td>100×50×20×1.6</td><td>3.2</td></tr>
+                            <tr><td>125×50×20×1.6</td><td>3.8</td></tr>
+                            <tr><td>150×50×20×1.6</td><td>4.4</td></tr>
+                            <tr><td>150×64×20×2.0</td><td>5.6</td></tr>
+                            <tr><td>200×75×20×2.5</td><td>8.7</td></tr>
+                        </tbody>
+                    </table>
 
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
-                </p>
-            </div>
-        </section>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
+                    </p>
+                        
+                </div>
+            </section>
 
-        <section class="card" style="background-color: #696969; color: #222;">
-            <button class="card-header" aria-label="Expand or collapse card: Hollow section rectangular">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Hollow Section Rectangular</span>
-            </button>
-            <div class="card_body" id="hollow-section-rectangular">
-                <h3>Hollow sections Rectangular</h3>
-                <p>
-                    Rectangular hollow sections combine strength with ease of connection for structural frames and supports.
-                </p>
-                
-                <h4>Typical Mass per Metre</h4>
-                <table>
-                    <caption>Hollow Sections – Rectangular (RHS)</caption>
-                    <thead>
-                        <tr>
-                        <th>Designation (Height×Width×Thickness mm)</th>
-                        <th>Mass (kg/m)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>50×25×2.0</td><td>2.5</td></tr>
-                        <tr><td>75×50×2.0</td><td>3.8</td></tr>
-                        <tr><td>100×50×2.5</td><td>5.8</td></tr>
-                        <tr><td>125×75×3.0</td><td>9.2</td></tr>
-                        <tr><td>150×100×3.0</td><td>11.5</td></tr>
-                        <tr><td>200×100×4.0</td><td>17.3</td></tr>
-                        <tr><td>250×150×5.0</td><td>27.1</td></tr>
-                    </tbody>
-                </table>
+            <section class="card" style="background-color: #a0522d; color: #222;">
+                <button class="card-header" aria-label="Expand or collapse card: Cold formed angles equal">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Cold-Formed Angles Equal</span>
+                </button>
+                <div class="card_body" id="cold-formed-angles-equal">
+                    <h3>Cold-Formed Angles (Equal Legs)</h3>
+                    <p>
+                        Equal-sided cold-formed angles used for bracing and lightweight frames.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Cold-Formed Angles (Equal Legs)</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation (Leg×Leg×Thickness mm)</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>30×30×1.6</td><td>1.3</td></tr>
+                            <tr><td>40×40×1.6</td><td>1.8</td></tr>
+                            <tr><td>50×50×1.6</td><td>2.3</td></tr>
+                            <tr><td>50×50×2.0</td><td>2.8</td></tr>
+                            <tr><td>65×65×2.0</td><td>3.7</td></tr>
+                            <tr><td>75×75×2.5</td><td>5.2</td></tr>
+                            <tr><td>100×100×2.5</td><td>7.0</td></tr>
+                            <tr><td>100×100×3.0</td><td>8.3</td></tr>
+                        </tbody>
+                    </table>
 
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
-                </p>
-            </div>
-        </section>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
+                    </p>
+                </div>
+            </section>
 
-        <section class="card" style="background-color: #000; color: #fff;">
-            <button class="card-header" aria-label="Expand or collapse card: Bolts and nuts">
-                <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
-                <span>Bolts and nuts</span>
-            </button>
-            <div class="card_body" id="bolts-and-nuts">
-                <h3>Bolts and Rivets</h3>
-                <p>
-                    Standardized fasteners used to join structural sections securely, ensuring safe connections in construction.
-                </p>
-                
-                <h4>Typical Mass per 100 Pieces</h4>
-                <table>
-                    <caption>Bolts (Hex Head)</caption>
-                    <thead>
-                        <tr>
-                        <th>Diameter</th>
-                        <th>Mass per 100 pcs (kg)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>M6</td><td>2.4</td></tr>
-                        <tr><td>M8</td><td>4.4</td></tr>
-                        <tr><td>M10</td><td>7.5</td></tr>
-                        <tr><td>M12</td><td>10.9</td></tr>
-                        <tr><td>M16</td><td>19.8</td></tr>
-                        <tr><td>M20</td><td>31.2</td></tr>
-                        <tr><td>M24</td><td>45.0</td></tr>
-                    </tbody>
-                </table>
+            <section class="card" style="background-color: #d2b48c; color: #222;">
+                <button class="card-header" aria-label="Expand or collapse card: Cold formed angles unequal">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Cold-Formed Angles Unequal</span>
+                </button>
+                <div class="card_body" id="cold-formed-angles-unequal">
+                    <h3>Cold-Formed Angles (Unequal Legs)</h3>
+                    <p>
+                        Angles with unequal legs for specialized bracing and construction detailing.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Cold-Formed Angles (Unequal Legs)</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation (Leg1×Leg2×Thickness mm)</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>50×30×1.6</td><td>1.8</td></tr>
+                            <tr><td>65×50×1.6</td><td>2.4</td></tr>
+                            <tr><td>75×50×2.0</td><td>3.2</td></tr>
+                            <tr><td>100×50×2.0</td><td>4.0</td></tr>
+                            <tr><td>100×65×2.5</td><td>5.2</td></tr>
+                            <tr><td>125×75×2.5</td><td>6.6</td></tr>
+                            <tr><td>150×100×3.0</td><td>9.8</td></tr>
+                        </tbody>
+                    </table>
 
-                <table>
-                    <caption>Nuts (Hex)</caption>
-                    <thead>
-                        <tr>
-                        <th>Diameter</th>
-                        <th>Mass per 100 pcs (kg)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>M6</td><td>0.5</td></tr>
-                        <tr><td>M8</td><td>1.0</td></tr>
-                        <tr><td>M10</td><td>1.5</td></tr>
-                        <tr><td>M12</td><td>2.3</td></tr>
-                        <tr><td>M16</td><td>4.3</td></tr>
-                        <tr><td>M20</td><td>7.0</td></tr>
-                        <tr><td>M24</td><td>10.5</td></tr>
-                    </tbody>
-                </table>
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
+                    </p>
+                </div>
+            </section>
 
-                <p>
-                    <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
-                </p>
-            </div>
-        </section>
+            <section class="card" style="background-color: #d3d3d3; color: #222;">
+                <button class="card-header" aria-label="Expand or collapse card: Hollow section square">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Hollow section square</span>
+                </button>
+                <div class="card_body" id="hollow-section-square">
+                    <h3>Hollow Sections Square</h3>
+                    <p>
+                        Square hollow sections offer high torsional rigidity and clean lines for columns, frames, and modern architecture.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Hollow Sections – Square (SHS)</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation (Size×Thickness mm)</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>25×25×2.0</td><td>2.0</td></tr>
+                            <tr><td>40×40×2.5</td><td>3.8</td></tr>
+                            <tr><td>50×50×2.5</td><td>4.8</td></tr>
+                            <tr><td>65×65×3.0</td><td>7.1</td></tr>
+                            <tr><td>75×75×3.0</td><td>8.3</td></tr>
+                            <tr><td>100×100×4.0</td><td>13.2</td></tr>
+                            <tr><td>125×125×4.0</td><td>16.8</td></tr>
+                            <tr><td>150×150×5.0</td><td>24.5</td></tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
+                    </p>
+                </div>
+            </section>
+
+            <section class="card" style="background-color: #a9a9a9; color: #222;">
+                <button class="card-header" aria-label="Expand or collapse card: Hollow section round">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Hollow Section Round</span>
+                </button>
+                <div class="card_body" id="hollow-section-round">
+                    <h3>Hollow Section Round</h3>
+                    <p>
+                        Circular hollow sections provide uniform strength in all directions for poles, columns, and frames.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Hollow Sections – Round (CHS)</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation (Diameter×Thickness mm)</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>25×2.0</td><td>1.5</td></tr>
+                            <tr><td>32×2.0</td><td>2.0</td></tr>
+                            <tr><td>40×2.5</td><td>3.0</td></tr>
+                            <tr><td>50×2.5</td><td>3.8</td></tr>
+                            <tr><td>65×3.0</td><td>5.9</td></tr>
+                            <tr><td>80×3.0</td><td>7.3</td></tr>
+                            <tr><td>100×4.0</td><td>11.2</td></tr>
+                            <tr><td>125×4.0</td><td>14.1</td></tr>
+                            <tr><td>150×5.0</td><td>21.5</td></tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
+                    </p>
+                </div>
+            </section>
+
+            <section class="card" style="background-color: #696969; color: #222;">
+                <button class="card-header" aria-label="Expand or collapse card: Hollow section rectangular">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Hollow Section Rectangular</span>
+                </button>
+                <div class="card_body" id="hollow-section-rectangular">
+                    <h3>Hollow sections Rectangular</h3>
+                    <p>
+                        Rectangular hollow sections combine strength with ease of connection for structural frames and supports.
+                    </p>
+                    
+                    <h4>Typical Mass per Metre</h4>
+                    <table>
+                        <caption>Hollow Sections – Rectangular (RHS)</caption>
+                        <thead>
+                            <tr>
+                            <th>Designation (Height×Width×Thickness mm)</th>
+                            <th>Mass (kg/m)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>50×25×2.0</td><td>2.5</td></tr>
+                            <tr><td>75×50×2.0</td><td>3.8</td></tr>
+                            <tr><td>100×50×2.5</td><td>5.8</td></tr>
+                            <tr><td>125×75×3.0</td><td>9.2</td></tr>
+                            <tr><td>150×100×3.0</td><td>11.5</td></tr>
+                            <tr><td>200×100×4.0</td><td>17.3</td></tr>
+                            <tr><td>250×150×5.0</td><td>27.1</td></tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
+                    </p>
+                </div>
+            </section>
+
+            <section class="card" style="background-color: #000; color: #fff;">
+                <button class="card-header" aria-label="Expand or collapse card: Bolts and nuts">
+                    <svg><path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8z"/><path d="M13.293 7.293 8.586 12l4.707 4.707 1.414-1.414L11.414 12l3.293-3.293-1.414-1.414z"/></svg>
+                    <span>Bolts and nuts</span>
+                </button>
+                <div class="card_body" id="bolts-and-nuts">
+                    <h3>Bolts and Rivets</h3>
+                    <p>
+                        Standardized fasteners used to join structural sections securely, ensuring safe connections in construction.
+                    </p>
+                    
+                    <h4>Typical Mass per 100 Pieces</h4>
+                    <table>
+                        <caption>Bolts (Hex Head)</caption>
+                        <thead>
+                            <tr>
+                            <th>Diameter</th>
+                            <th>Mass per 100 pcs (kg)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>M6</td><td>2.4</td></tr>
+                            <tr><td>M8</td><td>4.4</td></tr>
+                            <tr><td>M10</td><td>7.5</td></tr>
+                            <tr><td>M12</td><td>10.9</td></tr>
+                            <tr><td>M16</td><td>19.8</td></tr>
+                            <tr><td>M20</td><td>31.2</td></tr>
+                            <tr><td>M24</td><td>45.0</td></tr>
+                        </tbody>
+                    </table>
+
+                    <table>
+                        <caption>Nuts (Hex)</caption>
+                        <thead>
+                            <tr>
+                            <th>Diameter</th>
+                            <th>Mass per 100 pcs (kg)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>M6</td><td>0.5</td></tr>
+                            <tr><td>M8</td><td>1.0</td></tr>
+                            <tr><td>M10</td><td>1.5</td></tr>
+                            <tr><td>M12</td><td>2.3</td></tr>
+                            <tr><td>M16</td><td>4.3</td></tr>
+                            <tr><td>M20</td><td>7.0</td></tr>
+                            <tr><td>M24</td><td>10.5</td></tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
+                    </p>
+                </div>
+            </section>
+        </div>
     </div>
-
     <script>
         const densities = {
             "Acetal": 1410,        // kg/m³
