@@ -124,7 +124,8 @@ nav .menu div:hover {
 #index h1,
 #about h1,
 #terms h1,
-#privacy h1 {
+#privacy h1,
+#contact h1 {
   font-family: "arvo", cursive;
   font-size: 3rem;
   margin-bottom: 1rem;
@@ -377,6 +378,10 @@ tr:nth-child(odd) {
     writing-mode: horizontal-tb;
     transform: none;
   }
+
+  .contact {
+    width: 100vw;
+  }
 }
 
 .contact {
@@ -385,16 +390,9 @@ tr:nth-child(odd) {
   justify-content: flex-end;
   width: var(--cards-size);
   height: 100vh;
-  overflow: hidden;
   padding: 2rem;
   background-color: var(--home-bg);
   color: #ebe8e8;
-}
-
-.contact h1 {
-  font-size: 4rem;
-  margin-bottom: 2rem;
-  text-transform: uppercase;
 }
 
 .contact h5 {
@@ -441,10 +439,15 @@ tr:nth-child(odd) {
   cursor: pointer;
 }
 
+#signup-message {
+  margin-bottom: 1rem;
+}
+
 .contact ul {
   display: flex;
-  flex-direction: row;
-  margin-top: 1rem;
+  gap: 1rem;
+  justify-content: flex-start; /* Align icons to the left */
+  padding-left: 0;
 }
 
 .contact ul li {
@@ -452,17 +455,19 @@ tr:nth-child(odd) {
 }
 
 .contact ul li a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
   text-decoration: none;
+  fill: #fff;
 }
 
-.contact svg {
-  height: 50px;
-  width: 50px;
-  margin-bottom: 1rem;
-  fill: #fff;
+.contact ul li a:hover {
+  opacity: 0.7;
+}
+
+.contact ul li a svg {
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  border-radius: 50%;
+  fill: #000;
+  display: block;
 }
