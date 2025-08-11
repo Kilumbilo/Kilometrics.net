@@ -1,0 +1,24 @@
+User-agent: *
+# Allow all main content
+Allow: /
+
+# Disallow admin or backend areas
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+
+# Disallow server scripts or backend code
+Disallow: /*.php$
+Disallow: /*.cgi$
+Disallow: /*.pl$
+Disallow: /*.asp$
+
+# Disallow non-essential files and folders
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /assets/js/
+Disallow: /assets/css/
+
+# Sitemap location
+Sitemap: https://kilometrics.net/sitemap.xml
