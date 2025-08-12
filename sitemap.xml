@@ -11,15 +11,15 @@
 
   <!-- About page -->
   <url>
-    <loc>https://kilometrics.net/about</loc>
+    <loc>https://kilometrics.net/about/about.html</loc>
     <lastmod>2025-08-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Contact page -->
+  <!-- Index page -->
   <url>
-    <loc>https://kilometrics.net/contact</loc>
+    <loc>https://kilometrics.net/glossary/glossary.html</loc>
     <lastmod>2025-08-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -27,7 +27,7 @@
 
   <!-- Terms page -->
   <url>
-    <loc>https://kilometrics.net/terms</loc>
+    <loc>https://kilometrics.net/terms/terms.html</loc>
     <lastmod>2025-08-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
@@ -35,7 +35,7 @@
 
   <!-- Privacy page -->
   <url>
-    <loc>https://kilometrics.net/privacy</loc>
+    <loc>https://kilometrics.net/privacy/privacy.html</loc>
     <lastmod>2025-08-11</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
