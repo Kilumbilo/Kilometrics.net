@@ -142,3 +142,26 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
         'Thank you for signing up, ' + email + '!';
     this.reset();
 });
+
+// sending form data to Google Script Web App
+document.getElementById("signup-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    
+    var email = document.getElementById("signup-email").value;
+    var url = "https://script.google.com/macros/s/AKfycbxlUyCoC9ev6eBHD1WC4r94gh9WpepVXf1e2KfL7px2Oc_ps3TAIvcAqElLp7_rXPc/exec"; // Replace with your Google Script Web App URL
+    
+    fetch(url, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: "email=" + encodeURIComponent(email)
+    })
+    .then(() => {
+        alert("Thanks for signing up!");
+        document.getElementById("signup-form").reset();
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        alert("There was a problem. Please try again later.");
+    });
+});
