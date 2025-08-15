@@ -144,24 +144,26 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
 });
 
 // sending form data to Google Script Web App
-document.getElementById("signup-form").addEventListener("submit", function(e) {
-    e.preventDefault();
+
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("signup-form");
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    const email = document.getElementById("signup-email").value;
     
-    var email = document.getElementById("signup-email").value;
-    var url = "https://script.google.com/macros/s/AKfycbxlUyCoC9ev6eBHD1WC4r94gh9WpepVXf1e2KfL7px2Oc_ps3TAIvcAqElLp7_rXPc/exec"; // Replace with your Google Script Web App URL
-    
-    fetch(url, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: "email=" + encodeURIComponent(email)
-    })
-    .then(() => {
-        alert("Thanks for signing up!");
-        document.getElementById("signup-form").reset();
-    })
-    .catch(err => {
-        console.error("Error:", err);
-        alert("There was a problem. Please try again later.");
+    fetch("https://script.google.com/macros/s/AKfycbw_qaooSjJzruMKoDTgt5YjyVfmNKntSnUmK5jDWtU/dev", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email: email })
+    }).then(() => {
+      alert("Thank you! Your email has been saved.");
+      form.reset();
+    }).catch(err => {
+      alert("Error saving your email.");
+      console.error(err);
     });
+  });
 });
