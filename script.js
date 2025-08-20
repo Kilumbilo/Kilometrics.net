@@ -167,3 +167,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
+
+// Back to top button functionality
+document.getElementById('backToTop').onclick = function() {
+  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+};

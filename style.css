@@ -54,7 +54,6 @@ nav {
   padding: 1.5rem 0;
   z-index: 10;
   color: #fff;
-  
 }
 
 nav .logo {
@@ -83,7 +82,7 @@ nav .menu div:hover {
   display: flex;
   flex-direction: row;
   height: 100vh;
-  overflow: auto;  
+  overflow: auto;
 }
 
 .section-container {
@@ -96,7 +95,7 @@ nav .menu div:hover {
   scroll-behavior: smooth;
 }
 
-.section-container::-webkit-scrollbar {
+/* .section-container::-webkit-scrollbar {
   width: 7px;
   background: transparent;
 }
@@ -109,15 +108,15 @@ nav .menu div:hover {
 
 .section-container::-webkit-scrollbar-thumb:hover {
   background: #888;
-}
+} */
 
 #home {
   display: flex;
   flex-direction: column;
   padding: 2rem;
 
-	height: 100vh;
-	justify-content: space-between;
+  height: 100vh;
+  justify-content: space-between;
 }
 
 #home h1,
@@ -180,7 +179,7 @@ nav .menu div:hover {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
-/* padding: 0 clamp(1rem, 5vw, 2rem); */
+  /* padding: 0 clamp(1rem, 5vw, 2rem); */
   max-width: var(--cards-size);
   margin: 0 auto;
   margin-bottom: 2rem;
@@ -201,9 +200,9 @@ nav .menu div:hover {
 }
 
 .grid-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    background-color: var(--light-color);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: var(--light-color);
 }
 
 footer {
@@ -247,7 +246,7 @@ footer li,
   overflow: auto;
 }
 
-.card_header{
+.card_header {
   display: flex;
   flex-direction: row;
   height: 100vh;
@@ -260,7 +259,7 @@ footer li,
   writing-mode: vertical-rl;
   transform: rotate(180deg);
 
-  box-shadow: 4px 0 4px rgba(0,0,0,0.1);
+  box-shadow: 4px 0 4px rgba(0, 0, 0, 0.1);
   color: #fff;
 }
 
@@ -329,7 +328,7 @@ tr:nth-child(odd) {
   background-color: #e8e9eb;
 }
 
-.contact {
+#contact {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -340,27 +339,27 @@ tr:nth-child(odd) {
   color: #ebe8e8;
 }
 
-.contact h5 {
+#contact h5 {
   font-size: 0.7rem;
   font-weight: 200;
   margin-bottom: 1rem;
   font-style: italic;
 }
 
-.contact p {
+#contact p {
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1rem;
 }
 
-.contact form {
+#contact form {
   display: flex;
   flex-direction: row;
   margin-bottom: 1rem;
   gap: 1rem;
 }
 
-.contact form input[type="email"] {
+#contact form input[type="email"] {
   width: 80%;
   padding: 5px;
   border: none;
@@ -369,12 +368,12 @@ tr:nth-child(odd) {
   background-color: transparent;
 }
 
-.contact form input[type="email"]:focus {
+#contact form input[type="email"]:focus {
   outline: none;
   border-bottom: 1px solid #fff;
 }
 
-.contact form button {
+#contact form button {
   width: 20%;
   padding: 5px;
   background-color: #888;
@@ -388,27 +387,27 @@ tr:nth-child(odd) {
   margin-bottom: 1rem;
 }
 
-.contact ul {
+#contact ul {
   display: flex;
   gap: 1rem;
   justify-content: flex-start; /* Align icons to the left */
   padding-left: 0;
 }
 
-.contact ul li {
+#contact ul li {
   list-style: none;
 }
 
-.contact ul li a {
+#contact ul li a {
   text-decoration: none;
   fill: #fff;
 }
 
-.contact ul li a:hover {
+#contact ul li a:hover {
   opacity: 0.7;
 }
 
-.contact ul li a svg {
+#contact ul li a svg {
   width: 25px;
   height: 25px;
   background-color: #fff;
@@ -417,6 +416,37 @@ tr:nth-child(odd) {
   display: block;
 }
 
+.footerbottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+#backToTop {
+  background: var(--home-bg);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  padding: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#backToTop:hover {
+  background: #222;
+  transform: translateY(-4px) scale(1.08);
+}
+
+#backToTop svg {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+  display: block;
+}
 
 @media (max-width: 768px) {
   body {
@@ -469,12 +499,16 @@ tr:nth-child(odd) {
     transform: none;
   }
 
-  .contact,
+  #contact,
   .card_content {
     width: 100vw;
   }
 
   .card .card_content footer {
-    display: none; 
+    display: none;
+  }
+
+  #backToTop {
+    rotate: 90deg; /* Rotate the button to point upwards */
   }
 }
