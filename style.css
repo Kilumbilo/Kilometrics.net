@@ -168,10 +168,6 @@ nav .menu div:hover {
   margin-bottom: 2rem;
 }
 
-.adsense {
-  margin-bottom: 2rem;
-}
-
 .calculator button {
   background-color: var(--menu-grey);
   color: #fff;
@@ -213,6 +209,7 @@ nav .menu div:hover {
 footer {
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 footer .footer-links {
@@ -286,6 +283,7 @@ footer li,
   /* scrollbar-width: hidden; */
   transition: display 0.4s ease-in-out;
   margin: auto;
+  scrollbar-width: none;
 }
 
 .card_content main {
@@ -329,59 +327,6 @@ footer li,
 
 tr:nth-child(odd) {
   background-color: #e8e9eb;
-}
-
-@media (max-width: 768px) {
-  body {
-    flex-direction: column;
-    scroll-behavior: smooth;
-  }
-
-  nav {
-    width: 100vw;
-    height: var(--card-nav-size);
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-  }
-
-  nav .menu {
-    flex-direction: row;
-    transform: none;
-    writing-mode: horizontal-tb;
-  }
-
-  .main-wrapper {
-    flex-direction: column;
-    height: auto; /* Allow height to grow with content */
-    margin: auto;
-  }
-
-  .page {
-    width: 100vw;
-    padding: 1rem;
-  }
-
-  .cards {
-    flex-direction: column;
-  }
-
-  .card {
-    flex-direction: column;
-    height: auto; /* Allow height to grow with content */
-  }
-
-  .card_header {
-    width: 100vw;
-    height: var(--card-nav-size);
-    flex-direction: row;
-    writing-mode: horizontal-tb;
-    transform: none;
-  }
-
-  .contact {
-    width: 100vw;
-  }
 }
 
 .contact {
@@ -470,4 +415,66 @@ tr:nth-child(odd) {
   border-radius: 50%;
   fill: #000;
   display: block;
+}
+
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    scroll-behavior: smooth;
+  }
+
+  nav {
+    width: 100vw;
+    height: var(--card-nav-size);
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+  }
+
+  nav .menu {
+    flex-direction: row;
+    transform: none;
+    writing-mode: horizontal-tb;
+  }
+
+  .main-wrapper {
+    flex-direction: column;
+    height: auto; /* Allow height to grow with content */
+    margin: auto;
+  }
+
+  .page {
+    width: 100vw;
+  }
+
+  #home {
+    height: auto; /* Allow height to grow with content */
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+
+  .card {
+    flex-direction: column;
+    height: auto; /* Allow height to grow with content */
+  }
+
+  .card_header {
+    width: 100vw;
+    height: var(--card-nav-size);
+    flex-direction: row;
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  .contact,
+  .card_content {
+    width: 100vw;
+  }
+
+  .card .card_content footer {
+    display: none; 
+  }
 }
