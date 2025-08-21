@@ -416,7 +416,7 @@ tr:nth-child(odd) {
   display: block;
 }
 
-.footerbottom {
+.footerBottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -502,6 +502,10 @@ tr:nth-child(odd) {
   #contact,
   .card_content {
     width: 100vw;
+  }
+
+  .card_content {
+    height: auto; /* Allow height to grow with content */
   }
 
   .card .card_content footer {
