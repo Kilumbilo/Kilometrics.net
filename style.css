@@ -279,10 +279,9 @@ footer li,
   flex-direction: column;
   justify-content: space-between;
   overflow: scroll;
-  /* scrollbar-width: hidden; */
+  scrollbar-width: none;
   transition: display 0.4s ease-in-out;
   margin: auto;
-  scrollbar-width: none;
 }
 
 .card_content main {
@@ -480,6 +479,10 @@ tr:nth-child(odd) {
 
   #home {
     height: auto; /* Allow height to grow with content */
+  }
+
+  #home .calculator {
+  padding: 1rem;
   }
 
   .cards {
