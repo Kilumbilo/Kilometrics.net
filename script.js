@@ -143,20 +143,18 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
     this.reset();
 });
 
-// sending form data to Google Script Web App
+// sending form data to Google Script Web App - kilometrics1@gmail.com
 
 document.addEventListener("DOMContentLoaded", function() {
   const form = document.getElementById("signup-form");
   form.addEventListener("submit", function(event) {
     event.preventDefault();
     const email = document.getElementById("signup-email").value;
-    
-    fetch("https://script.google.com/macros/s/AKfycbw_qaooSjJzruMKoDTgt5YjyVfmNKntSnUmK5jDWtU/dev", {
+
+    fetch("https://script.google.com/macros/s/AKfycbyLNgwxfgm4UrxVZdWaGGZ1jrjP-3_TG48JKjcVDUMrnUjlFJKxKCbnAHafSpYbNhmEtw/exec", {
       method: "POST",
       mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: email })
     }).then(() => {
       alert("Thank you! Your email has been saved.");
@@ -167,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
+
 
 // Back to top button functionality
 document.getElementById('backToTop').onclick = function() {
