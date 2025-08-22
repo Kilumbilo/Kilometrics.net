@@ -146,24 +146,27 @@ document.getElementById('signup-form').addEventListener('submit', function(e) {
 // sending form data to Google Script Web App - kilometrics1@gmail.com
 
 document.addEventListener("DOMContentLoaded", function() {
+  // Get the form if it exists on the page
   const form = document.getElementById("signup-form");
-  form.addEventListener("submit", function(event) {
-    event.preventDefault();
-    const email = document.getElementById("signup-email").value;
+  if (form) {
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const email = document.getElementById("signup-email").value;
 
-    fetch("https://script.google.com/macros/s/AKfycbyLNgwxfgm4UrxVZdWaGGZ1jrjP-3_TG48JKjcVDUMrnUjlFJKxKCbnAHafSpYbNhmEtw/exec", {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email })
-    }).then(() => {
-      alert("Thank you! Your email has been saved.");
-      form.reset();
-    }).catch(err => {
-      alert("Error saving your email.");
-      console.error(err);
+      fetch("https://script.google.com/macros/s/AKfycbyLNgwxfgm4UrxVZdWaGGZ1jrjP-3_TG48JKjcVDUMrnUjlFJKxKCbnAHafSpYbNhmEtw/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email })
+      }).then(() => {
+        alert("Thank you! Your email has been saved.");
+        form.reset();
+      }).catch(err => {
+        alert("Error saving your email.");
+        console.error(err);
+      });
     });
-  });
+  }
 });
 
 
