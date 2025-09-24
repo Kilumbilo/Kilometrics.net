@@ -168,6 +168,29 @@ nav .menu div:hover {
   margin-bottom: 2rem;
 }
 
+
+.tabs-headers {
+  display: flex;
+}
+
+.tab-btn {
+  background: white;
+  border: none;
+  color: #000;
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: #fff;
+  color: #000;
+  font-weight: bold;
+}
+
 .calculator button {
   background-color: var(--menu-grey);
   color: #fff;

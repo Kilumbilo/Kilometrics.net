@@ -169,8 +169,112 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-
 // Back to top button functionality
 document.getElementById('backToTop').onclick = function() {
   window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
 };
+
+let dataset = {};
+
+fetch("dataset.json")
+  .then(res => res.json())
+  .then(data => {
+    dataset = data;
+    initCalculator();
+    initTables();
+  });
+
+// CALCULATOR SETUP
+function initCalculator() {
+  const shapeSelect = document.getElementById("shape");
+  const designationSelect = document.getElementById("designation");
+  const imgEl = document.getElementById("shapeImg");
+  const resultKg = document.getElementById("resultKg");
+
+  // Populate Shape dropdown
+  Object.keys(dataset).forEach(shape => {
+    const opt = document.createElement("option");
+    opt.value = shape;
+    opt.textContent = shape;
+    shapeSelect.appendChild(opt);
+  });
+
+  // When shape changes
+  shapeSelect.addEventListener("change", () => {
+    const shape = shapeSelect.value;
+    designationSelect.innerHTML = '<option value="">-- Select Designation --</option>';
+    resultKg.textContent = "";
+    imgEl.style.display = "none";
+
+    if (shape && dataset[shape]) {
+      // Show image
+      imgEl.src = dataset[shape].image;
+      imgEl.style.display = "block";
+
+      // Populate designations
+      dataset[shape].designations.forEach(d => {
+        const opt = document.createElement("option");
+        opt.value = d.name;
+        opt.textContent = d.name;
+        designationSelect.appendChild(opt);
+      });
+    }
+  });
+
+  // When designation changes
+  designationSelect.addEventListener("change", () => {
+    const shape = shapeSelect.value;
+    const designation = designationSelect.value;
+
+    if (shape && designation) {
+      const selected = dataset[shape].designations.find(d => d.name === designation);
+      if (selected) {
+        resultKg.textContent = selected.weight + " kg/m";
+      }
+    }
+  });
+}
+
+// TABLES SETUP
+function initTables() {
+  const container = document.getElementById("tablesContainer");
+  container.innerHTML = ""; // clear first
+
+  Object.keys(dataset).forEach(shape => {
+    const section = dataset[shape];
+
+    // Create a table
+    const table = document.createElement("table");
+    table.border = "1";
+    table.style.margin = "20px 0";
+    table.style.borderCollapse = "collapse";
+
+    // Add caption
+    const caption = document.createElement("caption");
+    caption.textContent = shape;
+    caption.style.fontWeight = "bold";
+    caption.style.marginBottom = "5px";
+    table.appendChild(caption);
+
+    // Add header
+    const thead = document.createElement("thead");
+    thead.innerHTML = `
+      <tr>
+        <th>Designation</th>
+        <th>Weight (kg/m)</th>
+      </tr>
+    `;
+    table.appendChild(thead);
+
+    // Add body
+    const tbody = document.createElement("tbody");
+    section.designations.forEach(d => {
+      const row = document.createElement("tr");
+      row.innerHTML = `<td>${d.name}</td><td>${d.weight}</td>`;
+      tbody.appendChild(row);
+    });
+    table.appendChild(tbody);
+
+    container.appendChild(table);
+  });
+}

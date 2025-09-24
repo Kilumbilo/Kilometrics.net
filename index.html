@@ -48,74 +48,174 @@
                         <h1>Kilometrics</h1>
                         <h2>Steel & Material Weight Calculator</h2>
                         <p>Your online steel weight calculator and material mass reference. Instantly calculate weights for beams, bars, plates, and profiles, or browse standard tables with typical density values for steel, aluminum, cast iron, and more.</p> 
-                        <div class="calculator">
-                            <label for="material">Material</label>
-                            <div>
-                                <select id="material">
-                                    <option>Mild Steel</option>
-                                    <option>Aluminium</option>
-                                    <option>Cast Iron</option>
-                                    <option>Acetal</option>
-                                </select>
-                            <small>Typical density values are used.</small>
+                        <div class="calculator-tabs">
+                            <div class="tabs-headers">
+                                <button class="tab-btn active" data-tab="flats">Flats</button>
+                                <button class="tab-btn" data-tab="bars">Bars</button>
+                                <button class="tab-btn" data-tab="members">Steel Members</button>
                             </div>
-                            <div></div>
+                            <div class="tab-content active" id="tab-flats">
+                                <div class="calculator">
+                                    <label for="material">Material</label>
+                                    <div>
+                                        <select id="material">
+                                            <option>Mild Steel</option>
+                                            <option>Aluminium</option>
+                                            <option>Cast Iron</option>
+                                            <option>Acetal</option>
+                                        </select>
+                                    <small>Typical density values are used.</small>
+                                    </div>
+                                    <div></div>
 
-                            <label for="form">Form</label>
-                            <select id="form">
-                                <option>Flat/Sheet</option>
-                                <option>Round Bar</option>
-                                <option>Square Bar</option>
-                                <option>Rectangular Bar</option>
-                                <option>Hex Bar</option>
-                            </select>
-                            <div></div>
+                                    <label for="form">Form</label>
+                                    <select id="form">
+                                        <option>Flat/Sheet</option>
+                                        <!-- <option>Round Bar</option>
+                                        <option>Square Bar</option>
+                                        <option>Rectangular Bar</option>
+                                        <option>Hex Bar</option> -->
+                                    </select>
+                                    <div></div>
 
-                            <label for="width">Width</label>
-                            <input type="number" id="width" />
-                            <select>
-                                <option>mm</option>
-                                <option>cm</option>
-                                <option>m</option>
-                                <option>in</option>
-                                <option>ft</option>
-                            </select>
+                                    <label for="width">Width</label>
+                                    <input type="number" id="width" />
+                                    <select>
+                                        <option>mm</option>
+                                        <option>cm</option>
+                                        <option>m</option>
+                                        <option>in</option>
+                                        <option>ft</option>
+                                    </select>
 
-                            <label for="depth">Depth</label>
-                            <input type="number" id="depth" />
-                            <select>
-                                <option>mm</option>
-                                <option>cm</option>
-                                <option>m</option>
-                                <option>in</option>
-                                <option>ft</option>
-                            </select>
+                                    <label for="depth">Depth</label>
+                                    <input type="number" id="depth" />
+                                    <select>
+                                        <option>mm</option>
+                                        <option>cm</option>
+                                        <option>m</option>
+                                        <option>in</option>
+                                        <option>ft</option>
+                                    </select>
 
-                            <label for="length">Length</label>
-                            <input type="number" id="length" />
-                            <select>
-                                <option>mm</option>
-                                <option>cm</option>
-                                <option>m</option>
-                                <option>in</option>
-                                <option>ft</option>
-                            </select>
+                                    <label for="length">Length</label>
+                                    <input type="number" id="length" />
+                                    <select>
+                                        <option>mm</option>
+                                        <option>cm</option>
+                                        <option>m</option>
+                                        <option>in</option>
+                                        <option>ft</option>
+                                    </select>
 
-                            <div></div>
-                            <button onclick="calculateMass()">Calculate</button>
-                            <div></div>
+                                    <div></div>
+                                    <button onclick="calculateMass()">Calculate</button>
+                                    <div></div>
 
-                            <label>Weight (kg)</label>
-                            <div id="resultKg"></div>
-                            <div></div>
-                            <label>Weight (t)</label>
-                            <div id="resultT"></div>
-                            <div></div>
-                            <label>Weight (lb)</label>
-                            <div id="resultLb"></div>
-                            <div></div>
+                                    <label>Weight (kg)</label>
+                                    <div id="resultKg"></div>
+                                    <div></div>
+                                    <label>Weight (t)</label>
+                                    <div id="resultT"></div>
+                                    <div></div>
+                                    <label>Weight (lb)</label>
+                                    <div id="resultLb"></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="tab-content" id="tab-bars">
+                                <div class="calculator">
+                                    <label for="material">Material</label>
+                                    <div>
+                                        <select id="material">
+                                            <option>Mild Steel</option>
+                                            <option>Aluminium</option>
+                                            <option>Cast Iron</option>
+                                            <option>Acetal</option>
+                                        </select>
+                                    <small>Typical density values are used.</small>
+                                    </div>
+                                    <div></div>
+
+                                    <label for="form">Form</label>
+                                    <select id="form">
+                                        <!-- <option>Flat/Sheet</option> -->
+                                        <option>Round Bar</option>
+                                        <option>Square Bar</option>
+                                        <option>Rectangular Bar</option>
+                                        <option>Hex Bar</option>
+                                    </select>
+                                    <div></div>
+
+                                    <label for="width">Width</label>
+                                    <input type="number" id="width" />
+                                    <select>
+                                        <option>mm</option>
+                                        <option>cm</option>
+                                        <option>m</option>
+                                        <option>in</option>
+                                        <option>ft</option>
+                                    </select>
+
+                                    <label for="depth">Depth</label>
+                                    <input type="number" id="depth" />
+                                    <select>
+                                        <option>mm</option>
+                                        <option>cm</option>
+                                        <option>m</option>
+                                        <option>in</option>
+                                        <option>ft</option>
+                                    </select>
+
+                                    <label for="length">Length</label>
+                                    <input type="number" id="length" />
+                                    <select>
+                                        <option>mm</option>
+                                        <option>cm</option>
+                                        <option>m</option>
+                                        <option>in</option>
+                                        <option>ft</option>
+                                    </select>
+
+                                    <div></div>
+                                    <button onclick="calculateMass()">Calculate</button>
+                                    <div></div>
+
+                                    <label>Weight (kg)</label>
+                                    <div id="resultKg"></div>
+                                    <div></div>
+                                    <label>Weight (t)</label>
+                                    <div id="resultT"></div>
+                                    <div></div>
+                                    <label>Weight (lb)</label>
+                                    <div id="resultLb"></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="tab-content" id="tab-members">
+                                <div class="calculator">
+                                    <label for="shape">Shape</label>
+                                    <select id="shape">
+                                        <option value="">-- Select Shape --</option>
+                                    </select>
+
+                                    <label for="designation">Designation</label>
+                                    <select id="designation">
+                                        <option value="">-- Select Designation --</option>
+                                    </select>
+
+                                    <label for="image">Image</label>
+                                    <div>
+                                        <img id="shapeImg" src="" alt="Shape Image" style="max-width:150px; display:none;">
+                                    </div>
+                                    
+                                    <label>Weight (kg/m)</label><label>(kg/m)</label>
+                                    <div id="resultKg"></div>
+                                </div>
+                            </div>
                         </div>
                     </header>
+
                     <p id="intro-description">Use the calculator above to estimate the mass of various steel and material forms, or browse our reference tables for standard weights.</p>
                 </main>
                 <footer>
