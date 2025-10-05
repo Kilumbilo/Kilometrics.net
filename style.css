@@ -155,20 +155,9 @@ nav .menu div:hover {
   margin-left: 2rem;
 }
 
-#home .calculator {
-  display: grid;
-  grid-template-columns: 0.9fr 0.5fr 0.1fr;
-  width: 400px;
-  gap: 0.2rem;
-
-  border: 2px solid white;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-}
-
 .tab {
+  display: flex;
+  justify-content: space-around;
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
@@ -176,13 +165,14 @@ nav .menu div:hover {
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
-  background-color: inherit;
-  float: left;
+  display: flex;
+  width: 100%;
+  justify-content: center;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 /* Change background color of buttons on hover */
@@ -198,13 +188,17 @@ nav .menu div:hover {
 /* Style the tab content */
 .tabcontent {
   display: none;
-  padding: 6px 12px;
+  padding: 1rem;
   border: 1px solid #ccc;
   border-top: none;
 }
 
 .tabcontent {
   animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+#flats_section {
+  background-color: yellow;
 }
 
 /* Go from zero to full opacity */
