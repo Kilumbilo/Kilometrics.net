@@ -168,30 +168,58 @@ nav .menu div:hover {
   margin-bottom: 2rem;
 }
 
-
-.tabs-headers {
-  display: flex;
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
 }
 
-.tab-btn {
-  background: white;
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
   border: none;
-  color: #000;
-  padding: 10px;
-  font-size: 1rem;
-  border: 2px solid #fff;
+  outline: none;
   cursor: pointer;
-  transition: background 0.2s;
+  padding: 14px 16px;
+  transition: 0.3s;
 }
 
-.tab-btn.active,
-.tab-btn:hover {
-  background: #fff;
-  color: #000;
-  font-weight: bold;
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
 }
 
-.calculator button {
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.tabcontent {
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.tabcontent h3 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin: 1rem auto;
+}
+
+.calc-btn {
   background-color: var(--menu-grey);
   color: #fff;
   padding: 0.5rem 1rem;
@@ -200,33 +228,8 @@ nav .menu div:hover {
   font-size: 1rem;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
-  /* padding: 0 clamp(1rem, 5vw, 2rem); */
-  max-width: var(--cards-size);
-  margin: 0 auto;
+.tabcontent {
   margin-bottom: 2rem;
-}
-
-.grid-item {
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 0.25rem;
-  box-shadow: var(--box-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  min-height: 0; /* Important for content overflow */
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.grid-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  background-color: var(--light-color);
 }
 
 footer {
