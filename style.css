@@ -161,6 +161,7 @@ nav .menu div:hover {
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -188,17 +189,64 @@ nav .menu div:hover {
 /* Style the tab content */
 .tabcontent {
   display: none;
-  padding: 1rem;
+  padding: 2rem;
   border: 1px solid #ccc;
   border-top: none;
+  border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .tabcontent {
   animation: fadeEffect 1s; /* Fading effect takes 1 second */
 }
 
-#flats_section {
-  background-color: yellow;
+.flats_sheets-material,
+.flats_sheets-width,
+.flats_sheets-depth,
+.flats_sheets-length,
+.solid_bars-material,
+.solid_bars-shape,
+.solid_bars-size,
+.solid_bars-length,
+.steel_section-form,
+.steel_section-section,
+.steel-section-image {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.flats_sheets-material label,
+.flats_sheets-width div,
+.flats_sheets-depth div,
+.flats_sheets-length div,
+.solid_bars-material label,
+.solid_bars-shape label,
+.solid_bars-size div,
+.solid_bars-length div,
+.steel_section-form label,
+.steel_section-section label {
+  margin-bottom: 0.5rem;
+}
+
+.input-field, .select-field {
+  width: 100%;
+  background-color: var(--background-light);
+  border: 1px solid #d1d5db; /* Neutral-300 equivalent */
+  border-radius: 0.5rem; /* lg */
+  padding: 0.5rem 0.75rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.select-unit{
+  background-color: var(--background-light);
+  border: 1px solid #d1d5db; /* Neutral-300 equivalent */
+  border-radius: 0.25rem; /* lg */
+  padding: 0.15rem 0.15rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 /* Go from zero to full opacity */
@@ -210,16 +258,53 @@ nav .menu div:hover {
 .tabcontent h3 {
   text-transform: uppercase;
   font-size: 1rem;
-  margin: 1rem auto;
+  margin-bottom: 0.5rem;
+}
+
+.tabcontent small {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #888;
 }
 
 .calc-btn {
+  width: 100%;
   background-color: var(--menu-grey);
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  margin: 1rem 0;
-  font-size: 1rem;
+  color: white;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  margin: 1rem 0 2rem 0;
+  transition: background-color 0.5s;
+}
+
+.steel_section-image img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 0.5rem 0 2rem 0;
+}
+
+.flats_sheets-result span,
+.solid_bars-result span,
+.steel_section-result {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: #ccc 1px solid;
+  padding-top: 0.5rem;
+  width: 60%;
+}
+
+.flats_sheets-result div,
+.solid_bars-result div,
+.steel_section-result div {
+  font-weight: 700;
 }
 
 .tabcontent {
