@@ -6,7 +6,13 @@
 
 :root {
   --menu-grey: #292929;
-  --home-bg: #000;
+  --background-black: #000;
+  --background-light: #f9f9f9;
+  
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --text-white: #ffffff;
+
 
   --card-nav-size: 80px;
   --cards-size: 600px;
@@ -15,12 +21,8 @@
 
 html,
 body {
-  /* height: 100%; */
   font-family: "Arvo", serif;
   display: flex;
-  /* color: #fff; */
-  /* font-weight: 400; */
-  /* overflow: hidden; */
   scroll-behavior: smooth;
   scrollbar-width: none;
 }
@@ -54,7 +56,7 @@ nav {
   align-items: center;
   padding: 1.5rem 0;
   z-index: 10;
-  color: #fff;
+  color: var(--text-white);
 }
 
 nav .logo {
@@ -390,7 +392,7 @@ footer li,
   margin: auto;
 }
 
-.card_content main {
+.card_content section {
   text-align: center;
 }
 
@@ -440,7 +442,7 @@ tr:nth-child(odd) {
   width: var(--cards-size);
   height: 100vh;
   padding: 2rem;
-  background-color: var(--home-bg);
+  background-color: var(--background-black);
   color: #ebe8e8;
 }
 
@@ -505,7 +507,7 @@ tr:nth-child(odd) {
 
 #contact ul li a {
   text-decoration: none;
-  fill: #fff;
+  fill: var(--text-white);
 }
 
 #contact ul li a:hover {
@@ -515,7 +517,7 @@ tr:nth-child(odd) {
 #contact ul li a svg {
   width: 25px;
   height: 25px;
-  background-color: #fff;
+  background-color: var(--text-white);
   border-radius: 50%;
   fill: #000;
   display: block;
@@ -529,7 +531,7 @@ tr:nth-child(odd) {
 }
 
 #backToTop {
-  background: var(--home-bg);
+  background: var(--background-black);
   border: 2px solid #fff;
   border-radius: 50%;
   padding: 0.5rem;
