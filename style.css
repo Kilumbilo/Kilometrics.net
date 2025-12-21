@@ -96,21 +96,6 @@ nav .menu div:hover {
   scroll-behavior: smooth;
 }
 
-/* .section-container::-webkit-scrollbar {
-  width: 7px;
-  background: transparent;
-}
-
-.section-container::-webkit-scrollbar-thumb {
-  background: #444;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.section-container::-webkit-scrollbar-thumb:hover {
-  background: #888;
-} */
-
 #home {
   display: flex;
   flex-direction: column;
@@ -155,55 +140,222 @@ nav .menu div:hover {
   margin-left: 2rem;
 }
 
-#home .calculator {
-  display: grid;
-  grid-template-columns: 0.9fr 0.5fr 0.1fr;
-  width: 400px;
-  gap: 0.2rem;
-
-  border: 2px solid white;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  padding: 2rem;
-  margin-bottom: 2rem;
-}
-
-.calculator button {
-  background-color: var(--menu-grey);
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  margin: 1rem 0;
-  font-size: 1rem;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
-  /* padding: 0 clamp(1rem, 5vw, 2rem); */
-  max-width: var(--cards-size);
-  margin: 0 auto;
-  margin-bottom: 2rem;
-}
-
-.grid-item {
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 0.25rem;
-  box-shadow: var(--box-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Renamed container to calculator-widget-container to avoid conflicts */
+.calculator-widget-container {
+  width: 100%;
+  max-width: var(--container-width);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  min-height: 0; /* Important for content overflow */
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: height 0.3s ease;
+  margin: 0 auto;
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
 }
 
-.grid-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  background-color: var(--light-color);
+.tabs-container {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(0,0,0,0.02); 
+}
+
+.tablinks {
+  flex: 1;
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  padding: 1.25rem 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.result-container {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--border-color);
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+}
+
+.result-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0.5rem;
+  background: rgba(0,0,0,0.02);
+  border-radius: var(--radius-md);
+}
+
+.result-box label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.result-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.result-box small {
+  display: inline-block;
+  margin-left: 2px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.tablinks:hover {
+  background: rgba(0,0,0,0.05);
+  color: var(--text-color);
+}
+
+.tablinks.active {
+  color: var(--primary-color);
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary-color);
+  background: transparent;
+}
+
+.tabcontent {
+  display: none;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.tabcontent h3 {
+  display: none;
+}
+
+.tabcontent > p {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.calculator-widget-container label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.input-wrapper {
+  display: flex;
+  position: relative;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--surface-color);
+  padding: 0.25rem;
+  align-items: stretch;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  min-height: 2.8rem;
+}
+
+.input-field, .select-field {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-color);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-height: 2.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.input-wrapper .input-field {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-md);
+  flex: 1;
+}
+
+/* Unit Selector */
+.select-unit {
+  background-color: #f5f5f5;
+  color: var(--text-color);
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: calc(var(--radius-md) - 0.1rem);
+  background-image: none;
+  padding: 0 0.8rem;
+  min-width: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align-last: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 0.25rem;
+}
+
+.input-wrapper .select-unit:hover {
+  background-color: #e5e5e5;
+}
+
+.input-wrapper .input-field:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.calc-btn {
+  width: 100%;
+  background: var(--primary-color);
+  color: var(--bg-color);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.8rem;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: 0.5rem;
+}
+
+.calc-btn:hover {
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 footer {
