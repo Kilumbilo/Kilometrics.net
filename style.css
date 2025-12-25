@@ -5,12 +5,54 @@
 }
 
 :root {
-  --menu-grey: #292929;
-  --home-bg: #000;
+  --menu-grey: hsla(0, 0%, 16%, 1);
+  --home-bg: hsla(0, 0%, 0%, 1);
 
   --card-nav-size: 80px;
   --cards-size: 600px;
   --section-body-size: 50%;
+
+  /* Dynamic Card Header Colors */
+  --clr-taper-flange: hsla(11, 71%, 56%, 1);
+  --clr-parallel-flange: hsla(16, 100%, 50%, 1);
+  --clr-piles: hsla(30, 100%, 50%, 1);
+  --clr-channels: hsla(33, 100%, 50%, 1);
+  --clr-angles-equal: hsla(39, 100%, 50%, 1);
+  --clr-angles-unequal: hsla(51, 100%, 50%, 1);
+  --clr-flats: hsla(46, 65%, 52%, 1);
+  --clr-hot-rolled: hsla(120, 61%, 50%, 1);
+  --clr-plates: hsla(261, 56%, 61%, 1);
+  --clr-slabs: hsla(80, 61%, 35%, 1);
+  --clr-square-bars: hsla(120, 61%, 34%, 1);
+  --clr-round-bars: hsla(207, 44%, 49%, 1);
+  --clr-lipped-channels: hsla(197, 71%, 73%, 1);
+  --clr-lipped-zeds: hsla(240, 100%, 31%, 1);
+  --clr-lipped-angles: hsla(240, 64%, 27%, 1);
+  --clr-cold-formed: hsla(248, 53%, 58%, 1);
+  --clr-top-hats: hsla(259, 60%, 65%, 1);
+  --clr-cf-angles-equal: hsla(300, 100%, 27%, 1);
+  --clr-cf-angles-unequal: hsla(25, 75%, 31%, 1);
+  --clr-hollow-square: hsla(19, 56%, 40%, 1);
+  --clr-hollow-round: hsla(33, 44%, 68%, 1);
+  --clr-hollow-rect: hsla(0, 0%, 83%, 1);
+  --clr-bolts-nuts: hsla(0, 0%, 66%, 1);
+
+  /* Calculator Widget Base */
+  --bg-color: hsla(0, 0%, 90%, 1);
+  --glass-bg: hsla(0, 0%, 100%, 0.75);
+  --glass-border: hsla(0, 0%, 100%, 0.4);
+  --surface-color: hsla(0, 0%, 100%, 1);
+  --primary-color: hsla(0, 0%, 9%, 1);
+  --text-color: hsla(0, 0%, 9%, 1);
+  --text-muted: hsla(0, 0%, 45%, 1);
+  --border-color: hsla(0, 0%, 83%, 1);
+
+  --shadow-lg: 0 10px 15px -3px hsla(0, 0%, 0%, 0.1), 0 4px 6px -2px hsla(0, 0%, 0%, 0.05);
+
+  /* Dimensions & Shapes */
+  --container-width: 450px;
+  --radius-lg: 0.75rem;
+  --radius-md: 0.5rem;
 }
 
 html,
@@ -22,7 +64,7 @@ body {
   /* font-weight: 400; */
   /* overflow: hidden; */
   scroll-behavior: smooth;
-  scrollbar-width: none;
+  /* scrollbar-width: none; */
 }
 
 button {
@@ -54,7 +96,7 @@ nav {
   align-items: center;
   padding: 1.5rem 0;
   z-index: 10;
-  color: #fff;
+  color: var(--surface-color);
 }
 
 nav .logo {
@@ -90,11 +132,12 @@ nav .menu div:hover {
   height: 100%;
   flex: 1;
   position: relative;
-  background-color: #fff;
+  background-color: var(--surface-color);
   overflow: auto;
-  scrollbar-width: none;
-  scroll-behavior: smooth;
+  /* scrollbar-width: none; */
 }
+
+
 
 #home {
   display: flex;
@@ -140,13 +183,401 @@ nav .menu div:hover {
   margin-left: 2rem;
 }
 
+#home .calculator {
+  display: grid;
+  grid-template-columns: 0.9fr 0.5fr 0.1fr;
+  width: 400px;
+  gap: 0.2rem;
+
+  border: 2px solid var(--surface-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.calculator button {
+  background-color: var(--menu-grey);
+  color: var(--surface-color);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+  /* padding: 0 clamp(1rem, 5vw, 2rem); */
+  max-width: var(--cards-size);
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.grid-item {
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0.25rem;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  min-height: 0; /* Important for content overflow */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.grid-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: var(--light-color);
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+footer .footer-links {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  text-decoration: underline;
+}
+
+footer .footer-links div {
+  cursor: pointer;
+}
+
+footer li,
+.menu li {
+  list-style: none;
+}
+
+.page {
+  width: var(--cards-size);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.cards {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow: auto;
+}
+
+.card_header {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: var(--card-nav-size);
+  gap: 1rem;
+  padding: 1rem;
+  align-items: center;
+  justify-content: start;
+
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+
+  box-shadow: 4px 0 4px rgba(0, 0, 0, 0.1);
+  color: var(--surface-color);
+}
+
+.card_header span {
+  font-size: 2rem;
+  padding: 1rem;
+  display: inline-block;
+  /* transform: none;*/
+  transition: transform 0.3s ease-in-out;
+}
+
+.card_content {
+  width: var(--cards-size);
+  height: 100vh;
+  padding: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: scroll;
+  /* scrollbar-width: none; */
+  transition: display 0.4s ease-in-out;
+  margin: auto;
+}
+
+.card_content .card-main {
+  text-align: center;
+}
+
+.card_content h3 {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  margin: 2rem auto;
+}
+
+.card_content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.card_content h4,
+.card_content caption {
+  margin-bottom: 1rem;
+}
+
+.card_content table caption {
+  text-decoration: underline;
+}
+
+.card_content table {
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card_content th,
+.card_content td {
+  text-align: center;
+  width: auto;
+  border: 1px solid #888;
+  padding: 0.5rem;
+}
+
+tr:nth-child(odd) {
+  background-color: #e8e9eb;
+}
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: var(--cards-size);
+  height: 100vh;
+  padding: 2rem;
+  background-color: var(--home-bg);
+  color: #ebe8e8;
+}
+
+#contact h5 {
+  font-size: 0.7rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+#contact p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+#contact form {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+#contact form input[type="email"] {
+  width: 80%;
+  padding: 5px;
+  border: none;
+  color: var(--surface-color);
+  border-bottom: 1px solid #888;
+  background-color: transparent;
+}
+
+#contact form input[type="email"]:focus {
+  outline: none;
+  border-bottom: 1px solid var(--surface-color);
+}
+
+#contact form button {
+  width: 20%;
+  padding: 5px;
+  background-color: #888;
+  color: var(--surface-color);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+#signup-message {
+  margin-bottom: 1rem;
+}
+
+#contact ul {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start; /* Align icons to the left */
+  padding-left: 0;
+}
+
+#contact ul li {
+  list-style: none;
+}
+
+#contact ul li a {
+  text-decoration: none;
+  fill: var(--surface-color);
+}
+
+#contact ul li a:hover {
+  opacity: 0.7;
+}
+
+#contact ul li a svg {
+  width: 25px;
+  height: 25px;
+  background-color: var(--surface-color);
+  border-radius: 50%;
+  fill: #000;
+  display: block;
+}
+
+.footerBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+#backToTop {
+  background: var(--home-bg);
+  border: 2px solid var(--surface-color);
+  border-radius: 50%;
+  padding: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#backToTop:hover {
+  background: var(--surface-color);
+  transform: translateY(-6px) scale(1.1);
+}
+
+#backToTop:hover svg {
+  fill: var(--home-bg);
+}
+
+#backToTop svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--surface-color);
+  display: block;
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  nav {
+    width: 100vw;
+    height: var(--card-nav-size);
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+  }
+
+  nav .menu {
+    flex-direction: row;
+    transform: none;
+    writing-mode: horizontal-tb;
+  }
+
+  .main-wrapper {
+    flex-direction: column;
+    height: auto; /* Allow height to grow with content */
+    margin: auto;
+  }
+
+  .page {
+    width: 100vw;
+  }
+
+  #home {
+    height: auto; /* Allow height to grow with content */
+  }
+
+  #home .calculator {
+    padding: 1rem;
+    grid-template-columns: 0.8fr 0.5fr 0.2fr;
+    width: 365px;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+
+  .card {
+    flex-direction: column;
+    height: auto; /* Allow height to grow with content */
+  }
+
+  .card_header {
+    width: 100vw;
+    height: var(--card-nav-size);
+    flex-direction: row;
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  #contact,
+  .card_content {
+    width: 100vw;
+  }
+
+  .card_content {
+    height: auto; /* Allow height to grow with content */
+  }
+
+  .card .card_content footer {
+    display: none;
+  }
+
+  #backToTop {
+    rotate: 90deg; /* Rotate the button to point upwards */
+  }
+}
+
+/* --- Calculator Widget Styles --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: hsla(0, 0%, 9%, 1);
+    --glass-bg: hsla(0, 0%, 9%, 0.8);
+    --glass-border: hsla(0, 0%, 100%, 0.1);
+    --surface-color: hsla(0, 0%, 15%, 1);
+
+    --primary-color: hsla(0, 0%, 96%, 1);
+    --text-color: hsla(0, 0%, 96%, 1);
+    --text-muted: hsla(0, 0%, 64%, 1);
+    --border-color: hsla(0, 0%, 25%, 1);
+  }
+}
+
 /* Renamed container to calculator-widget-container to avoid conflicts */
 .calculator-widget-container {
   width: 100%;
   max-width: var(--container-width);
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
@@ -154,7 +585,7 @@ nav .menu div:hover {
   display: flex;
   flex-direction: column;
   transition: height 0.3s ease;
-  margin: 0 auto;
+  margin: 2rem auto;
   color: var(--text-color);
   font-family: 'Inter', sans-serif;
 }
@@ -358,319 +789,43 @@ nav .menu div:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-footer {
-  display: flex;
-  flex-direction: column;
-  margin-top: 5rem;
-}
+/* --- Card Header Background Utility Classes --- */
+.bg-taper-flange { background-color: var(--clr-taper-flange); }
+.bg-parallel-flange { background-color: var(--clr-parallel-flange); }
+.bg-piles { background-color: var(--clr-piles); }
+.bg-channels { background-color: var(--clr-channels); }
+.bg-angles-equal { background-color: var(--clr-angles-equal); }
+.bg-angles-unequal { background-color: var(--clr-angles-unequal); }
+.bg-flats { background-color: var(--clr-flats); }
+.bg-hot-rolled { background-color: var(--clr-hot-rolled); }
+.bg-plates { background-color: var(--clr-plates); }
+.bg-slabs { background-color: var(--clr-slabs); }
+.bg-square-bars { background-color: var(--clr-square-bars); }
+.bg-round-bars { background-color: var(--clr-round-bars); }
+.bg-lipped-channels { background-color: var(--clr-lipped-channels); }
+.bg-lipped-zeds { background-color: var(--clr-lipped-zeds); }
+.bg-lipped-angles { background-color: var(--clr-lipped-angles); }
+.bg-cold-formed { background-color: var(--clr-cold-formed); }
+.bg-top-hats { background-color: var(--clr-top-hats); }
+.bg-cf-angles-equal { background-color: var(--clr-cf-angles-equal); }
+.bg-cf-angles-unequal { background-color: var(--clr-cf-angles-unequal); }
+.bg-hollow-square { background-color: var(--clr-hollow-square); }
+.bg-hollow-round { background-color: var(--clr-hollow-round); }
+.bg-hollow-rect { background-color: var(--clr-hollow-rect); }
+.bg-bolts-nuts { background-color: var(--clr-bolts-nuts); }
 
-footer .footer-links {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  text-decoration: underline;
-}
+/* --- Layout Utility Classes --- */
+.hidden { display: none; }
+.flex-column { display: flex; flex-direction: column; }
+.flex-row { display: flex; flex-direction: row; }
+.flex-center { align-items: center; }
+.justify-center { justify-content: center; }
+.mb-1-5 { margin-bottom: 1.5rem; }
+.mt-1 { margin-top: 1rem; }
+.flex-1 { flex: 1; }
 
-footer .footer-links div {
-  cursor: pointer;
-}
-
-footer li,
-.menu li {
-  list-style: none;
-}
-
-.page {
-  width: var(--cards-size);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-}
-
-.cards {
-  display: flex;
-}
-
-.card {
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
-  overflow: auto;
-}
-
-.card_header {
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
-  width: var(--card-nav-size);
-  gap: 1rem;
-  padding: 1rem;
-  align-items: center;
-  justify-content: start;
-
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-
-  box-shadow: 4px 0 4px rgba(0, 0, 0, 0.1);
-  color: #fff;
-}
-
-.card_header span {
-  font-size: 2rem;
-  padding: 1rem;
-  display: inline-block;
-  /* transform: none;*/
-  transition: transform 0.3s ease-in-out;
-}
-
-.card_content {
-  width: var(--cards-size);
-  height: 100vh;
-  padding: 1rem;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: scroll;
-  scrollbar-width: none;
-  transition: display 0.4s ease-in-out;
-  margin: auto;
-}
-
-.card_content main {
-  text-align: center;
-}
-
-.card_content h3 {
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  margin: 2rem auto;
-}
-
-.card_content p {
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 2rem;
-}
-
-.card_content h4,
-.card_content caption {
-  margin-bottom: 1rem;
-}
-
-.card_content table caption {
-  text-decoration: underline;
-}
-
-.card_content table {
-  margin-bottom: 2rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.card_content th,
-.card_content td {
-  text-align: center;
-  width: auto;
-  border: 1px solid #888;
-  padding: 0.5rem;
-}
-
-tr:nth-child(odd) {
-  background-color: #e8e9eb;
-}
-
-#contact {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  width: var(--cards-size);
-  height: 100vh;
-  padding: 2rem;
-  background-color: var(--home-bg);
-  color: #ebe8e8;
-}
-
-#contact h5 {
-  font-size: 0.7rem;
-  font-weight: 200;
-  margin-bottom: 1rem;
-  font-style: italic;
-}
-
-#contact p {
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 1rem;
-}
-
-#contact form {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 1rem;
-  gap: 1rem;
-}
-
-#contact form input[type="email"] {
-  width: 80%;
-  padding: 5px;
-  border: none;
-  color: #fff;
-  border-bottom: 1px solid #888;
-  background-color: transparent;
-}
-
-#contact form input[type="email"]:focus {
-  outline: none;
-  border-bottom: 1px solid #fff;
-}
-
-#contact form button {
-  width: 20%;
-  padding: 5px;
-  background-color: #888;
-  color: #fff;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-}
-
-#signup-message {
-  margin-bottom: 1rem;
-}
-
-#contact ul {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-start; /* Align icons to the left */
-  padding-left: 0;
-}
-
-#contact ul li {
-  list-style: none;
-}
-
-#contact ul li a {
-  text-decoration: none;
-  fill: #fff;
-}
-
-#contact ul li a:hover {
-  opacity: 0.7;
-}
-
-#contact ul li a svg {
-  width: 25px;
-  height: 25px;
-  background-color: #fff;
-  border-radius: 50%;
-  fill: #000;
-  display: block;
-}
-
-.footerBottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 2rem 0;
-}
-
-#backToTop {
-  background: var(--home-bg);
-  border: 2px solid #fff;
-  border-radius: 50%;
-  padding: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#backToTop:hover {
-  background: #222;
-  transform: translateY(-4px) scale(1.08);
-}
-
-#backToTop svg {
-  width: 30px;
-  height: 30px;
-  fill: #fff;
-  display: block;
-}
-
-@media (max-width: 768px) {
-  body {
-    flex-direction: column;
-    scroll-behavior: smooth;
-  }
-
-  nav {
-    width: 100vw;
-    height: var(--card-nav-size);
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-  }
-
-  nav .menu {
-    flex-direction: row;
-    transform: none;
-    writing-mode: horizontal-tb;
-  }
-
-  .main-wrapper {
-    flex-direction: column;
-    height: auto; /* Allow height to grow with content */
-    margin: auto;
-  }
-
-  .page {
-    width: 100vw;
-  }
-
-  #home {
-    height: auto; /* Allow height to grow with content */
-  }
-
-  #home .calculator {
-    padding: 1rem;
-    grid-template-columns: 0.8fr 0.5fr 0.2fr;
-    width: 365px;
-  }
-
-  .cards {
-    flex-direction: column;
-  }
-
-  .card {
-    flex-direction: column;
-    height: auto; /* Allow height to grow with content */
-  }
-
-  .card_header {
-    width: 100vw;
-    height: var(--card-nav-size);
-    flex-direction: row;
-    writing-mode: horizontal-tb;
-    transform: none;
-  }
-
-  #contact,
-  .card_content {
-    width: 100vw;
-  }
-
-  .card_content {
-    height: auto; /* Allow height to grow with content */
-  }
-
-  .card .card_content footer {
-    display: none;
-  }
-
-  #backToTop {
-    rotate: 90deg; /* Rotate the button to point upwards */
-  }
+#shapeImg {
+  max-width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
 }
