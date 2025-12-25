@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kilometrics is your online steel and material mass calculator. Instantly estimate weights for beams, bars, plates, and profiles using standard density values.">
-    <meta name="keywords" content="steel weight calculator, material mass reference, beam weight calculator, bar weight calculator, plate weight calculator, profile weight calculator, density values for steel, aluminum, cast iron">
+    <meta name="keywords" content="steel weight calculator, material mass reference, beam weight calculator, bar weight calculator, plate weight calculator, profile weight calculator, density values for steel, aluminum, cast iron, steel mass tables, metal weight calculator, structural steel weight, online weight calculator, steel density, aluminum density, cast iron density">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WR10K3J137"></script>
@@ -20,23 +20,24 @@
      crossorigin="anonymous"></script>
 
      <!-- Google fonts -->
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Rampart+One&display=swap" rel="stylesheet">
     
     <link rel="icon" href="favicon.png" type="image/png">
-    <title>Kilometrics | Steel Weight Calculator- Online Steel & Metal Mass Tables</title>
+    <title>Kilometrics | Steel Weight Calculator - Online Steel & Metal Mass Tables</title>
 </head>
 <body>
+    
     <script src="lang-detect.js" type="text/javascript"></script>
 
     <nav>
-        <div class="logo"><a href="/index.html">km</a></div>
-        <ul class="menu">
-            <li><a href="/glossary/glossary.html">Index</a></li>
-            <li><a href="/about/about.html">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="logo"><a href="index.html">km</a></div>
+        <div class="menu">
+            <a href="glossary/glossary.html">Index</a>
+            <a href="about/about.html">About</a>
+            <a href="#contact">Contact</a>
+        </div>
     </nav>
 
     <div class="main-wrapper">
@@ -232,12 +233,12 @@
                                     </div>
                                 </div>
 
-                                <div class="input-group" style="align-items: center; margin-bottom: 1.5rem;">
-                                    <img id="shapeImg" src="" alt="Shape Image" style="display: none; max-width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                                <div class="input-group flex-center mb-1-5">
+                                    <img id="shapeImg" src="" alt="Shape Image" class="hidden">
                                 </div>
                                 
-                                <div class="result-container" style="flex-direction: row; justify-content: center;">
-                                    <div class="result-box" style="flex: 1;">
+                                <div class="result-container flex-row justify-center">
+                                    <div class="result-box flex-1">
                                         <label>Weight (kg/m)</label>
                                         <div class="result-value" id="resultKg">-</div>
                                     </div>
@@ -249,11 +250,11 @@
                     <p id="intro-description">Use the calculator above to estimate the mass of various steel and material forms, or browse our reference tables for standard weights.</p>
                 </main>
                 <footer>
-                    <div>&copy; <span class="year">{year}</span><a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                    <span>&copy; <span class="year">2025</span> <a href="index.html"><strong>Kilometrics</strong></a>. All rights reserved.</span>
                     <ul class="footer-links">
-                        <li><a href="/about/about.html">About</a></li> |
-                        <li><a href="/terms/terms.html">Terms</a></li> |
-                        <li><a href="/privacy/privacy.html">Privacy</a></li>
+                        <li><a href="about/about.html">About</a></li> |
+                        <li><a href="terms/terms.html">Terms</a></li> |
+                        <li><a href="privacy/privacy.html">Privacy</a></li>
                     </ul>
                 </footer>
             </section>
@@ -262,12 +263,12 @@
         <div class="cards-container">
             <div class="cards">
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: I-Section Taper Flange" style="background: #e05f40;">
+                    <button class="card_header bg-taper-flange" aria-label="Expand or collapse card: I-Section Taper Flange">
                         <span>+</span>
                         <a href="#">I-Section Taper Flange</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>I-Section Taper Flange</h3>
                             <p>
                             Taper flange I-beams have angled inner flange faces for classic structural shapes, common in older or lighter duty frames.
@@ -317,9 +318,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -329,19 +330,19 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: H-Section Parallel Flange" style="background: #ff4500;">
+                    <button class="card_header bg-parallel-flange" aria-label="Expand or collapse card: H-Section Parallel Flange">
                         <span>+</span>
                         <a href="#">H-Section Parallel Flange</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>H-section parallel flange</h3>
                             <p>
                             H-sections with parallel flanges offer high load capacity for columns and beams. They have a wider flange than I-sections for improved stability.
                             </p>
                             
                             <h4>Typical Mass per Metre</h4>
-                            <div style="display: flex; gap: 2rem; overflow-x: auto;">
+                            <div class="flex-row gap-2 overflow-x-auto">
                                 <!-- IPE Table -->
                                 <table>
                                     <caption>H-Section / UC Sections</caption>
@@ -439,9 +440,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -452,12 +453,12 @@
                 </div>
                 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: H-Section Piles" style="background: #ff7f00;">
+                    <button class="card_header bg-piles" aria-label="Expand or collapse card: H-Section Piles">
                         <span>+</span>
                         <a href="#">H-Section Piles</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>H-Section Piles</h3>
                             <p>
                             H-piles are driven into the ground for deep foundations, providing strong vertical load-bearing and resistance to lateral forcesore
@@ -498,9 +499,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
                             </p>    
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -511,12 +512,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Channels" style="background: #ff8c00;">
+                    <button class="card_header bg-channels" aria-label="Expand or collapse card: Channels">
                         <span>+</span>
                         <a href="#">Channels</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Channel Sections</h3>
                             <p>
                             Channels are U-shaped sections used for frames, bracing, and lighter structural members.
@@ -601,9 +602,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
                             </p>
-                        </main>    
+                        </div>    
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -614,12 +615,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Angles Equal" style="background: #ffa500;">
+                    <button class="card_header bg-angles-equal" aria-label="Expand or collapse card: Angles Equal">
                         <span>+</span>
                         <a href="#">Angles Equal</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Equal Angle Sections</h3>
                             <p>
                             Equal angles have identical leg lengths, ideal for bracing and framing where uniform strength is needed.
@@ -652,9 +653,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
                             </p>
-                        </main>    
+                        </div>    
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -665,12 +666,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Angles Unequal" style="background: #ffd700;">
+                    <button class="card_header bg-angles-unequal" aria-label="Expand or collapse card: Angles Unequal">
                         <span>+</span>
                         <a href="#">Angles Unequal</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Unequal Angle Sections</h3>
                             <p>
                             Equal angles have identical leg lengths, ideal for bracing and framing where uniform strength is needed.
@@ -701,9 +702,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
                             </p>
-                        </main>    
+                        </div>    
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -714,12 +715,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Flat Bars" style="background: #d4af37;">
+                    <button class="card_header bg-flats" aria-label="Expand or collapse card: Flat Bars">
                         <span>+</span>
                         <a href="#">Flats</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Flat Bar</h3>
                             <p>
                             Flat bars are versatile sections used in fabrication, bracing, base plates, and general structural support
@@ -751,9 +752,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
                             </p>
-                        </main>    
+                        </div>    
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -764,12 +765,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Hot rolled sheet" style="background: #32cd32;">
+                    <button class="card_header bg-hot-rolled" aria-label="Expand or collapse card: Hot rolled sheet">
                         <span>+</span>
                         <a href="#">Hot rolled sheet</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Flat products</h3>
                             <p>
                             Hot rolled steel sheets and plates are used in fabrication, structural bases, and welded sections, with uniform thickness and good workability
@@ -801,9 +802,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
                             </p>
-                        </main> 
+                        </div> 
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -814,12 +815,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Steel plates" style="background: #8a63d2;">
+                    <button class="card_header bg-plates" aria-label="Expand or collapse card: Steel plates">
                         <span>+</span>
                         <a href="#">Plates</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Steel Plates</h3>
                             <p>
                             Plates are really just thicker hot-rolled sheets, typically used in fabrication, structural bases, and welded sections. They have a uniform thickness and good workability.
@@ -851,9 +852,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
                             </p>
-                        </main> 
+                        </div> 
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -864,12 +865,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Steel slabs" style="background: #6b8e23;">
+                    <button class="card_header bg-slabs" aria-label="Expand or collapse card: Steel slabs">
                         <span>+</span>
                         <a href="#">Slabs</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Steel Slabs</h3>
                             <p>
                                 For rolled/continuous-cast slabs, the weight is usually given per square metre based on thickness. Slabs are typically thicker than plates. These are common reference values for mills or bulk steel users.
@@ -897,9 +898,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -910,12 +911,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Square bars" style="background: #228b22;">
+                    <button class="card_header bg-square-bars" aria-label="Expand or collapse card: Square bars">
                         <span>+</span>
                         <a href="#">Square bars</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Square Bars</h3>
                             <p>
                                 Solid square and round bars are basic forms used in machining, construction, and reinforcement.
@@ -946,9 +947,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass = Length × Mass per Metre</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -959,12 +960,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Round bars" style="background: #4682b4;">
+                    <button class="card_header bg-round-bars" aria-label="Expand or collapse card: Round bars">
                         <span>+</span>
                         <a href="#">Round bars</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Round Bars</h3>
                             <p>
                                 Solid square and round bars are basic forms used in machining, construction, and reinforcement.
@@ -996,9 +997,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
                             </p>
-                        </main>    
+                        </div>    
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -1009,12 +1010,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Lipped channels" style="background: #87ceeb;">
+                    <button class="card_header bg-lipped-channels" aria-label="Expand or collapse card: Lipped channels">
                         <span>+</span>
                         <a href="#">Lipped Channels</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Lipped Channels (CFC)</h3>
                             <p>
                                 Cold-formed channels with lipped edges for improved rigidity and connection strength in light gauge construction.
@@ -1044,9 +1045,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -1057,12 +1058,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Lipped zeds" style="background: #00009f;">
+                    <button class="card_header bg-lipped-zeds" aria-label="Expand or collapse card: Lipped zeds">
                         <span>+</span>
                         <a href="#">Lipped Zeds</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Lipped Zeds (Cold-Formed Sections)</h3>
                             <p>
                                 Z-shaped cold-formed sections with lips for additional strength in roofing and cladding support systems.
@@ -1091,9 +1092,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -1104,12 +1105,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Lipped angles" style="background: #191970;">
+                    <button class="card_header bg-lipped-angles" aria-label="Expand or collapse card: Lipped angles">
                         <span>+</span>
                         <a href="#">Lipped angles</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Lipped Angles</h3>
                             <p>
                                 Angles with lips on the flanges for extra stiffness, used in lightweight framing systems.
@@ -1139,9 +1140,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
                             </p>
-                        </main> 
+                        </div> 
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -1152,12 +1153,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Cold formed channels" style="background: #6a5acd;">
+                    <button class="card_header bg-cold-formed" aria-label="Expand or collapse card: Cold formed channels">
                         <span>+</span>
                         <a href="#">Cold formed channels</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Cold formed channels</h3>
                             <p>
                                 Lightweight, precise channels formed at room temperature for wall framing and purlins.
@@ -1189,9 +1190,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -1202,12 +1203,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Tops hats" style="background: #9370db;">
+                    <button class="card_header bg-top-hats" aria-label="Expand or collapse card: Tops hats">
                         <span>+</span>
                         <a href="#">Top hats</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Top hats</h3>
                             <p>
                                 Top hat sections provide rigid profiles for ceiling, wall systems, or light support frames.
@@ -1237,9 +1238,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
                             </p>
-                        </main> 
+                        </div> 
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -1250,12 +1251,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Cold formed angles equal" style="background: #8b008b;">
+                    <button class="card_header bg-cf-angles-equal" aria-label="Expand or collapse card: Cold formed angles equal">
                         <span>+</span>
                         <a href="#">Cold-Formed Angles Equal</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Cold-Formed Angles (Equal Legs)</h3>
                             <p>
                                 Equal-sided cold-formed angles used for bracing and lightweight frames.
@@ -1284,9 +1285,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -1297,12 +1298,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Cold formed angles unequal" style="background: #8b4513;">
+                    <button class="card_header bg-cf-angles-unequal" aria-label="Expand or collapse card: Cold formed angles unequal">
                         <span>+</span>
                         <a href="#">Cold-Formed Angles Unequal</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Cold-Formed Angles (Unequal Legs)</h3>
                             <p>
                                 Angles with unequal legs for specialized bracing and construction detailing.
@@ -1330,9 +1331,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -1343,12 +1344,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Hollow section square" style="background: #a0522d;">
+                    <button class="card_header bg-hollow-square" aria-label="Expand or collapse card: Hollow section square">
                         <span>+</span>
                         <a href="#">Hollow section square</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Hollow Sections Square</h3>
                             <p>
                                 Square hollow sections offer high torsional rigidity and clean lines for columns, frames, and modern architecture.
@@ -1378,9 +1379,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -1391,12 +1392,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Hollow section round" style="background: #d2b48c;">
+                    <button class="card_header bg-hollow-round" aria-label="Expand or collapse card: Hollow section round">
                         <span>+</span>
                         <a href="#">Hollow Section Round</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Hollow Section Round</h3>
                             <p>
                                 Circular hollow sections provide uniform strength in all directions for poles, columns, and frames.
@@ -1426,9 +1427,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -1439,12 +1440,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Hollow section rectangular" style="background: #d3d3d3;">
+                    <button class="card_header bg-hollow-rect" aria-label="Expand or collapse card: Hollow section rectangular">
                         <span>+</span>
                         <a href="#">Hollow Section Rectangular</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Hollow sections Rectangular</h3>
                             <p>
                                 Rectangular hollow sections combine strength with ease of connection for structural frames and supports.
@@ -1473,9 +1474,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -1486,12 +1487,12 @@
                 </div>
 
                 <div class="card">
-                    <button class="card_header" aria-label="Expand or collapse card: Bolts and nuts" style="background: #a9a9a9;">
+                    <button class="card_header bg-bolts-nuts" aria-label="Expand or collapse card: Bolts and nuts">
                         <span>+</span>
                         <a href="#">Bolts and nuts</a>
                     </button>
                     <div class="card_content">
-                        <main>
+                        <div class="card-main">
                             <h3>Bolts and Rivets</h3>
                             <p>
                                 Standardized fasteners used to join structural sections securely, ensuring safe connections in construction.
@@ -1539,9 +1540,9 @@
                             <p>
                                 <strong>Tip:</strong> To estimate mass, use: <em>Mass per metre ≈ π × (Diameter/2)² × Density (for mild steel ~7850 kg/m³).</em>
                             </p>
-                        </main>
+                        </div>
                         <footer>
-                            <div>&copy; <span id="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
+                            <div>&copy; <span class="year">2025</span> <a href="/index.html"><strong>Kilometrics</strong></a>. All rights reserved.</div>
                             <ul class="footer-links">
                                 <li><a href="/about/about.html">About</a></li> |
                                 <li><a href="/terms/terms.html">Terms</a></li> |
@@ -1559,7 +1560,7 @@
             <h5>Get In Touch</h5>
             <p>If you would like to get on board and play a role on this project, or if you just like to reach out don't hesitate to mail.</p>
             <p>Sign up to our mail list and stay updated with the content of this site and much more</p>
-            <form id="signup-form" style="margin-top:1rem;">
+            <form id="signup-form" class="mt-1">
                 <input type="email" id="signup-email" name="email" required placeholder="Enter your email address" />
                 <button type="submit">Sign Up!</button>
             </form>
@@ -1576,13 +1577,13 @@
                     <!-- email icon -->
                     <li><a href="mailto:info@kilometrics.net"><svg viewBox="0 0 640 640"><path d="M320 128C214 128 128 214 128 320C128 426 214 512 320 512C337.7 512 352 526.3 352 544C352 561.7 337.7 576 320 576C178.6 576 64 461.4 64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320L576 352C576 405 533 448 480 448C450.7 448 424.4 434.8 406.8 414.1C384 435.1 353.5 448 320 448C249.3 448 192 390.7 192 320C192 249.3 249.3 192 320 192C347.9 192 373.7 200.9 394.7 216.1C400.4 211.1 407.8 208 416 208C433.7 208 448 222.3 448 240L448 352C448 369.7 462.3 384 480 384C497.7 384 512 369.7 512 352L512 320C512 214 426 128 320 128zM384 320C384 284.7 355.3 256 320 256C284.7 256 256 284.7 256 320C256 355.3 284.7 384 320 384C355.3 384 384 355.3 384 320z"/></svg></a></li>
                 </ul>
-                <button id="backToTop" aria-label="Back to top" class="backToTop">
+                <a href="#home" id="backToTop" aria-label="Back to top button" class="backToTop">
                     <svg viewBox="0 0 640 640"><path d="M169.4 297.4C156.9 309.9 156.9 330.2 169.4 342.7L361.4 534.7C373.9 547.2 394.2 547.2 406.7 534.7C419.2 522.2 419.2 501.9 406.7 489.4L237.3 320L406.6 150.6C419.1 138.1 419.1 117.8 406.6 105.3C394.1 92.8 373.8 92.8 361.3 105.3L169.3 297.3z"/></svg>
-                </button>
+                </a>
             </div>
         </div>
     </div>
 
-    <script src="/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
