@@ -49,9 +49,8 @@
                         <p>This index provides a categorized overview of all the steel profiles and tools available on Kilometrics. Use it as a guide to quickly find the section you need.</p>
                     </div>
                     <ul class="grid-container">
-                        <li class="grid-item"><a href="#i-section-parallel-flange">I-Section Parallel Flange</a></li>
-                        <li class="grid-item"><a href="#h-section-parallel-flange">H-Section Parallel Flange</a></li>
                         <li class="grid-item"><a href="#i-section-taper-flange">I-Section Taper Flange</a></li>
+                        <li class="grid-item"><a href="#h-section-parallel-flange">H-Section Parallel Flange</a></li>
                         <li class="grid-item"><a href="#h-section-piles">H-Section Piles</a></li>
                         <li class="grid-item"><a href="#channels">Channels</a></li>
                         <li class="grid-item"><a href="#angles-equal">Angles Equal</a></li>
@@ -59,6 +58,7 @@
                         <li class="grid-item"><a href="#flat-bars">Flat Bars</a></li>
                         <li class="grid-item"><a href="#hot-rolled-sheet">Hot Rolled Sheet</a></li>
                         <li class="grid-item"><a href="#steel-plates">Steel Plates</a></li>
+                        <li class="grid-item"><a href="#steel-slabs">Steel Slabs</a></li>
                         <li class="grid-item"><a href="#round-bars">Round Bars</a></li>
                         <li class="grid-item"><a href="#square-bars">Square Bars</a></li>
                         <li class="grid-item"><a href="#lipped-channels">Lipped Channels</a></li>
@@ -93,7 +93,7 @@
                         <span>+</span>
                         <a href="#">I-Section Taper Flange</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="i-section-taper-flange">
                         <div class="card-main">
                             <h3>I-Section Taper Flange</h3>
                             <p>
@@ -160,7 +160,7 @@
                         <span>+</span>
                         <a href="#">H-Section Parallel Flange</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="h-section-parallel-flange">
                         <div class="card-main">
                             <h3>H-section parallel flange</h3>
                             <p>
@@ -283,7 +283,7 @@
                         <span>+</span>
                         <a href="#">H-Section Piles</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="h-section-piles">
                         <div class="card-main">
                             <h3>H-Section Piles</h3>
                             <p>
@@ -342,7 +342,7 @@
                         <span>+</span>
                         <a href="#">Channels</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="channels">
                         <div class="card-main">
                             <h3>Channel Sections</h3>
                             <p>
@@ -445,7 +445,7 @@
                         <span>+</span>
                         <a href="#">Angles Equal</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="cold-formed-angles-equal">
                         <div class="card-main">
                             <h3>Equal Angle Sections</h3>
                             <p>
@@ -496,7 +496,7 @@
                         <span>+</span>
                         <a href="#">Angles Unequal</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="cold-formed-angles-unequal">
                         <div class="card-main">
                             <h3>Unequal Angle Sections</h3>
                             <p>
@@ -545,7 +545,7 @@
                         <span>+</span>
                         <a href="#">Flats</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="flat-bars">
                         <div class="card-main">
                             <h3>Flat Bar</h3>
                             <p>
@@ -595,7 +595,7 @@
                         <span>+</span>
                         <a href="#">Hot rolled sheet</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="hot-rolled-sheet">
                         <div class="card-main">
                             <h3>Flat products</h3>
                             <p>
@@ -645,7 +645,7 @@
                         <span>+</span>
                         <a href="#">Plates</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="steel-plates">
                         <div class="card-main">
                             <h3>Steel Plates</h3>
                             <p>
@@ -695,7 +695,7 @@
                         <span>+</span>
                         <a href="#">Slabs</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="steel-slabs">
                         <div class="card-main">
                             <h3>Steel Slabs</h3>
                             <p>
@@ -741,7 +741,7 @@
                         <span>+</span>
                         <a href="#">Square bars</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="square-bars">
                         <div class="card-main">
                             <h3>Square Bars</h3>
                             <p>
@@ -790,7 +790,7 @@
                         <span>+</span>
                         <a href="#">Round bars</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="round-bars">
                         <div class="card-main">
                             <h3>Round Bars</h3>
                             <p>
@@ -840,7 +840,7 @@
                         <span>+</span>
                         <a href="#">Lipped Channels</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="lipped-channels">
                         <div class="card-main">
                             <h3>Lipped Channels (CFC)</h3>
                             <p>
@@ -888,7 +888,7 @@
                         <span>+</span>
                         <a href="#">Lipped Zeds</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="lipped-zeds">
                         <div class="card-main">
                             <h3>Lipped Zeds (Cold-Formed Sections)</h3>
                             <p>
@@ -935,7 +935,7 @@
                         <span>+</span>
                         <a href="#">Lipped angles</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="lipped-angles">
                         <div class="card-main">
                             <h3>Lipped Angles</h3>
                             <p>
@@ -983,7 +983,7 @@
                         <span>+</span>
                         <a href="#">Cold formed channels</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="cold-formed-channels">
                         <div class="card-main">
                             <h3>Cold formed channels</h3>
                             <p>
@@ -1033,7 +1033,7 @@
                         <span>+</span>
                         <a href="#">Top hats</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="top-hats">
                         <div class="card-main">
                             <h3>Top hats</h3>
                             <p>
@@ -1081,7 +1081,7 @@
                         <span>+</span>
                         <a href="#">Cold-Formed Angles Equal</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="cold-formed-angles-equal">
                         <div class="card-main">
                             <h3>Cold-Formed Angles (Equal Legs)</h3>
                             <p>
@@ -1128,7 +1128,7 @@
                         <span>+</span>
                         <a href="#">Cold-Formed Angles Unequal</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="cold-formed-angles-unequal">
                         <div class="card-main">
                             <h3>Cold-Formed Angles (Unequal Legs)</h3>
                             <p>
@@ -1174,7 +1174,7 @@
                         <span>+</span>
                         <a href="#">Hollow section square</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="hollow-section-square">
                         <div class="card-main">
                             <h3>Hollow Sections Square</h3>
                             <p>
@@ -1222,7 +1222,7 @@
                         <span>+</span>
                         <a href="#">Hollow Section Round</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="hollow-section-round">
                         <div class="card-main">
                             <h3>Hollow Section Round</h3>
                             <p>
@@ -1270,7 +1270,7 @@
                         <span>+</span>
                         <a href="#">Hollow Section Rectangular</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="hollow-section-rectangular">
                         <div class="card-main">
                             <h3>Hollow sections Rectangular</h3>
                             <p>
@@ -1317,7 +1317,7 @@
                         <span>+</span>
                         <a href="#">Bolts and nuts</a>
                     </button>
-                    <div class="card_content">
+                    <div class="card_content" id="bolts-and-nuts">
                         <div class="card-main">
                             <h3>Bolts and Rivets</h3>
                             <p>

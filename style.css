@@ -623,7 +623,7 @@ tr:nth-child(odd) {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding: 0.5rem;
   background: rgba(0,0,0,0.02);
   border-radius: var(--radius-md);
@@ -634,7 +634,7 @@ tr:nth-child(odd) {
   color: var(--text-muted);
   margin-bottom: 0.2rem;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: propercase;
 }
 
 .result-value {
