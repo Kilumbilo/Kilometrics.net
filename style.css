@@ -498,6 +498,15 @@ tr:nth-child(odd) {
     writing-mode: horizontal-tb;
   }
 
+  #home h1,
+  #index h1,
+  #about h1,
+  #terms h1,
+  #privacy h1,
+  #contact h1 {
+    font-size: 2.5rem;
+  }
+
   .main-wrapper {
     flex-direction: column;
     height: auto; /* Allow height to grow with content */
@@ -556,7 +565,7 @@ tr:nth-child(odd) {
 /* --- Calculator Widget Styles --- */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: hsla(0, 0%, 9%, 1);
     --glass-bg: hsla(0, 0%, 9%, 0.8);
@@ -568,7 +577,7 @@ tr:nth-child(odd) {
     --text-muted: hsla(0, 0%, 64%, 1);
     --border-color: hsla(0, 0%, 25%, 1);
   }
-}
+} */
 
 /* Renamed container to calculator-widget-container to avoid conflicts */
 .calculator-widget-container {
@@ -921,4 +930,44 @@ tr:nth-child(odd) {
   max-width: 100%;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
+}
+
+@media (max-width: 480px) {
+  .calculator-widget-container {
+    padding: 0.75rem;
+    margin: 1rem auto;
+  }
+
+  .input-group {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .input-group > .input-wrapper,
+  .input-group > .select-field {
+    justify-self: stretch;
+    width: 100%;
+  }
+
+  .input-group label {
+    justify-self: start;
+    margin-bottom: 0.125rem;
+  }
+
+  .input-wrapper {
+    min-height: 2rem;
+    padding: 0.12rem;
+  }
+
+  .input-field,
+  .select-field,
+  .select-unit {
+    min-height: 2rem;
+    height: 2rem;
+  }
+
+  .calc-btn {
+    padding: 0.6rem;
+    margin-top: 0.35rem;
+  }
 }
