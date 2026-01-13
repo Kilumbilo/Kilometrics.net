@@ -633,3 +633,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const user = "info";
+  const domain = "kilometrics.net";
+  const email = user + "@" + domain;
+
+  const emailLink = document.getElementById("emailLink");
+  if (emailLink) {
+    emailLink.setAttribute("href", "mailto:" + email);
+  }
+
+  const emailText = document.getElementById("emailText");
+  if (emailText) {
+    emailText.textContent = email;
+  }
+});
