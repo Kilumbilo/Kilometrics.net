@@ -634,6 +634,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+//hiding email from bots
 document.addEventListener("DOMContentLoaded", function () {
   const user = "info";
   const domain = "kilometrics.net";
