@@ -47,8 +47,8 @@
   --text-muted: hsla(0, 0%, 45%, 1);
   --border-color: hsla(0, 0%, 83%, 1);
 
-  --shadow-lg: 0 10px 15px -3px hsla(0, 0%, 0%, 0.1),
-    0 4px 6px -2px hsla(0, 0%, 0%, 0.05);
+  --shadow-lg:
+    0 10px 15px -3px hsla(0, 0%, 0%, 0.1), 0 4px 6px -2px hsla(0, 0%, 0%, 0.05);
 
   /* Dimensions & Shapes */
   --container-width: 450px;
@@ -61,16 +61,13 @@ body {
   /* height: 100%; */
   font-family: "Arvo", serif;
   display: flex;
-  /* color: #fff; */
-  /* font-weight: 400; */
-  overflow-x: hidden; /* Prevent horizontal scrollbar */
   scroll-behavior: smooth;
-  /* scrollbar-width: none; */
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: scroll;
 }
 
 button {
-  /* cursor: pointer; */
-  /* background-color: transparent; */
   border: none;
   font-size: 1rem;
   transition: background-color 0.3s ease;
@@ -102,6 +99,8 @@ nav {
 
 nav .logo {
   font-size: 2rem;
+  height: var(--card-nav-size);
+  align-content: center;
 }
 
 nav .menu {
@@ -126,8 +125,6 @@ nav .menu div:hover {
   display: flex;
   flex-direction: row;
   height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
 .section-container {
@@ -136,14 +133,16 @@ nav .menu div:hover {
   position: relative;
   background-color: var(--surface-color);
   overflow: auto;
-  /* scrollbar-width: none; */
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #000 transparent;
 }
 
 #home {
   display: flex;
   flex-direction: column;
   padding: 2rem;
-
   height: 100vh;
   justify-content: space-between;
 }
@@ -208,7 +207,7 @@ nav .menu div:hover {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
-  /* padding: 0 clamp(1rem, 5vw, 2rem); */
+
   max-width: var(--cards-size);
   margin: 0 auto;
   margin-bottom: 2rem;
@@ -219,7 +218,9 @@ nav .menu div:hover {
   padding: 1rem;
   margin: 0.25rem;
   box-shadow: var(--box-shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -272,7 +273,7 @@ footer li,
   display: flex;
   flex-direction: row;
   height: 100vh;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .card_header {
@@ -296,7 +297,6 @@ footer li,
   font-size: 2rem;
   padding: 1rem;
   display: inline-block;
-  /* transform: none;*/
   transition: transform 0.3s ease-in-out;
 }
 
@@ -308,9 +308,12 @@ footer li,
   flex-direction: column;
   justify-content: space-between;
   overflow: scroll;
-  /* scrollbar-width: none; */
+  overflow-x: hidden;
   transition: display 0.4s ease-in-out;
   margin: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: #000 transparent;
 }
 
 .card_content .card-main {
@@ -722,7 +725,9 @@ tr:nth-child(odd) {
   background-color: var(--surface-color);
   padding: 0.08rem;
   align-items: center;
-  transition: box-shadow 0.2s, border-color 0.2s;
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s;
   min-height: 1.8rem;
 }
 
@@ -736,7 +741,9 @@ tr:nth-child(odd) {
   color: var(--text-color);
   font-size: 0.9rem;
   font-family: inherit;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
   min-height: 1.8rem;
   display: flex;
   align-items: center;
