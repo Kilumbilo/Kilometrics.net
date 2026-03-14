@@ -6,6 +6,10 @@ const densities = {
   "Mild Steel": 7850,
 };
 
+// Google Apps Script web app URL for newsletter/contact form submissions.
+// Replace this with the deployed `/exec` URL when ready.
+const CONTACT_FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxN_kfkBV4cftfiqC30aK7Bk-N15soWS4c04cB_B2jqgULjCdl8efSKpK4DSAkBssT_HQ/exec";
+
 // --- Unit Conversion ---
 function getUnitFactor(unit) {
   switch (unit) {
@@ -577,11 +581,91 @@ function updateYear() {
     });
 }
 
+function setSignupMessage(messageEl, message, type) {
+    if (!messageEl) return;
+
+    messageEl.textContent = message;
+    messageEl.dataset.state = type;
+    messageEl.style.color = type === "error" ? "#b42318" : "#067647";
+}
+
+function initSignupForm() {
+    const form = document.getElementById("signup-form");
+    if (!form) return;
+
+    const emailInput = document.getElementById("signup-email");
+    const messageEl = document.getElementById("signup-message");
+    const submitButton = form.querySelector('button[type="submit"]');
+    const honeypotInput = form.querySelector('input[name="company"]');
+
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        if (!emailInput || !submitButton) return;
+
+        if (honeypotInput && honeypotInput.value.trim() !== "") {
+            form.reset();
+            setSignupMessage(messageEl, "Thanks. Your request has been received.", "success");
+            return;
+        }
+
+        const email = emailInput.value.trim();
+        if (!email) {
+            setSignupMessage(messageEl, "Enter a valid email address.", "error");
+            return;
+        }
+
+        if (!CONTACT_FORM_ENDPOINT) {
+            setSignupMessage(messageEl, "Signup is not configured yet. Add the Google Apps Script URL in script.js.", "error");
+            return;
+        }
+
+        submitButton.disabled = true;
+        setSignupMessage(messageEl, "Submitting...", "success");
+
+        const payload = new URLSearchParams({
+            email,
+            page: window.location.pathname,
+            submittedAt: new Date().toISOString(),
+            source: "kilometrics_signup"
+        });
+
+        try {
+            const response = await fetch(CONTACT_FORM_ENDPOINT, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+                },
+                body: payload
+            });
+
+            let result = null;
+            const contentType = response.headers.get("content-type") || "";
+            if (contentType.includes("application/json")) {
+                result = await response.json();
+            }
+
+            if (!response.ok || (result && result.status === "error")) {
+                throw new Error(result && result.message ? result.message : "Request failed");
+            }
+
+            form.reset();
+            setSignupMessage(messageEl, "Thanks for signing up. No Spam/Junk we promise!", "success");
+        } catch (error) {
+            console.error("Signup form submission failed.", error);
+            setSignupMessage(messageEl, "Signup failed. Please try again in a moment.", "error");
+        } finally {
+            submitButton.disabled = false;
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     updateYear();
     
     // Start fetching
     fetchDataset();
+    initSignupForm();
 
     const defaultTab = document.getElementById("defaultOpen");
     if (defaultTab) {

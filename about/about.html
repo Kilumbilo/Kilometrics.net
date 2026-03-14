@@ -1370,9 +1370,10 @@
             <p>Sign up to our mail list and stay updated with the content of this site and much more</p>
             <form id="signup-form" class="mt-1">
                 <input type="email" id="signup-email" name="email" required placeholder="Enter your email address" />
+                <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;" />
                 <button type="submit">Sign Up!</button>
             </form>
-            <div id="signup-message"></div>
+            <div id="signup-message" role="status" aria-live="polite"></div>
             <h5>Stay connected</h5>
             <p>Visit our socials (still working on this)</p>
             <div class="footerBottom">
